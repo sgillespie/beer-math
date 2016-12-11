@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/sgillespie/beer-math.svg?branch=master)](https://travis-ci.org/sgillespie/beer-math)
+[![Coverage Status](https://coveralls.io/repos/github/sgillespie/beer-math/badge.svg?branch=master)](https://coveralls.io/github/sgillespie/beer-math?branch=master)
 [![dependencies Status](https://david-dm.org/sgillespie/beer-math/status.svg)](https://david-dm.org/sgillespie/beer-math)
 [![devDependencies Status](https://david-dm.org/sgillespie/beer-math/dev-status.svg)](https://david-dm.org/sgillespie/beer-math?type=dev)
 # Beer Math
