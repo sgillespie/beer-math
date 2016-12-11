@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/sgillespie/beer-math.svg?branch=master)](https://travis-ci.org/sgillespie/beer-math)
-[![Dependencies Status](https://david-dm.org/sgillespie/beer-math.svg)]
-[![devDependencies Status](https://david-dm.org/sgillespie/beer-math.svg?type=dev)]
+[![dependencies Status](https://david-dm.org/sgillespie/beer-math/status.svg)](https://david-dm.org/sgillespie/beer-math)
+[![devDependencies Status](https://david-dm.org/sgillespie/beer-math/dev-status.svg)](https://david-dm.org/sgillespie/beer-math?type=dev)
 # Beer Math
 Beer Math is a recipe formulation app.
 
