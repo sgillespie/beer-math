@@ -3,7 +3,9 @@
 [![dependencies Status](https://david-dm.org/sgillespie/beer-math/status.svg)](https://david-dm.org/sgillespie/beer-math)
 [![devDependencies Status](https://david-dm.org/sgillespie/beer-math/dev-status.svg)](https://david-dm.org/sgillespie/beer-math?type=dev)
 # Beer Math
-Beer Math is a recipe formulation app.
+Beer Math is a recipe formulation app. The app is running at:
+
+https://sgillespie.github.io/beer-math
 
 # Prerequisites
 In order to run, build, or test you will need
