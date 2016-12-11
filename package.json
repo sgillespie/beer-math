@@ -10,12 +10,14 @@
   },
   "dependencies": {
     "react": "^15.4.1",
-    "react-dom": "^15.4.1"
+    "react-dom": "^15.4.1",
+    "react-router": "3.0.0",
+    "react-router-redux": "4.0.7"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",    
-    "deploy": "npm run build&&gh-pages -d build",
+    "build": "react-scripts build",
+    "deploy": "npm run build && gh-pages -d build",
     "test": "react-scripts test --env=jsdom",
     "test:ci": "CI=true react-scripts test --env=jsdom --coverage && coveralls < coverage/lcov.info",
     "eject": "react-scripts eject"
