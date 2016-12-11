@@ -6,7 +6,7 @@ import React from 'react';
 import App from './containers/app';
 import reducers from './reducers';
 
-import './index.js';
+import './index.css';
 
 const store = createStore(reducers);
 
