@@ -29,247 +29,133 @@
 	    
 	    <!-- Static navbar -->
 	    <nav class="navbar navbar-default navbar-static-top">
-		<div class="container">
-		    <div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-			    <span class="sr-only">Toggle navigation</span>
-			    <span class="icon-bar"></span>
-			    <span class="icon-bar"></span>
-			    <span class="icon-bar"></span>
-			</button>
-			<a class="navbar-brand" href="#">BEERMATH</a>
-		    </div>
-		    <div id="navbar" class="navbar-collapse collapse">
-			<ul class="nav navbar-nav">
-			    <li class="active"><a href="#">Home</a></li>
-			    <li><a href="#about">About</a></li>
-			    <li><a href="#contact">Contact</a></li>
-			</ul>
-		    </div><!--/.nav-collapse -->
-		</div>
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#">BEERMATH</a>
+				</div>
+				<div id="navbar" class="navbar-collapse collapse">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="#">Home</a></li>
+						<li><a href="#about">About</a></li>
+						<li><a href="#contact">Contact</a></li>
+					</ul>
+				</div><!--/.nav-collapse -->
+			</div>
 	    </nav>
-	    
-	    <!-- Main component for a primary marketing message or call to action -->
-	    <div class="container">
-		
-		<div class="jumbotron">
-		    <h1>CHEERS!</h1>
-		    <p>Get prepared to cream your shorts! We've put together the sexiest brewing calculators you've ever had the pleasure of using.</p>
-		    <p>blah blah blah</p>
-		    <p>
-			<a class="btn btn-lg btn-primary" href="#" role="button">Get Fucked &raquo;</a>
-		    </p>
-		</div>
-		
-		<div class="panel panel-default">
-		    <div class="panel-heading">Panel heading without title</div>
-		    <div class="panel-body">
-			Panel content
-		    </div>
-		</div>
 
-		<div class="panel panel-default">
-		    <div class="panel-heading">
-			<h3 class="panel-title">Grist Calculator</h3>
-		    </div>
-		    <div class="panel-body">
-			<form class="form-horizontal">
-			    <div class="form-group">
-				<label for="inputPreboilGravity" class="col-sm-2 control-label">Preboil Gravity</label>
-				<div class="col-sm-10">
-				    <input type="email" class="form-control" id="inputPreboilGravity" placeholder="Email">
+		<div class="container">
+			<div class="row" >
+				<div class="col-sm-3" >
+				<div class="form-group has-feedback has-success" >
+					<label class="control-label" >
+					<span >Total weight (lbs/oz)</span>
+					</label>
+					<input label="Preboil Gravity (SG)" type="text" class="form-control" value="1.055" >
+					<span class="glyphicon glyphicon-ok form-control-feedback" ></span>
 				</div>
-			    </div>
-			    <div class="form-group">
-				<label for="inputPassword3" class="col-sm-2 control-label">Preboil Volume</label>
-				<div class="col-sm-10">
-				    <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
 				</div>
-			    </div>
-			    <div class="form-group">
-				<label for="inputPassword3" class="col-sm-2 control-label">Target Extract Efficiency</label>
-				<div class="col-sm-10">
-				    <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+				<div class="col-sm-3" >
+				<div class="form-group has-feedback has-success" >
+					<label class="control-label" >
+					<span >Preboil Gravity (SG)</span>
+					</label>
+					<input label="Preboil Gravity (SG)" type="text" class="form-control" value="1.055" >
+					<span class="glyphicon glyphicon-ok form-control-feedback" ></span>
 				</div>
-			    </div>
-			    <div class="form-group">
-				<label for="inputPassword3" class="col-sm-2 control-label">Maximum PPG</label>
-				<div class="col-sm-10">
-				    <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
 				</div>
-			    </div>
-			    <div class="form-group">
-				<label for="inputPassword3" class="col-sm-2 control-label">Grain Proportion</label>
-				<div class="col-sm-10">
-				    <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+				<div class="col-sm-3" >
+				<div class="form-group has-feedback has-success" >
+					<label class="control-label" >
+					<span >Preboil Volume (Gallons)</span>
+					</label>
+					<input label="Preboil Volume (Gallons)" type="text" class="form-control" value="5" >
+					<span class="glyphicon glyphicon-ok form-control-feedback" ></span>
 				</div>
-			    </div>
-			</form>
-			T = \cfrac{G \cdot T}{E (P_1 W_1 + P_2 W_2 + \cdot \cdot \cdot + P_n W_n)} \\  \\  G: \text{Preboil Gravity} \\  V: \text{Preboil Volume} \\  E: \text{Target Extract Efficiency} \\  P_n: \text{Maximum PPG (\%)} \\  W_n: \text{Grain Proportion}  
-		    </div>
-		</div>
-		
-		
-		<div class="row" >
-		    <div class="col-sm-3" >
-			<div class="form-group has-feedback has-success" >
-			    <label class="control-label" >
-				<span >Total weight (lbs/oz)</span>
-			    </label>
-			    <input label="Preboil Gravity (SG)" type="text" class="form-control" value="1.055" >
-			    <span class="glyphicon glyphicon-ok form-control-feedback" ></span>
+				</div>
+				<div class="col-sm-3" >
+				<div class="form-group has-feedback has-success" >
+					<label class="control-label" >
+					<span >Extract Efficiency</span>
+					</label>
+					<input type="text" label="Extract Efficiency" class="form-control" value="70" >
+					<span class="glyphicon glyphicon-ok form-control-feedback" ></span>
+				</div>
+				</div>
 			</div>
-		    </div>
-		    <div class="col-sm-3" >
-			<div class="form-group has-feedback has-success" >
-			    <label class="control-label" >
-				<span >Preboil Gravity (SG)</span>
-			    </label>
-			    <input label="Preboil Gravity (SG)" type="text" class="form-control" value="1.055" >
-			    <span class="glyphicon glyphicon-ok form-control-feedback" ></span>
-			</div>
-		    </div>
-		    <div class="col-sm-3" >
-			<div class="form-group has-feedback has-success" >
-			    <label class="control-label" >
-				<span >Preboil Volume (Gallons)</span>
-			    </label>
-			    <input label="Preboil Volume (Gallons)" type="text" class="form-control" value="5" >
-			    <span class="glyphicon glyphicon-ok form-control-feedback" ></span>
-			</div>
-		    </div>
-		    <div class="col-sm-3" >
-			<div class="form-group has-feedback has-success" >
-			    <label class="control-label" >
-				<span >Extract Efficiency</span>
-			    </label>
-			    <input type="text" label="Extract Efficiency" class="form-control" value="70" >
-			    <span class="glyphicon glyphicon-ok form-control-feedback" ></span>
-			</div>
-		    </div>
-		</div>
-		
-		<div class="panel panel-primary" >
-		    <div class="panel-heading" >
-			<h4 class="panel-title" >Original Grain Bill</h4>
-		    </div>
-		    <div class="panel-body" >
-			<table class="table" >
-			    <thead >
-				<tr >
-				    <th >Grain</th>
-				    <th >Weight (lbs/oz)</th>
-				    <th >%</th>
-				    <th class="text-right" >Actions</th>
-				</tr>
-			    </thead>
-			    <tbody >
-				<tr >
-				    <td >Two Row (US)</td>
-				    <td >
-					<span >12</span>
-					<span >/</span>
-					<span >2</span>
-				    </td>
-				    <td >
-					<span >2.2</span>
-					<span >%</span>
-				    </td>
-				    <td class="text-right" >
-					<button type="button" class="btn btn-default" >
-					    <span class="glyphicon glyphicon-remove" >
-					    </span>
-					</button>
-				    </td>
-				</tr>
-				<tr >
-				    <td >Crystal 40L</td>
-				    <td >
-					<span >0</span>
-					<span >/</span>
-					<span >8</span>
-				    </td>
-				    <td >
-					<span >0.1</span>
-					<span >%</span>
-				    </td>
-				    <td class="text-right" >
-					<button type="button" class="btn btn-default" >
-					    <span class="glyphicon glyphicon-remove" ></span>
-					</button>
-				    </td>
-				</tr>
-				<tr >
-				    <td >Munich</td>
-				    <td >
-					<span >0</span>
-					<span >/</span>
-					<span >2</span>
-				    </td>
-				    <td >
-					<span >0.0</span>
-					<span >%</span>
-				    </td>
-				    <td class="text-right" >
-					<button type="button" class="btn btn-default" >
-					    <span class="glyphicon glyphicon-remove" ></span>
-					</button>
-				    </td>
-				</tr>
-				<tr >
-				    <td >buttnuggets</td>
-				    <td >
-					<span >531</span>
-					<span >/</span>
-					<span >4</span>
-				    </td>
-				    <td >
-					<span >97.7</span>
-					<span >%</span>
-				    </td>
-				    <td class="text-right" >
-					<button type="button" class="btn btn-default" >
-					    <span class="glyphicon glyphicon-remove" ></span>
-					</button>
-				    </td>
-				</tr>
-			    </tbody>
-			</table>
-			<form >
-			    <div class="row" >
-				<div class="col-sm-4" >
-				    <div class="form-group" >
-					<input type="text" placeholder="Grain/Malt Type" class="form-control" >
-				    </div>
+			
+			<div class="panel panel-primary" >
+				<div class="panel-heading" >
+				<h4 class="panel-title" >Original Grain Bill</h4>
 				</div>
-				<div class="col-sm-2" >
-				    <div class="form-group" >
-					<div class="input-group" >
-					    <input type="text" placeholder="Weight (Lbs)" class="form-control" >
-					    <span class="input-group-addon" >lbs</span>
+				<div class="panel-body" >
+				<table class="table" >
+					<thead >
+					<tr >
+						<th >Grain</th>
+						<th >Max PPG</th>
+						<th >%</th>
+						<th >Weight (lbs/oz)</th>
+						<th class="text-right" >Actions</th>
+					</tr>
+					</thead>
+					<tbody >
+					<tr >
+						<td >Two Row (US)</td>
+						<td >36</td>
+						<td >
+						<span >2.2</span>
+						<span >%</span>
+						</td>
+						<td >
+						<span >12</span>
+						<span >/</span>
+						<span >2</span>
+						</td>
+						<td class="text-right" >
+						<button type="button" class="btn btn-default" >
+							<span class="glyphicon glyphicon-remove" >
+							</span>
+						</button>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+				<form >
+					<div class="row" >
+					<div class="col-sm-3" >
+						<div class="form-group" >
+						<input type="text" placeholder="Grain/Malt Type" class="form-control" >
+						</div>
 					</div>
-				    </div>
-				</div>
-				<div class="col-sm-2" >
-				    <div class="form-group" >
-					<div class="input-group" >
-					    <input type="text" placeholder="Ounces" class="form-control" >
-					    <span class="input-group-addon" >oz</span>
+					<div class="col-sm-3" >
+						<div class="form-group" >
+							<input type="text" placeholder="Max PPG" class="form-control" >
+						</div>
 					</div>
-				    </div>
+					<div class="col-sm-3" >
+						<div class="form-group" >
+							<input type="text" placeholder="Percentage" class="form-control" >
+						</div>
+					</div>
+					<div class="col-sm-3" >
+						<button type="button" class="btn btn-default" >
+						<span class="glyphicon glyphicon-plus" ></span>
+						</button>
+						<button type="reset" class="btn btn-default" >
+						<span class="glyphicon glyphicon-remove" >
+						</span>
+						</button>
+					</div>
+					</div>
+				</form>
 				</div>
-				<div class="col-sm-4" >
-				    <button type="button" class="btn btn-default" >
-					<span class="glyphicon glyphicon-plus" ></span>
-				    </button>
-				    <button type="reset" class="btn btn-default" >
-					<span class="glyphicon glyphicon-remove" >
-					</span>
-				    </button>
-				</div>
-			    </div>
-			</form>
-		    </div>
+			</div>
 		</div>
 		
 	    </div>
