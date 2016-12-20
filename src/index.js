@@ -6,6 +6,7 @@ import React from 'react';
 import App from './containers/app';
 import reducers from './reducers';
 
+import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
 
 const store = createStore(reducers);
