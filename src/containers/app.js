@@ -1,10 +1,14 @@
 import React from 'react';
 
-import AppNav from '../components/app-nav';
+import AppNav from '../components/app-nav.js';
+import GristCalculator from '../components/grist-calculator.js';
 import './app.css';
 
 export default function() {
   return (
-    <AppNav/>
+    <div>
+      <AppNav/>
+      <GristCalculator/>
+    </div>
   );
 }
