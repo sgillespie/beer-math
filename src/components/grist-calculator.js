@@ -1,6 +1,7 @@
 import React from 'react';
 
 import RecipeTargets from './recipe-targets';
+import RecipeTotals from './recipe-totals';
 
 export default function GristCalculator () {
 	return (
@@ -75,18 +76,9 @@ export default function GristCalculator () {
 						</div>
 					</form>
 				</div>
+
 				<div className="panel-footer">
-					<div className="row">
-						<div className="col-sm-3" >
-							<div className="form-group" >
-								<label className="control-label" >
-									<span >Total weight (lbs/oz)</span>
-								</label>
-								<input label="Total Weight (lbs/oz)" type="text" className="form-control" value="" />
-								<span className="glyphicon form-control-feedback" ></span>
-							</div>
-						</div>
-					</div>
+          <RecipeTotals />
 				</div>
 			</div>
 		</div>
