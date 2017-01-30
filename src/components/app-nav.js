@@ -5,7 +5,7 @@ import NavItem from 'react-bootstrap/lib/NavItem';
 
 export default function() {
   return (
-    <Navbar>
+    <Navbar fluid>
       <Header>
         <Brand>
           <a href="#">🍺+🍺=🍻</a>
