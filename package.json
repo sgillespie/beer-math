@@ -5,17 +5,18 @@
   "homepage": "https://sgillespie.github.io/beer-math",
   "devDependencies": {
     "coveralls": "2.11.15",
-    "enzyme": "2.6.0",
+    "enzyme": "2.7.1",
     "gh-pages": "0.12.0",
-    "react-addons-test-utils": "15.4.1",
-    "react-scripts": "^0.8.3"
+    "react-addons-test-utils": "15.4.2",
+    "react-scripts": "^0.8.5"
   },
   "dependencies": {
     "bootstrap": "3.3.7",
-    "react": "^15.4.1",
+    "bootstrap-material-design": "0.5.10",
+    "react": "15.4.2",
     "react-bootstrap": "0.30.7",
-    "react-dom": "^15.4.1",
-    "react-redux": "4.4.6",
+    "react-dom": "15.4.2",
+    "react-redux": "5.0.2",
     "redux": "3.6.0"
   },
   "scripts": {
