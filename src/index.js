@@ -3,7 +3,7 @@ import { createStore } from 'redux';
 import { render } from 'react-dom';
 import React from 'react';
 
-import App from './containers/app.js';
+import App from './components/App.js';
 import reducers from './reducers';
 
 import 'bootstrap/dist/css/bootstrap.css';
@@ -16,7 +16,7 @@ const store = createStore(reducers);
 
 render(
   <Provider store={store}>
-    <App/>
+    <App />
   </Provider>,
   document.getElementById('root')
 )

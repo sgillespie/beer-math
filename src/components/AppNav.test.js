@@ -3,7 +3,7 @@ import { Brand } from 'react-bootstrap/lib/Navbar';
 import NavItem from 'react-bootstrap/lib/NavItem';
 import React from 'react';
 
-import AppNav from './app-nav';
+import AppNav from './AppNav';
 
 it('renders', () => {
   const nav = shallow(<AppNav />);
