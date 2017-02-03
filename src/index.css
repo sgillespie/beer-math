@@ -11,3 +11,8 @@ body {
 .pt-8 {
   padding-top: 8px;
 }
+
+.vertical-center {
+  margin-top: auto;
+  margin-bottom: auto;
+}

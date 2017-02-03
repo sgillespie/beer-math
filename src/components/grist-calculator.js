@@ -46,18 +46,14 @@ export default function GristCalculator () {
                 <span>2</span>
               </td>
               <td className="text-right">
-                <a href="#" className="btn btn-default btn-xs">
+                <a href="#" className="text-muted">
+                  <i className="material-icons">delete</i>
+                </a>
+                {' '}
+                <a href="#" className="text-muted">
                   <i className="material-icons">create</i>
                 </a>
               </td>
-            </tr>
-
-            <tr>
-              <td>Total</td>
-              <td>{' '}</td>
-              <td>100%</td>
-              <td>15/3</td>
-              <td>{' '}</td>
             </tr>
           </tbody>
         </Table>
@@ -82,20 +78,15 @@ export default function GristCalculator () {
               </FormGroup>
             </Col>
 
-            <Col xs={3} className="text-right" >
-              <Button type="button" bsStyle="default">
-                <i className="material-icons">create</i>
-              </Button>
-              <Button type="reset" bsStyle="default">
-                <span className="glyphicon glyphicon-remove" />
-              </Button>
+            <Col xs={3} className="text-right">
+              <FormGroup>
+                <Button className="btn-raised vertical-center" bsStyle="primary">Add</Button>
+              </FormGroup>
             </Col>
 
           </Row>
         </form>
 
-        <hr />
-    
         <p>Total Grains: 15lbs. 3oz.</p>
       </Panel>
       
