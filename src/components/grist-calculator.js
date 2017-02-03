@@ -14,12 +14,12 @@ export default function GristCalculator () {
 	return (
 	  <Grid fluid>
       <Panel>
-        <h4>Recipe Targets</h4>
+        <h3>Recipe Targets</h3>
         <RecipeTargets />
       </Panel>
 
       <Panel>
-        <h4>Grain Bill</h4>
+        <h3>Grain Bill</h3>
 
         <Table>
           <thead>
@@ -28,7 +28,7 @@ export default function GristCalculator () {
               <th>Max PPG</th>
               <th>Percentage</th>
               <th>Weight (lbs/oz)</th>
-              <th className="text-right" >Actions</th>
+              <th className="text-right">Actions</th>
             </tr>
           </thead>
 
@@ -46,9 +46,9 @@ export default function GristCalculator () {
                 <span>2</span>
               </td>
               <td className="text-right">
-                <Button bsStyle="default">
-                  <span className="glyphicon glyphicon-remove" />
-                </Button>
+                <a href="#" className="btn btn-default btn-xs">
+                  <i className="material-icons">create</i>
+                </a>
               </td>
             </tr>
 
@@ -84,7 +84,7 @@ export default function GristCalculator () {
 
             <Col xs={3} className="text-right" >
               <Button type="button" bsStyle="default">
-                <span className="glyphicon glyphicon-plus" />
+                <i class="material-icons">create</i>
               </Button>
               <Button type="reset" bsStyle="default">
                 <span className="glyphicon glyphicon-remove" />
