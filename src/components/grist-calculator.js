@@ -84,7 +84,7 @@ export default function GristCalculator () {
 
             <Col xs={3} className="text-right" >
               <Button type="button" bsStyle="default">
-                <i class="material-icons">create</i>
+                <i className="material-icons">create</i>
               </Button>
               <Button type="reset" bsStyle="default">
                 <span className="glyphicon glyphicon-remove" />
