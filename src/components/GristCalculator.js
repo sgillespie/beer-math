@@ -8,7 +8,7 @@ import Row from 'react-bootstrap/lib/Row';
 import Table from 'react-bootstrap/lib/Table';
 import React from 'react';
 
-import RecipeTargets from './recipe-targets';
+import RecipeTargets from './RecipeTargets';
 
 export default function GristCalculator () {
 	return (

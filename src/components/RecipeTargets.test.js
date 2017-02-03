@@ -1,7 +1,7 @@
 import { shallow } from 'enzyme';
 import React from 'react';
 
-import RecipeTargets from './recipe-targets';
+import RecipeTargets from './RecipeTargets';
 
 let targets;
 
