@@ -18,3 +18,31 @@
   padding-top: 10px;
 }
 
+.icon-group {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.icon-group i {
+}
+
+.grains-table {
+  width: 100%;
+  border: none;
+}
+
+.grains-table tr:last-child td {
+  border: none;
+}
+
+.wd-100 {
+  width: 100%;
+}
+
+.wd-auto {
+  width: auto;
+}
+
+.text-right {
+  text-align: right !important;
+}

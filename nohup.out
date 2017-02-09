@@ -1,0 +1,2 @@
+Fields missing from config defaulted: additionalFonts,textOffset,iconOffset,iconRoot,alpha
+xmobar: .xmonad/volume.sh: runInteractiveProcess: runInteractiveProcess: exec: does not exist (No such file or directory)

@@ -1,4 +1,5 @@
 import Button from 'react-mdl/lib/Button';
+import IconButton from 'react-mdl/lib/IconButton';
 import React from 'react';
 import { Card, CardText, CardTitle } from 'react-mdl/lib/Card';
 import { Content, Header, Layout, Navigation } from 'react-mdl/lib/Layout';
@@ -7,6 +8,13 @@ import { Grid, Cell } from 'react-mdl/lib/Grid';
 import Textfield from 'react-mdl/lib/Textfield';
 
 export default function() {
+  const actionIcons = (
+    <div className="icon-group">
+      <IconButton name="delete" ripple />
+      <IconButton name="create" ripple />
+    </div>
+  );
+
   return (
     <Layout>
       <Header title="🍺+🍺=🍻">
@@ -50,17 +58,17 @@ export default function() {
 
           <Card shadow={1}>
             <CardTitle>Grains</CardTitle>
-            <CardText>
-              <Table style={{ width: '100%' }} rows={[
-                { type: 'US Two Row', maxPpg: '1.034', proportion: '90%', weight: '11/4' },
-                { type: 'Crystral 40L', maxPpg: '1.036', proportion: '5%', weight: '0/6' },
-                { type: 'Crystral 80L', maxPpg: '1.036', proportion: '5%', weight: '0/6' }
+            <CardText className="wd-auto">
+              <Table className="grains-table" rows={[
+                { type: 'US Two Row', maxPpg: '1.034', proportion: '90%', weight: '11/4', actions: actionIcons },
+                { type: 'Crystral 40L', maxPpg: '1.036', proportion: '5%', weight: '0/6', actions: actionIcons },
+                { type: 'Crystral 80L', maxPpg: '1.036', proportion: '5%', weight: '0/6', actions: actionIcons }
               ]}>
                 <TableHeader name="type">GrainType</TableHeader>
                 <TableHeader name="maxPpg">Max PPG (SG)</TableHeader>
                 <TableHeader name="proportion">Proportion (%)</TableHeader>
                 <TableHeader name="weight">Weight (lbs/oz)</TableHeader>
-                <TableHeader name="actions">Actions</TableHeader>
+                <TableHeader name="actions" className="text-right">Actions</TableHeader>
               </Table>
 
               <Grid style={{ marginTop: '1rem' }}>
