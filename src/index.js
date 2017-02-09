@@ -6,9 +6,8 @@ import React from 'react';
 import App from './components/App.js';
 import reducers from './reducers';
 
-import 'bootstrap/dist/css/bootstrap.css';
-import 'bootstrap-material-design/dist/css/bootstrap-material-design.css';
-import 'bootstrap-material-design/dist/css/ripples.css';
+import 'react-mdl/extra/css/material.teal-indigo.min.css';
+import 'react-mdl/extra/material.js';
 
 import './index.css';
 

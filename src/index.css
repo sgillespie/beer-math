@@ -1,18 +1,20 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
+.page-content {
+  padding: 1rem;
+  background-color: #eeeeee;
 }
 
-.mt-0 {
-  margin-top: 0 !important;
+.page-content > .mdl-card {
+  width: 100%;
 }
 
-.pt-8 {
-  padding-top: 8px;
+.page-content > :not(:first-child) {
+  margin-top: 1rem;
 }
 
-.vertical-center {
-  margin-top: auto;
-  margin-bottom: auto;
+.button-group {
+  display: flex;
+  justify-content: flex-end;
+  align-items: start;
+  padding-top: 10px;
 }
+
