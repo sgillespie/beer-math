@@ -43,3 +43,8 @@
 .text-right {
   text-align: right !important;
 }
+
+.mdl-button:hover{
+	/*background-color: transparent;*/
+	color: rgb(83,109,254);
+}
