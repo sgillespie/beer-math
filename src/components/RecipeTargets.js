@@ -1,33 +1,36 @@
+import { Card, CardText, CardTitle } from 'react-mdl/lib/Card';
+import { Cell, Grid } from 'react-mdl/lib/Grid';
 import React from 'react';
-import Col from 'react-bootstrap/lib/Col';
-import ControlLabel from 'react-bootstrap/lib/ControlLabel';
-import FormControl from 'react-bootstrap/lib/FormControl';
-import FormGroup from 'react-bootstrap/lib/FormGroup';
-import Row from 'react-bootstrap/lib/Row';
+import Textfield from 'react-mdl/lib/Textfield';
 
 export default function RecipeTargets() {
   return (
-    <Row className="pt-8">
-      <Col sm={3}>
-        <FormGroup controlId="gravity" className="mt-0">
-          <ControlLabel className="mt-0">Preboil Gravity (SG)</ControlLabel>
-          <FormControl type="text" defaultValue="1.055" />
-        </FormGroup>
-      </Col>
+    <Card className="card-layout" shadow={1}>
+      <CardTitle expand>Recipe Targets</CardTitle>
+      <CardText>
+        <Grid>
+          <Cell col={4}>
+            <Textfield 
+              defaultValue="1.045"
+              label="Preboil Gravity (SG)"
+              floatingLabel /> 
+          </Cell>
 
-      <Col sm={3}>
-        <FormGroup controlId="volume" className="mt-0">
-          <ControlLabel className="mt-0">Preboil Volume (Gallons)</ControlLabel>
-          <FormControl type="text" defaultValue="5" />
-        </FormGroup>
-      </Col>
+          <Cell col={4}>
+            <Textfield 
+              defaultValue="6"
+              label="Preboil Volume (Gallons)"
+              floatingLabel /> 
+          </Cell>
 
-      <Col sm={3}>
-        <FormGroup controlId="efficiency" className="mt-0">
-          <ControlLabel className="mt-0">Extract Efficiency</ControlLabel>
-          <FormControl type="text" defaultValue="70" />
-        </FormGroup>
-      </Col>
-    </Row>
+          <Cell col={4}>
+            <Textfield 
+              defaultValue="70"
+              label="Extract Efficiency"
+              floatingLabel /> 
+          </Cell>
+        </Grid>
+      </CardText>
+    </Card>
   );
 }

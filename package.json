@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://sgillespie.github.io/beer-math",
   "devDependencies": {
+    "chai": "3.5.0",
     "coveralls": "2.11.15",
     "enzyme": "2.7.1",
     "gh-pages": "0.12.0",
