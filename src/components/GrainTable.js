@@ -9,7 +9,7 @@ const grains = [
     type: 'US Two Row', 
     maxPpg: '1.034', 
     proportion: '90%', 
-    weight: '11/4', 
+    weight: '11 lbs 4 oz', 
     actions: <GrainActionsColumn />
   },
 
@@ -17,7 +17,7 @@ const grains = [
     type: 'Crystral 40L', 
     maxPpg: '1.036', 
     proportion: '5%', 
-    weight: '0/6', 
+    weight: '6 oz', 
     actions: <GrainActionsColumn />
   },
 
@@ -25,8 +25,14 @@ const grains = [
     type: 'Crystral 80L', 
     maxPpg: '1.036', 
     proportion: '5%', 
-    weight: '0/6', 
+    weight: '6 oz', 
     actions: <GrainActionsColumn />
+  },
+
+  {
+    type: 'Totals',
+    proportion: '100%',
+    weight: '12 lbs',
   }
 ];
 

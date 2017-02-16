@@ -28,8 +28,13 @@
   border: none;
 }
 
+.grains-table tr:last-child:hover {
+  background-color: inherit;
+}
+
 .grains-table tr:last-child td {
   border: none;
+  font-weight: 700;
 }
 
 .wd-100 {
