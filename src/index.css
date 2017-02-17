@@ -3,6 +3,26 @@
   background-color: #eeeeee;
 }
 
+@media (min-width: 768px) {
+  .mdl-layout__drawer-button { 
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .mdl-layout-spacer {
+    display: none;
+  }
+
+  .mdl-layout__header-row {
+    justify-content: space-around;
+  }
+
+  .mdl-layout__header-row > .mdl-navigation {
+    display: none;
+  }
+}
+
 .page-content > .mdl-card {
   width: 100%;
 }
@@ -53,3 +73,5 @@
 	/*background-color: transparent;*/
 	color: rgb(83,109,254);
 }
+
+
