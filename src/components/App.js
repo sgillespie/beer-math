@@ -2,7 +2,7 @@ import React from 'react';
 import { Content, Header, Layout, Navigation, Drawer } from 'react-mdl/lib/Layout';
 
 import GristCalculator from './GristCalculator';
-import RecipeTargets from './RecipeTargets';
+import RecipeTargetsContainer from '../containers/RecipeTargetsContainer';
 
 export default function() {
   return (
@@ -25,7 +25,7 @@ export default function() {
 	  
       <Content>
         <div className="page-content">
-          <RecipeTargets />
+          <RecipeTargetsContainer />
           <GristCalculator />
         </div>
       </Content>
