@@ -17,6 +17,8 @@ export default class RecipeTargets extends Component {
   }
 
   render() {
+    const { gravity } = this.props;
+
     return (
       <Card className="card-layout" shadow={1}>
         <CardTitle expand>Recipe Targets</CardTitle>
@@ -24,7 +26,7 @@ export default class RecipeTargets extends Component {
           <Grid>
             <Cell col={4}>
               <Textfield 
-                defaultValue="1.045"
+                defaultValue={gravity}
                 label="Preboil Gravity (SG)"
                 name="gravity"
                 onChange={this.onChangeGravity}
@@ -53,4 +55,5 @@ export default class RecipeTargets extends Component {
 
 RecipeTargets.propTypes = {
   onChangeGravity: PropTypes.func.isRequired,
+  gravity: PropTypes.string.isRequired,
 };

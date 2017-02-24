@@ -11,8 +11,16 @@ import 'react-mdl/extra/material.js';
 
 import './index.css';
 
+const appStore = store({
+  targets: {
+    gravity: "1.045",
+    volume: "6",
+    efficiency: "70",
+  }
+});
+
 render(
-  <Provider store={store()}>
+  <Provider store={appStore}>
     <div>
       <DevTools />
       <App />

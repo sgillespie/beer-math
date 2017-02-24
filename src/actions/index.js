@@ -4,5 +4,5 @@ export function updateGravity(gravity) {
   return {
     type: UPDATE_GRAVITY,
     payload: gravity,
-  }
+  };
 }
