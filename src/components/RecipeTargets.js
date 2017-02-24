@@ -8,6 +8,7 @@ export default class RecipeTargets extends Component {
     super();
 
     this.onChangeGravity = this.onChangeGravity.bind(this);
+	this.onChangeVolume = this.onChangeVolume.bind(this);
   }
 
   onChangeGravity(event) {
@@ -15,9 +16,15 @@ export default class RecipeTargets extends Component {
 
     onChangeGravity(event.target.value);
   }
+  
+  onChangeVolume(event) {
+    const { onChangeVolume } = this.props;
+
+    onChangeVolume(event.target.value);
+  }
 
   render() {
-    const { gravity } = this.props;
+    const { gravity, volume } = this.props;
 
     return (
       <Card className="card-layout" shadow={1}>
@@ -35,8 +42,10 @@ export default class RecipeTargets extends Component {
 
             <Cell col={4}>
               <Textfield 
-                defaultValue="6"
+                defaultValue={volume}
                 label="Preboil Volume (Gallons)"
+				name="volume"
+                onChange={this.onChangeVolume}
                 floatingLabel /> 
             </Cell>
 
@@ -56,4 +65,5 @@ export default class RecipeTargets extends Component {
 RecipeTargets.propTypes = {
   onChangeGravity: PropTypes.func.isRequired,
   gravity: PropTypes.string.isRequired,
+  volume: PropTypes.string.isRequired,
 };
