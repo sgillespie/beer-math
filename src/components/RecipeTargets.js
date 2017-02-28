@@ -9,6 +9,7 @@ export default class RecipeTargets extends Component {
 
     this.onChangeGravity = this.onChangeGravity.bind(this);
 	this.onChangeVolume = this.onChangeVolume.bind(this);
+	this.onChangeEfficiency = this.onChangeEfficiency.bind(this);
   }
 
   onChangeGravity(event) {
@@ -22,9 +23,15 @@ export default class RecipeTargets extends Component {
 
     onChangeVolume(event.target.value);
   }
+  
+  onChangeEfficiency(event) {
+    const { onChangeEfficiency } = this.props;
+
+    onChangeEfficiency(event.target.value);
+  }
 
   render() {
-    const { gravity, volume } = this.props;
+    const { gravity, volume, efficiency } = this.props;
 
     return (
       <Card className="card-layout" shadow={1}>
@@ -51,8 +58,10 @@ export default class RecipeTargets extends Component {
 
             <Cell col={4}>
               <Textfield 
-                defaultValue="70"
+                defaultValue={efficiency}
                 label="Extract Efficiency"
+				name="efficiency"
+				onChange={this.onChangeEfficiency}
                 floatingLabel /> 
             </Cell>
           </Grid>
@@ -66,4 +75,5 @@ RecipeTargets.propTypes = {
   onChangeGravity: PropTypes.func.isRequired,
   gravity: PropTypes.string.isRequired,
   volume: PropTypes.string.isRequired,
+  efficiency: PropTypes.string.isRequired,
 };
