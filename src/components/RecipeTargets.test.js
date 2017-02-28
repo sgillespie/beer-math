@@ -10,12 +10,23 @@ chai.use(sinonChai);
 const should = chai.should();
 
 let onChangeGravity,
+    onChangeVolume,
+    onChangeEfficiency,
     recipeTargets;
 
 beforeEach(() => {
   onChangeGravity = spy();
+  onChangeVolume = spy();
+  onChangeEfficiency = spy();
+
   recipeTargets = shallow(
-    <RecipeTargets onChangeGravity={onChangeGravity} />
+    <RecipeTargets
+      onChangeGravity={onChangeGravity}
+      onChangeVolume={onChangeVolume}
+      onChangeEfficiency={onChangeEfficiency}
+      gravity="1.034"
+      volume="6"
+      efficiency="90" />
   );
 });
 
@@ -36,4 +47,18 @@ it('change gravity triggers onChangeGravity', () => {
     .simulate('change', event);
 
   onChangeGravity.should.have.been.calledWith('0');
+});
+
+it('change volume triggers onChangeVolume', () => {
+  const event = {
+    target: {
+      value: '9',
+    },
+  };
+
+  recipeTargets
+    .find('Textfield[name="volume"]')
+    .simulate('change', event);
+
+  onChangeVolume.should.have.been.calledWith('9');
 });
