@@ -62,3 +62,17 @@ it('change volume triggers onChangeVolume', () => {
 
   onChangeVolume.should.have.been.calledWith('9');
 });
+
+it('change efficiency triggers onChangeEfficiency', () => {
+  const event = {
+    target: {
+      value: '9',
+    },
+  };
+
+  recipeTargets
+    .find('Textfield[name="efficiency"]')
+    .simulate('change', event);
+
+  onChangeEfficiency.should.have.been.calledWith('9');
+});

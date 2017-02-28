@@ -3,7 +3,7 @@ import chai from 'chai';
 import sinonChai from 'sinon-chai';
 
 import { mapDispatchToProps } from './RecipeTargetsContainer';
-import { updateGravity, updateVolume } from '../actions';
+import { updateGravity, updateVolume, updateEfficiency } from '../actions';
 
 chai.use(sinonChai);
 const should = chai.should();
@@ -29,4 +29,13 @@ it('mapDispatchToProps should map onChangeVolume', () => {
   props.onChangeVolume('9');
 
   dispatch.should.have.been.calledWith(updateVolume('9'));
+});
+
+it('mapDispatchToProps should map onChangeEfficiency', () => {
+  const props = mapDispatchToProps(dispatch);
+
+  should.exist(props.onChangeEfficiency);
+  props.onChangeEfficiency('9');
+
+  dispatch.should.have.been.calledWith(updateEfficiency('9'));
 });
