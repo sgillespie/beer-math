@@ -4,10 +4,12 @@ import {
   UPDATE_GRAVITY,
   UPDATE_VOLUME,
   UPDATE_EFFICIENCY,
+  ADD_GRAIN,
  
   updateGravity,
   updateVolume,
   updateEfficiency,
+  addGrain,
 } from '.';
 
 const should = chai.should();
@@ -39,5 +41,19 @@ it('updateEfficiency creates action UPDATE_EFFICIENCY', () => {
   action.should.deep.equal({
     type: UPDATE_EFFICIENCY,
     payload: 7,
+  });
+});
+
+it('addGrain creates action ADD_GRAIN', () => {
+  const action = addGrain(1, 2, 3);
+
+  should.exist(action);
+  action.should.deep.equal({
+    type: ADD_GRAIN,
+    payload: {
+	  grainType: 1,
+	  maxPpg: 2,
+	  proportion: 3,
+	},
   });
 });
