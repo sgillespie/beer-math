@@ -16,6 +16,26 @@ const appStore = store({
     gravity: "1.045",
     volume: "6",
     efficiency: "70",
+  },
+
+  grains: {
+    0: {
+      grainType: 'US Two Row',
+      maxPpg: '1.034', 
+      proportion: '90%', 
+    },
+
+    1: {
+      grainType: 'Crystal 40L',
+      maxPpg: '1.036', 
+      proportion: '5%', 
+    },
+
+    2: {
+      grainType: 'Crystal 80L',
+      maxPpg: '1.036', 
+      proportion: '5%', 
+    },
   }
 });
 
