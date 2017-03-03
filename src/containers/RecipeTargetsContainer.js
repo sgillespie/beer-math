@@ -4,11 +4,7 @@ import RecipeTargets from '../components/RecipeTargets';
 import { updateGravity, updateVolume, updateEfficiency } from '../actions';
 
 export function mapStateToProps(state) {
-  return {
-    gravity: state.targets.gravity,
-	volume: state.targets.volume,
-	efficiency: state.targets.efficiency,
-  };
+  return state.targets;
 }
 
 export function mapDispatchToProps(dispatch) {
@@ -16,10 +12,12 @@ export function mapDispatchToProps(dispatch) {
     onChangeGravity(gravity) {
       dispatch(updateGravity(gravity));
     },
-	onChangeVolume(volume) {
+
+    onChangeVolume(volume) {
       dispatch(updateVolume(volume));
     },
-	onChangeEfficiency(efficiency) {
+
+    onChangeEfficiency(efficiency) {
       dispatch(updateEfficiency(efficiency));
     },
   };

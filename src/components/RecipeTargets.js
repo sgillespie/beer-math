@@ -4,12 +4,28 @@ import React, { Component, PropTypes } from 'react';
 import Textfield from 'react-mdl/lib/Textfield';
 
 export default class RecipeTargets extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
-    this.onChangeGravity = this.onChangeGravity.bind(this);
-	this.onChangeVolume = this.onChangeVolume.bind(this);
-	this.onChangeEfficiency = this.onChangeEfficiency.bind(this);
+    const { onChangeEfficiency, onChangeGravity, onChangeVolume } = this.props;
+
+    this.onChangeGravity = this
+      .onChange(onChangeGravity)
+      .bind(this);
+
+    this.onChangeVolume = this
+      .onChange(onChangeVolume)
+      .bind(this);
+
+    this.onChangeEfficiency = this
+      .onChange(onChangeEfficiency)
+      .bind(this);
+  }
+
+  onChange(handler) {
+    return (event) => {
+      handler(event.target.value);
+    }
   }
 
   onChangeGravity(event) {
@@ -51,7 +67,7 @@ export default class RecipeTargets extends Component {
               <Textfield 
                 defaultValue={volume}
                 label="Preboil Volume (Gallons)"
-				name="volume"
+                name="volume"
                 onChange={this.onChangeVolume}
                 floatingLabel /> 
             </Cell>
@@ -60,8 +76,8 @@ export default class RecipeTargets extends Component {
               <Textfield 
                 defaultValue={efficiency}
                 label="Extract Efficiency"
-				name="efficiency"
-				onChange={this.onChangeEfficiency}
+                name="efficiency"
+                onChange={this.onChangeEfficiency}
                 floatingLabel /> 
             </Cell>
           </Grid>
@@ -73,6 +89,9 @@ export default class RecipeTargets extends Component {
 
 RecipeTargets.propTypes = {
   onChangeGravity: PropTypes.func.isRequired,
+  onChangeVolume: PropTypes.func.isRequired,
+  onChangeEfficiency: PropTypes.func.isRequired,
+
   gravity: PropTypes.string.isRequired,
   volume: PropTypes.string.isRequired,
   efficiency: PropTypes.string.isRequired,
