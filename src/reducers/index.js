@@ -1,4 +1,14 @@
 import { UPDATE_GRAVITY, UPDATE_VOLUME, UPDATE_EFFICIENCY, ADD_GRAIN } from '../actions';
+import { reduce, toNumber } from 'lodash';
+
+function newId(grains) {
+  return reduce(grains, (accum, value, key) => {
+    const id = toNumber(key);
+
+    if (accum > id) return accum;
+    return id;
+  }, 0) + 1;
+}
 
 export default function(state, action) {
   switch (action.type) {
@@ -9,6 +19,8 @@ export default function(state, action) {
           volume: state.targets.volume,
           efficiency: state.targets.efficiency
         },
+
+        grains: state.grains,
       };
 	case UPDATE_VOLUME:
       return {
@@ -17,6 +29,8 @@ export default function(state, action) {
           volume: action.payload,
           efficiency: state.targets.efficiency
         },
+
+        grains: state.grains,
 	  };
 	case UPDATE_EFFICIENCY:
       return {
@@ -25,17 +39,24 @@ export default function(state, action) {
           volume: state.targets.volume,
           efficiency: action.payload
         },
+
+        grains: state.grains,
 	  };
     case ADD_GRAIN:
-      return {
-        grains: {
-		  1: {
-		    grainType: action.payload.grainType,
-            maxPpg: action.payload.maxPpg,
-            proportion: action.payload.proportion,
-		  }
-        },
-	  };
+      // TODO[sgillespie]: Refactor me
+      const { grains, targets } = state;
+      const newState = {
+        grains,
+        targets,
+      };
+
+      newState.grains[newId(grains)] = {
+        grainType: action.payload.grainType,
+        maxPpg: action.payload.maxPpg,
+        proportion: action.payload.proportion,
+      };
+
+      return newState;
 
     default: 
       return state;

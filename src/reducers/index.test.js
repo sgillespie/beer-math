@@ -49,10 +49,11 @@ it('adds grain when type is ADD_GRAIN', () => {
   const action = addGrain( 1, 2, 3);
   const newState = reduce(state, action);
   
+  should.exist(newState.grains['0']);
   should.exist(newState.grains['1']);
   newState.grains['1'].should.deep.equal({
     grainType: 1,
-	maxPpg: 2,
-	proportion: 3,
+    maxPpg: 2,
+    proportion: 3,
   });
 });

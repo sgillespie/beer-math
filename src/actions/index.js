@@ -27,10 +27,11 @@ export function updateEfficiency(efficiency) {
 export function addGrain( grainType, maxPpg, proportion ) {
   return{
     type: ADD_GRAIN,
-	payload: {
-	  grainType,
-	  maxPpg,
-	  proportion,
-	},
+
+    payload: {
+      grainType,
+      maxPpg,
+      proportion,
+    },
   };
 }

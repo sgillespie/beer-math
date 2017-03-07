@@ -7,15 +7,15 @@ export default class AddGrainForm extends Component {
   constructor() {
     super();
 	
-	this.onChangeGrainType = this.onChangeGrainType.bind(this);
-	this.onChangeMaxPpg = this.onChangeMaxPpg.bind(this);
-	this.onChangeProportion = this.onChangeProportion.bind(this);
-	
-	this.state = {
-		grainType: '',
-		maxPpg: '',
-		proportion: '',
-	};
+    this.onChangeGrainType = this.onChangeGrainType.bind(this);
+    this.onChangeMaxPpg = this.onChangeMaxPpg.bind(this);
+    this.onChangeProportion = this.onChangeProportion.bind(this);
+    
+    this.state = {
+      grainType: '',
+      maxPpg: '',
+      proportion: '',
+    };
   }
   
   onChangeGrainType(event) {
@@ -49,25 +49,25 @@ export default class AddGrainForm extends Component {
         <Cell col={3}>
           <Textfield 
             label="Grain Type"
-			name="grainType"
-			onChange={this.onChangeGrainType}
+            name="grainType"
+            onChange={this.onChangeGrainType}
             floatingLabel />
         </Cell>
 
         <Cell col={3}>
           <Textfield 
             label="Max PPG (SG)"
-			name="maxPpg"
-			onChange={this.onChangeMaxPpg}
+            name="maxPpg"
+            onChange={this.onChangeMaxPpg}
             floatingLabel /> 
         </Cell>
 
         <Cell col={3}>
           <Textfield 
             label="Proportion (%)"
-			name="proportion"
+            name="proportion"
             onChange={this.onChangeProportion}
-			floatingLabel /> 
+            floatingLabel /> 
         </Cell>
 
         <Cell col={3} className="button-group">
