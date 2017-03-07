@@ -1,4 +1,4 @@
-import { UPDATE_GRAVITY, UPDATE_VOLUME, UPDATE_EFFICIENCY } from '../actions';
+import { UPDATE_GRAVITY, UPDATE_VOLUME, UPDATE_EFFICIENCY, ADD_GRAIN } from '../actions';
 
 export default function(state, action) {
   switch (action.type) {
@@ -24,6 +24,16 @@ export default function(state, action) {
           gravity: state.targets.gravity,
           volume: state.targets.volume,
           efficiency: action.payload
+        },
+	  };
+    case ADD_GRAIN:
+      return {
+        grains: {
+		  1: {
+		    grainType: action.payload.grainType,
+            maxPpg: action.payload.maxPpg,
+            proportion: action.payload.proportion,
+		  }
         },
 	  };
 
