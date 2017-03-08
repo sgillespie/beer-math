@@ -10,6 +10,7 @@ export default class AddGrainForm extends Component {
     this.onChangeGrainType = this.onChangeGrainType.bind(this);
     this.onChangeMaxPpg = this.onChangeMaxPpg.bind(this);
     this.onChangeProportion = this.onChangeProportion.bind(this);
+	this.onClickAdd = this.onClickAdd.bind(this);
     
     this.state = {
       grainType: '',
@@ -41,6 +42,14 @@ export default class AddGrainForm extends Component {
       proportion,
 	});
   }
+  
+  onClickAdd() {
+    const { onClickAdd } = this.props;
+	
+    const { grainType, maxPpg, proportion } = this.state;
+	
+    onClickAdd( grainType, maxPpg, proportion );
+  }
 
   render() { 
 	  
@@ -71,10 +80,14 @@ export default class AddGrainForm extends Component {
         </Cell>
 
         <Cell col={3} className="button-group">
-          <Button raised ripple accent>Add</Button>
+          <Button raised ripple accent onClick={this.onClickAdd}>Add</Button>
         </Cell>
       </Grid>
     );
   }
 
 }
+
+AddGrainForm.propTypes = {
+  onClickAdd: PropTypes.func.isRequired,
+};
