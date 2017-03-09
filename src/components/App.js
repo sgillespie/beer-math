@@ -1,7 +1,7 @@
 import React from 'react';
 import { Content, Header, Layout, Navigation, Drawer } from 'react-mdl/lib/Layout';
 
-import GristCalculator from './GristCalculator';
+import GrainContainer from '../containers/GrainContainer';
 import RecipeTargetsContainer from '../containers/RecipeTargetsContainer';
 
 export default function() {
@@ -26,7 +26,7 @@ export default function() {
       <Content>
         <div className="page-content">
           <RecipeTargetsContainer />
-          <GristCalculator />
+          <GrainContainer />
         </div>
       </Content>
     </Layout>

@@ -1,18 +1,34 @@
 import { shallow } from 'enzyme';
-import chai from 'chai';
+import { spy } from 'sinon';
 import React from 'react';
+import chai from 'chai';
+import sinonChai from 'sinon-chai';
 
+import AddGrainForm from './AddGrainForm';
 import GristCalculator from './GristCalculator';
 
+chai.use(sinonChai);
 const should = chai.should();
 
-it('renders', () => {
-  const wrapper = shallow(
-    <GristCalculator />
-  );
+let calculator,
+    onClickAdd;
+beforeEach(() => {
+  onClickAdd = spy();
 
-  should.exist(wrapper);
-  wrapper.should.have.lengthOf(1);
+  calculator = shallow(
+    <GristCalculator onClickAdd={onClickAdd} />
+  );
 });
 
+it('renders', () => {
+  should.exist(calculator);
+  calculator.should.have.lengthOf(1);
+});
 
+it('passes onClickAdd to add grain form', () => {
+  calculator
+    .find(AddGrainForm)
+    .prop('onClickAdd')();
+
+  onClickAdd.should.have.been.calledWith();
+});

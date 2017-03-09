@@ -1,17 +1,21 @@
 import { Card, CardText, CardTitle } from 'react-mdl/lib/Card';
-import React from 'react';
+import React, { PropTypes } from 'react';
 
-import GrainContainer from '../containers/GrainContainer';
+import AddGrainForm from '../components/AddGrainForm';
 import GrainTable from './GrainTable';
 
-export default function GristCalculator () {
+export default function GristCalculator({ onClickAdd }) {
 	return (
     <Card shadow={1}>
       <CardTitle>Grains</CardTitle>
       <CardText className="wd-auto">
         <GrainTable />
-        <GrainContainer />
+        <AddGrainForm onClickAdd={onClickAdd} />
       </CardText>
     </Card>
 	);
 }
+
+GristCalculator.propTypes = {
+  onClickAdd: PropTypes.func.isRequired,
+};

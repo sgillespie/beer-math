@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import AddGrainForm from '../components/AddGrainForm';
+import GristCalculator from '../components/GristCalculator';
 import { addGrain } from '../actions';
 
 export function mapStateToProps(state) {
@@ -9,13 +9,13 @@ export function mapStateToProps(state) {
 
 export function mapDispatchToProps(dispatch) {
   return {
-	onClickAdd( grainType, maxPpg, proportion ) {
-		dispatch(addGrain( grainType, maxPpg, proportion ));
-	},
+    onClickAdd(grainType, maxPpg, proportion) {
+      dispatch(addGrain(grainType, maxPpg, proportion));
+    },
   };
 }
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(AddGrainForm);
+)(GristCalculator);
