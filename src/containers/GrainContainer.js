@@ -16,6 +16,7 @@ export function mapStateToProps(state) {
     values,
     grains => grains.concat([{
       grainType: 'Totals',
+      id: 'grainTotals',
       proportion: '100%',
       weight: 'TODO',
     }]),

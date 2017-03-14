@@ -16,6 +16,7 @@ const grains = [
     grainType: 'type',
     maxPpg: '0',
     proportion: '1',
+    weight: '2',
   }
 ];
 
