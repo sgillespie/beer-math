@@ -18,8 +18,8 @@ export default function GristCalculator({ grains, onClickAdd }) {
 
 GristCalculator.propTypes = {
   grains: PropTypes.arrayOf(PropTypes.shape({
-    type: PropTypes.string.isRequired,
-    maxPpg: PropTypes.string.isRequired,
+    grainType: PropTypes.string.isRequired,
+    maxPpg: PropTypes.string,
     proportion: PropTypes.string.isRequired,
     weight: PropTypes.string,
     actions: PropTypes.element,
