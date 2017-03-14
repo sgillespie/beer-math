@@ -5,11 +5,13 @@ import {
   UPDATE_VOLUME,
   UPDATE_EFFICIENCY,
   ADD_GRAIN,
+  DELETE_GRAIN,
  
   updateGravity,
   updateVolume,
   updateEfficiency,
   addGrain,
+  deleteGrain,
 } from '.';
 
 const should = chai.should();
@@ -55,5 +57,15 @@ it('addGrain creates action ADD_GRAIN', () => {
 	  maxPpg: 2,
 	  proportion: 3,
 	},
+  });
+});
+
+it('deleteGrain creates action DELETE_GRAIN', () => {
+  const action = deleteGrain(0);
+  
+  should.exist(action);
+  action.should.deep.equal({
+    type: DELETE_GRAIN,
+	payload: 0,
   });
 });

@@ -2,6 +2,7 @@ export const UPDATE_GRAVITY = 'UPDATE_GRAVITY';
 export const UPDATE_VOLUME = 'UPDATE_VOLUME';
 export const UPDATE_EFFICIENCY = 'UPDATE_EFFICIENCY';
 export const ADD_GRAIN = 'ADD_GRAIN';
+export const DELETE_GRAIN = 'DELETE_GRAIN';
 
 export function updateGravity(gravity) {
   return {
@@ -33,5 +34,13 @@ export function addGrain( grainType, maxPpg, proportion ) {
       maxPpg,
       proportion,
     },
+  };
+}
+
+export function deleteGrain(key) {
+  return{
+    type: DELETE_GRAIN,
+
+    payload: key,
   };
 }

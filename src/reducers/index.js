@@ -1,4 +1,4 @@
-import { UPDATE_GRAVITY, UPDATE_VOLUME, UPDATE_EFFICIENCY, ADD_GRAIN } from '../actions';
+import { UPDATE_GRAVITY, UPDATE_VOLUME, UPDATE_EFFICIENCY, ADD_GRAIN, DELETE_GRAIN } from '../actions';
 import { reduce, toNumber } from 'lodash';
 
 function newId(grains) {
