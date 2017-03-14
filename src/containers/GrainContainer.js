@@ -1,10 +1,20 @@
 import { connect } from 'react-redux';
+import flow from 'lodash.flow';
+import mapValues from 'lodash.mapvalues';
+import values from 'lodash.values';
 
 import GristCalculator from '../components/GristCalculator';
 import { addGrain } from '../actions';
 
 export function mapStateToProps(state) {
-  return {};
+  const grains = flow([
+    obj => mapValues(obj, (grain, id) => Object.assign({}, grain, { id })),
+    values
+  ])(state.grains);
+
+  return {
+    grains,
+  };
 }
 
 export function mapDispatchToProps(dispatch) {

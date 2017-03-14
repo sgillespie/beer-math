@@ -10,7 +10,7 @@ export default class AddGrainForm extends Component {
     this.onChangeGrainType = this.onChangeGrainType.bind(this);
     this.onChangeMaxPpg = this.onChangeMaxPpg.bind(this);
     this.onChangeProportion = this.onChangeProportion.bind(this);
-	this.onClickAdd = this.onClickAdd.bind(this);
+    this.onClickAdd = this.onClickAdd.bind(this);
     
     this.state = {
       grainType: '',

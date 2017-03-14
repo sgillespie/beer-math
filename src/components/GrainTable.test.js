@@ -6,13 +6,25 @@ import GrainTable from './GrainTable';
 
 const should = chai.should();
 
-it('renders', () => {
-  const wrapper = shallow(
-    <GrainTable />
-  );
+const grains = [
+  {
+    type: 'type',
+    maxPpg: '0',
+    proportion: '1',
+    weight: '2',
+  }
+];
 
-  should.exist(wrapper);
-  wrapper.should.have.lengthOf(1);
+let grainTable;
+beforeEach(() => {
+  grainTable = shallow(
+    <GrainTable grains={grains} />
+  );
+});
+
+it('renders', () => {
+  should.exist(grainTable);
+  grainTable.should.have.lengthOf(1);
 });
 
 

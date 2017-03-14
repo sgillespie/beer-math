@@ -5,10 +5,19 @@ import chai from 'chai';
 import sinonChai from 'sinon-chai';
 
 import AddGrainForm from './AddGrainForm';
+import GrainTable from './GrainTable';
 import GristCalculator from './GristCalculator';
 
 chai.use(sinonChai);
 const should = chai.should();
+
+const grains = [
+  {
+    type: 'type',
+    maxPpg: '0',
+    proportion: '1',
+  }
+];
 
 let calculator,
     onClickAdd;
@@ -16,7 +25,9 @@ beforeEach(() => {
   onClickAdd = spy();
 
   calculator = shallow(
-    <GristCalculator onClickAdd={onClickAdd} />
+    <GristCalculator
+      grains={grains}
+      onClickAdd={onClickAdd} />
   );
 });
 
@@ -31,4 +42,11 @@ it('passes onClickAdd to add grain form', () => {
     .prop('onClickAdd')();
 
   onClickAdd.should.have.been.calledWith();
+});
+
+it('passes grains to grain table', () => {
+  calculator
+    .find(GrainTable)
+    .prop('grains')
+    .should.deep.equal(grains);
 });

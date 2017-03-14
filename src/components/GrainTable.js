@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import Table from 'react-mdl/lib/DataTable/Table';
 import TableHeader from 'react-mdl/lib/DataTable/TableHeader';
 
@@ -36,7 +36,7 @@ const grains = [
   }
 ];
 
-export default function GrainTable() {
+export default function GrainTable({ grains }) {
   return (
     <Table className="grains-table" rows={grains}>
       <TableHeader name="type">GrainType</TableHeader>
@@ -53,3 +53,12 @@ export default function GrainTable() {
   );
 }
 
+GrainTable.propTypes = {
+  grains: PropTypes.arrayOf(PropTypes.shape({
+    type: PropTypes.string.isRequired,
+    maxPpg: PropTypes.string.isRequired,
+    proportion: PropTypes.string.isRequired,
+    weight: PropTypes.string,
+    actions: PropTypes.element,
+  })).isRequired,
+};
