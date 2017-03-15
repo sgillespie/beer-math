@@ -6,7 +6,7 @@ import values from 'lodash.values';
 
 import GrainActionsColumn from '../components/GrainActionsColumn';
 import GristCalculator from '../components/GristCalculator';
-import { addGrain } from '../actions';
+import { addGrain, deleteGrain } from '../actions';
 
 export function mapStateToProps(state) {
   const grains = flow([
@@ -32,6 +32,10 @@ export function mapDispatchToProps(dispatch) {
     onClickAdd(grainType, maxPpg, proportion) {
       dispatch(addGrain(grainType, maxPpg, proportion));
     },
+	
+	onClickDelete(key) {
+	  dispatch(deleteGrain(key));
+	},
   };
 }
 
