@@ -1,6 +1,6 @@
 import chai from 'chai';
 
-import { updateGravity, updateVolume, updateEfficiency, addGrain } from '../actions';
+import { updateGravity, updateVolume, updateEfficiency, addGrain, deleteGrain } from '../actions';
 import reduce from '.';
 
 const should = chai.should();
@@ -56,4 +56,11 @@ it('adds grain when type is ADD_GRAIN', () => {
     maxPpg: 2,
     proportion: 3,
   });
+});
+
+it('deletes grain when type is DELETE_GRAIN', () => {
+  const action = deleteGrain(0);
+  const newState = reduce(state, action);
+  
+  should.not.exist(newState.grains['0']);
 });
