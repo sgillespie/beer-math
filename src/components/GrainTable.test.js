@@ -6,14 +6,14 @@ import GrainTable from './GrainTable';
 
 const should = chai.should();
 
-const grains = [
-  {
+const grains = {
+  0: {
     grainType: 'type',
     maxPpg: '0',
     proportion: '1',
     weight: '2',
   }
-];
+};
 
 let grainTable;
 beforeEach(() => {
@@ -26,5 +26,4 @@ it('renders', () => {
   should.exist(grainTable);
   grainTable.should.have.lengthOf(1);
 });
-
 

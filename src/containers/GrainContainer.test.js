@@ -49,12 +49,6 @@ it('mapDispatchToProps should map onClickDelete', () => {
 
 it('mapStateToProps maps grains', () => {
   const props = mapStateToProps(state);
-
   should.exist(props.grains);
-  props.grains.should.be.an.instanceOf(Array);
-
-  props
-    .grains
-    .forEach(grain => grain.should.include.key('id'));
 });
 

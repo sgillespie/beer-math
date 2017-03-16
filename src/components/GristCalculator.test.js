@@ -11,14 +11,14 @@ import GristCalculator from './GristCalculator';
 chai.use(sinonChai);
 const should = chai.should();
 
-const grains = [
-  {
+const grains = {
+  0: {
     grainType: 'type',
     maxPpg: '0',
     proportion: '1',
     weight: '2',
   }
-];
+};
 
 let calculator,
     onClickAdd;
