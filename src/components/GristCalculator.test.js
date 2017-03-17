@@ -21,14 +21,18 @@ const grains = {
 };
 
 let calculator,
-    onClickAdd;
+    onClickAdd,
+	onClickDelete;
+	
 beforeEach(() => {
   onClickAdd = spy();
+  onClickDelete = spy();
 
   calculator = shallow(
     <GristCalculator
       grains={grains}
-      onClickAdd={onClickAdd} />
+      onClickAdd={onClickAdd}
+      onClickDelete={onClickDelete} />
   );
 });
 
@@ -50,4 +54,12 @@ it('passes grains to grain table', () => {
     .find(GrainTable)
     .prop('grains')
     .should.deep.equal(grains);
+});
+
+it('passes onClickDelete to add grain form', () => {
+  calculator
+    .find(GrainTable)
+    .prop('onClickDelete')();
+
+  onClickDelete.should.have.been.calledWith();
 });

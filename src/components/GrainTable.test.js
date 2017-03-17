@@ -1,9 +1,13 @@
 import { shallow } from 'enzyme';
 import chai from 'chai';
 import React from 'react';
+import { spy } from 'sinon';
+import sinonChai from 'sinon-chai';
 
 import GrainTable from './GrainTable';
+import GrainActionsColumn from './GrainActionsColumn';
 
+chai.use(sinonChai);
 const should = chai.should();
 
 const grains = {
@@ -15,10 +19,14 @@ const grains = {
   }
 };
 
-let grainTable;
+let grainTable,
+    onClickDelete;
+	
 beforeEach(() => {
+  onClickDelete = spy();
+
   grainTable = shallow(
-    <GrainTable grains={grains} />
+    <GrainTable grains={grains} onClickDelete={onClickDelete}/>
   );
 });
 
@@ -27,3 +35,10 @@ it('renders', () => {
   grainTable.should.have.lengthOf(1);
 });
 
+it('passes onClickDelete to Grain Actions Column', () => {
+  grainTable
+    .find(GrainActionsColumn)
+    .prop('onClickDelete')();
+
+  onClickDelete.should.have.been.calledWith();
+});

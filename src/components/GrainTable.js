@@ -1,9 +1,9 @@
 import React, { PropTypes } from 'react';
 import GrainActionsColumn from './GrainActionsColumn';
-import { map } from 'lodash';
+import { map, reduce } from 'lodash';
 
 
-export default function GrainTable({ grains }) {
+export default function GrainTable({ grains, onClickDelete }) {
   return (
     <table className="grains-table mdl-data-table">
       <thead>
@@ -17,16 +17,16 @@ export default function GrainTable({ grains }) {
       </thead>
       <tbody>
         { 
-          map(grains, grain => (
-            <tr key={grain.grainType}>
+          map(grains, (grain, key) => (
+            <tr key={key}>
               <td className="mdl-data-table__cell--non-numeric">{ grain.grainType }</td>
               <td className="mdl-data-table__cell--non-numeric">{ grain.maxPpg }</td>
               <td className="mdl-data-table__cell--non-numeric">{ grain.proportion }</td>
               <td className="mdl-data-table__cell--non-numeric">X lbs Y oz</td>
-              <td className="mdl-data-table__cell--non-numeric"><GrainActionsColumn /></td>
+              <td className="mdl-data-table__cell--non-numeric"><GrainActionsColumn onClickDelete={onClickDelete} /></td>
             </tr>
           ))
-        }
+		}
       </tbody>
       <tfoot>
         <tr>
@@ -43,4 +43,5 @@ export default function GrainTable({ grains }) {
 
 GrainTable.propTypes = {
   grains: PropTypes.object.isRequired,
+  onClickDelete: PropTypes.func.isRequired,
 };
