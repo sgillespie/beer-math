@@ -42,3 +42,4 @@ it('passes onClickDelete to Grain Actions Column', () => {
 
   onClickDelete.should.have.been.calledWith();
 });
+
