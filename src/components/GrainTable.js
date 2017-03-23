@@ -2,7 +2,6 @@ import React, { PropTypes } from 'react';
 import GrainActionsColumn from './GrainActionsColumn';
 import { map } from 'lodash';
 
-
 export default function GrainTable({ grains, onClickDelete }) {
   return (
     <table className="grains-table mdl-data-table">

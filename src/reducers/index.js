@@ -1,5 +1,14 @@
-import { UPDATE_GRAVITY, UPDATE_VOLUME, UPDATE_EFFICIENCY, ADD_GRAIN, DELETE_GRAIN } from '../actions';
-import { reduce, toNumber, omit } from 'lodash';
+import { combineReducers } from 'redux';
+import { reduce, toNumber } from 'lodash';
+import u, { omit } from 'updeep';
+
+import { 
+  UPDATE_GRAVITY, 
+  UPDATE_VOLUME, 
+  UPDATE_EFFICIENCY, 
+  ADD_GRAIN, 
+  DELETE_GRAIN 
+} from '../actions';
 
 function newId(grains) {
   return reduce(grains, (accum, value, key) => {
@@ -10,63 +19,44 @@ function newId(grains) {
   }, 0) + 1;
 }
 
-export default function(state, action) {
-  const { grains, targets } = state;
-  
+export default combineReducers({
+  targets: targets,
+  grains: grains,
+});
+
+function targets(state = {}, action) {
   switch (action.type) {
     case UPDATE_GRAVITY:
-      return {
-        targets: {
-          gravity: action.payload,
-          volume: state.targets.volume,
-          efficiency: state.targets.efficiency
-        },
+      return u({ 
+        gravity: action.payload 
+      }, state);
 
-        grains: state.grains,
-      };
-	case UPDATE_VOLUME:
-      return {
-        targets: {
-          gravity: state.targets.gravity,
-          volume: action.payload,
-          efficiency: state.targets.efficiency
-        },
+    case UPDATE_VOLUME:
+      return u({ 
+        volume: action.payload 
+      }, state);
 
-        grains: state.grains,
-	  };
-	case UPDATE_EFFICIENCY:
-      return {
-        targets: {
-          gravity: state.targets.gravity,
-          volume: state.targets.volume,
-          efficiency: action.payload
-        },
+    case UPDATE_EFFICIENCY:
+      return u({ 
+        efficiency: action.payload 
+      }, state);
 
-        grains: state.grains,
-	  };
+    default:
+      return state; 
+  }
+}
+
+function grains(state = {}, action) {
+  switch (action.type) {
     case ADD_GRAIN:
-      // TODO[sgillespie]: Refactor me
-      const newState = {
-        grains,
-        targets,
-      };
-
-      newState.grains[newId(grains)] = {
-        grainType: action.payload.grainType,
-        maxPpg: action.payload.maxPpg,
-        proportion: action.payload.proportion,
-      };
-
-      return newState;
+      return u({
+        [newId(state.grains)]: action.payload,
+      }, state);
 	
-	case DELETE_GRAIN:
-	  const key = action.payload;
-	  const newGrains = omit(grains, [key]);
-	  return {
-	    targets,
-		grains: newGrains,
-	  };
-	  
+    case DELETE_GRAIN:
+      const key = action.payload;
+      return omit(key, state); 
+
     default: 
       return state;
   }

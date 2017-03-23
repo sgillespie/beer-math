@@ -1,7 +1,7 @@
 import { Card, CardText, CardTitle } from 'react-mdl/lib/Card';
 import React, { PropTypes } from 'react';
 
-import AddGrainForm from '../components/AddGrainForm';
+import AddGrainForm from './AddGrainForm';
 import GrainTable from './GrainTable';
 
 export default function GristCalculator({ grains, onClickAdd, onClickDelete }) {
