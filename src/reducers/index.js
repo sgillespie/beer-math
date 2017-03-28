@@ -50,7 +50,7 @@ function grains(state = {}, action) {
   switch (action.type) {
     case ADD_GRAIN:
       return u({
-        [newId(state.grains)]: action.payload,
+        [newId(state)]: action.payload,
       }, state);
 	
     case DELETE_GRAIN:
