@@ -6,12 +6,16 @@ import {
   UPDATE_EFFICIENCY,
   ADD_GRAIN,
   DELETE_GRAIN,
+  EDIT_GRAIN,
+  UPDATE_GRAIN,
  
   updateGravity,
   updateVolume,
   updateEfficiency,
   addGrain,
   deleteGrain,
+  editGrain,
+  updateGrain,
 } from '.';
 
 const should = chai.should();
@@ -67,5 +71,30 @@ it('deleteGrain creates action DELETE_GRAIN', () => {
   action.should.deep.equal({
     type: DELETE_GRAIN,
 	payload: 0,
+  });
+});
+
+it('editGrain creates action EDIT_GRAIN', () => {
+  const action = editGrain(0);
+  
+  should.exist(action);
+  action.should.deep.equal({
+    type: EDIT_GRAIN,
+	payload: 0,
+  });
+});
+
+it('updateGrain creates action UPDATE_GRAIN', () => {
+  const action = updateGrain( 0, 1, 2, 3);
+
+  should.exist(action);
+  action.should.deep.equal({
+    type: UPDATE_GRAIN,
+    payload: {
+	  key: 0,
+	  grainType: 1,
+	  maxPpg: 2,
+	  proportion: 3,
+	},
   });
 });

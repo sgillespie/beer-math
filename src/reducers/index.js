@@ -7,7 +7,9 @@ import {
   UPDATE_VOLUME, 
   UPDATE_EFFICIENCY, 
   ADD_GRAIN, 
-  DELETE_GRAIN 
+  DELETE_GRAIN,
+  EDIT_GRAIN,
+  UPDATE_GRAIN,
 } from '../actions';
 
 function newId(grains) {
@@ -55,7 +57,11 @@ function grains(state = {}, action) {
 	
     case DELETE_GRAIN:
       const key = action.payload;
-      return omit(key, state); 
+      return omit(key, state);
+	  
+	case EDIT_GRAIN:
+		const _key = action.payload;
+		return u({ [_key]: { isEditing: true } }, state);
 
     default: 
       return state;

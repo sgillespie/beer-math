@@ -1,6 +1,6 @@
 import chai from 'chai';
 
-import { updateGravity, updateVolume, updateEfficiency, addGrain, deleteGrain } from '../actions';
+import { updateGravity, updateVolume, updateEfficiency, addGrain, deleteGrain, editGrain } from '../actions';
 import reduce from '.';
 
 const should = chai.should();
@@ -63,4 +63,14 @@ it('deletes grain when type is DELETE_GRAIN', () => {
   const newState = reduce(state, action);
   
   should.not.exist(newState.grains['0']);
+});
+
+it('edits grain when type is EDIT_GRAIN', () => {
+  const action = editGrain('0');
+  const newState = reduce(state, action);
+  
+  console.log(newState.grains);
+  
+  should.exist(newState.grains['0'].isEditing);
+  newState.grains['0'].isEditing.should.be.true;
 });
