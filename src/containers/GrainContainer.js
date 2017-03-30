@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import GristCalculator from '../components/GristCalculator';
-import { addGrain, deleteGrain } from '../actions';
+import { addGrain, deleteGrain, editGrain } from '../actions';
 
 export function mapStateToProps(state) {
   return {
@@ -18,6 +18,10 @@ export function mapDispatchToProps(dispatch) {
     onClickDelete(key) {
       dispatch(deleteGrain(key));
     },
+	
+	onClickEdit(key) {
+	  dispatch(editGrain(key));
+	},
   };
 }
 

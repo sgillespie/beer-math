@@ -10,14 +10,18 @@ chai.use(sinonChai);
 const should = chai.should();
 
 let grainActions,
-    onClickDelete;
+    onClickDelete,
+	onClickEdit;
+	
 beforeEach(() => {
   onClickDelete = spy();
+  onClickEdit = spy();
 
   grainActions = shallow(
     <GrainActionsColumn 
       id="0"
-      onClickDelete={onClickDelete} />
+      onClickDelete={onClickDelete}
+	  onClickEdit={onClickEdit} />
   );
 });
 
@@ -32,4 +36,12 @@ it('click delete triggers onClickDelete', () => {
     .simulate('click');
 
   onClickDelete.should.have.been.calledWith('0');
+});
+
+it('click edit triggers onClickEdit', () => {
+  grainActions 
+    .find('IconButton[name="create"]')
+    .simulate('click');
+
+  onClickEdit.should.have.been.calledWith('0');
 });

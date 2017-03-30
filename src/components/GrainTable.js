@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import GrainActionsColumn from './GrainActionsColumn';
 import { map } from 'lodash';
 
-export default function GrainTable({ grains, onClickDelete }) {
+export default function GrainTable({ grains, onClickDelete, onClickEdit }) {
   return (
     <table className="grains-table mdl-data-table">
       <thead>
@@ -25,7 +25,8 @@ export default function GrainTable({ grains, onClickDelete }) {
               <td className="mdl-data-table__cell--non-numeric">
                 <GrainActionsColumn 
                   id={key}
-                  onClickDelete={onClickDelete} />
+                  onClickDelete={onClickDelete} 
+				  onClickEdit={onClickEdit} />
               </td>
             </tr>
           ))
@@ -47,4 +48,5 @@ export default function GrainTable({ grains, onClickDelete }) {
 GrainTable.propTypes = {
   grains: PropTypes.object.isRequired,
   onClickDelete: PropTypes.func.isRequired,
+  onClickEdit: PropTypes.func.isRequired,
 };

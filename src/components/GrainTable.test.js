@@ -20,13 +20,15 @@ const grains = {
 };
 
 let grainTable,
-    onClickDelete;
+    onClickDelete,
+	onClickEdit;
 	
 beforeEach(() => {
   onClickDelete = spy();
+  onClickEdit = spy();
 
   grainTable = shallow(
-    <GrainTable grains={grains} onClickDelete={onClickDelete}/>
+    <GrainTable grains={grains} onClickDelete={onClickDelete} onClickEdit={onClickEdit}/>
   );
 });
 
@@ -41,5 +43,13 @@ it('passes onClickDelete to Grain Actions Column', () => {
     .prop('onClickDelete')();
 
   onClickDelete.should.have.been.calledWith();
+});
+
+it('passes onClickEdit to Grain Actions Column', () => {
+  grainTable
+    .find(GrainActionsColumn)
+    .prop('onClickEdit')();
+
+  onClickEdit.should.have.been.calledWith();
 });
 

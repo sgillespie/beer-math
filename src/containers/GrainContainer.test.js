@@ -3,7 +3,7 @@ import chai from 'chai';
 import sinonChai from 'sinon-chai';
 
 import { mapDispatchToProps, mapStateToProps } from './GrainContainer';
-import { addGrain, deleteGrain } from '../actions';
+import { addGrain, deleteGrain, editGrain } from '../actions';
 
 chai.use(sinonChai);
 const should = chai.should();
@@ -50,5 +50,14 @@ it('mapDispatchToProps should map onClickDelete', () => {
 it('mapStateToProps maps grains', () => {
   const props = mapStateToProps(state);
   should.exist(props.grains);
+});
+
+it('mapDispatchToProps should map onClickEdit', () => {
+  const props = mapDispatchToProps(dispatch);
+
+  should.exist(props.onClickEdit);
+  props.onClickEdit('0');
+
+  dispatch.should.have.been.calledWith(editGrain('0'));
 });
 

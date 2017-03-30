@@ -1,9 +1,13 @@
 import IconButton from 'react-mdl/lib/IconButton';
 import React, { PropTypes } from 'react';
 
-export default function GrainActionsColumn({ id, onClickDelete }) {
+export default function GrainActionsColumn({ id, onClickDelete, onClickEdit }) {
   function deleteRow() {
     onClickDelete(id);
+  }
+  
+  function editRow() {
+    onClickEdit(id);
   }
 
   return (
@@ -14,7 +18,8 @@ export default function GrainActionsColumn({ id, onClickDelete }) {
         ripple />
 
       <IconButton 
-        name="create" 
+        name="create"
+        onClick={editRow}		
         ripple />
     </div>
   );
@@ -23,6 +28,7 @@ export default function GrainActionsColumn({ id, onClickDelete }) {
 GrainActionsColumn.propTypes = {
   id: PropTypes.string.isRequired,
   onClickDelete: PropTypes.func.isRequired,
+  onClickEdit: PropTypes.func.isRequired,
 };
 
 
