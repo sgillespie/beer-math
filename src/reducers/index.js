@@ -61,7 +61,9 @@ function grains(state = {}, action) {
 	  
 	case EDIT_GRAIN:
 		const _key = action.payload;
-		return u({ [_key]: { isEditing: true } }, state);
+		return u({ 
+		  [_key]: { isEditing: val => !val } 
+		}, state);
 
     default: 
       return state;

@@ -69,8 +69,15 @@ it('edits grain when type is EDIT_GRAIN', () => {
   const action = editGrain('0');
   const newState = reduce(state, action);
   
-  console.log(newState.grains);
-  
   should.exist(newState.grains['0'].isEditing);
   newState.grains['0'].isEditing.should.be.true;
+});
+
+it('isEditing equals false when EDIT_GRAIN called twice', () => {
+  const action = editGrain('0');
+  const newState = reduce( reduce(state, action), action);
+  
+  
+  should.exist(newState.grains['0'].isEditing);
+  newState.grains['0'].isEditing.should.be.false;
 });
