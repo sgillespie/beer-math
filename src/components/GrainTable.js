@@ -1,6 +1,38 @@
 import React, { PropTypes } from 'react';
 import GrainActionsColumn from './GrainActionsColumn';
 import { map } from 'lodash';
+import Textfield from 'react-mdl/lib/Textfield';
+
+//TO DO --> add Tests
+function editGrainType (grain) {
+  if (grain.isEditing) {
+    return (
+	  <Textfield defaultValue={grain.grainType} name="grainType" label="Grain Type" />
+	);
+  }
+  
+  return grain.grainType;
+}
+
+function editMaxPpg (grain) {
+  if (grain.isEditing) {
+    return (
+	  <Textfield defaultValue={grain.maxPpg} name="grainMaxPpg" label="Grain Max PPG" />
+	);
+  }
+  
+  return grain.maxPpg;
+}
+
+function editProportion (grain) {
+  if (grain.isEditing) {
+    return (
+	  <Textfield defaultValue={grain.proportion} name="grainProportion" label="Grain Proportion" />
+	);
+  }
+  
+  return grain.proportion;
+}
 
 export default function GrainTable({ grains, onClickDelete, onClickEdit }) {
   return (
@@ -18,9 +50,9 @@ export default function GrainTable({ grains, onClickDelete, onClickEdit }) {
         { 
           map(grains, (grain, key) => (
             <tr key={key}>
-              <td className="mdl-data-table__cell--non-numeric">{ grain.grainType }</td>
-              <td className="mdl-data-table__cell--non-numeric">{ grain.maxPpg }</td>
-              <td className="mdl-data-table__cell--non-numeric">{ grain.proportion }</td>
+              <td className="mdl-data-table__cell--non-numeric">{ editGrainType(grain) }</td>
+              <td className="mdl-data-table__cell--non-numeric">{ editMaxPpg(grain) }</td>
+              <td className="mdl-data-table__cell--non-numeric">{ editProportion(grain) }</td>
               <td className="mdl-data-table__cell--non-numeric">X lbs Y oz</td>
               <td className="mdl-data-table__cell--non-numeric">
                 <GrainActionsColumn 
