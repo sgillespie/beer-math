@@ -1,38 +1,8 @@
 import React, { PropTypes } from 'react';
+import EditableGrainField from './EditableGrainField';
 import GrainActionsColumn from './GrainActionsColumn';
 import { map } from 'lodash';
 import Textfield from 'react-mdl/lib/Textfield';
-
-//TO DO --> add Tests
-function editGrainType (grain) {
-  if (grain.isEditing) {
-    return (
-	  <Textfield defaultValue={grain.grainType} name="grainType" label="Grain Type" />
-	);
-  }
-  
-  return grain.grainType;
-}
-
-function editMaxPpg (grain) {
-  if (grain.isEditing) {
-    return (
-	  <Textfield defaultValue={grain.maxPpg} name="grainMaxPpg" label="Grain Max PPG" />
-	);
-  }
-  
-  return grain.maxPpg;
-}
-
-function editProportion (grain) {
-  if (grain.isEditing) {
-    return (
-	  <Textfield defaultValue={grain.proportion} name="grainProportion" label="Grain Proportion" />
-	);
-  }
-  
-  return grain.proportion;
-}
 
 export default function GrainTable({ grains, onClickDelete, onClickEdit }) {
   return (
@@ -47,22 +17,45 @@ export default function GrainTable({ grains, onClickDelete, onClickEdit }) {
         </tr>
       </thead>
       <tbody>
-        { 
+        {
           map(grains, (grain, key) => (
             <tr key={key}>
-              <td className="mdl-data-table__cell--non-numeric">{ editGrainType(grain) }</td>
-              <td className="mdl-data-table__cell--non-numeric">{ editMaxPpg(grain) }</td>
-              <td className="mdl-data-table__cell--non-numeric">{ editProportion(grain) }</td>
+              <td className="mdl-data-table__cell--non-numeric">
+                <EditableGrainField
+                  isEditing={grain.isEditing}
+                  name="grainType"
+                  label="Grain Type"
+                  value={grain.grainType} />
+
+              </td>
+
+              <td className="mdl-data-table__cell--non-numeric">
+                <EditableGrainField
+                  isEditing={grain.isEditing}
+                  name="grainMaxPpg"
+                  label="Max PPG"
+                  value={grain.maxPpg} />
+
+              </td>
+
+              <td className="mdl-data-table__cell--non-numeric">
+                <EditableGrainField
+                  isEditing={grain.isEditing}
+                  name="grainProportion"
+                  label="Proportion (%)"
+                  value={grain.proportion} />
+
+              </td>
               <td className="mdl-data-table__cell--non-numeric">X lbs Y oz</td>
               <td className="mdl-data-table__cell--non-numeric">
-                <GrainActionsColumn 
+                <GrainActionsColumn
                   id={key}
-                  onClickDelete={onClickDelete} 
+                  onClickDelete={onClickDelete}
 				  onClickEdit={onClickEdit} />
               </td>
             </tr>
           ))
-		}
+	}
       </tbody>
       <tfoot>
         <tr>

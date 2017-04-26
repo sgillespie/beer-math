@@ -4,6 +4,7 @@ import React from 'react';
 import { spy } from 'sinon';
 import sinonChai from 'sinon-chai';
 
+import EditableGrainField from './EditableGrainField';
 import GrainTable from './GrainTable';
 import GrainActionsColumn from './GrainActionsColumn';
 
@@ -16,19 +17,30 @@ const grains = {
     maxPpg: '0',
     proportion: '1',
     weight: '2',
-  }
+  },
+
+  1: {
+    grainType: 'type2',
+    maxPpg: '3',
+    proportion: '4',
+    weight: '5',
+    isEditing: true,
+  },
 };
 
 let grainTable,
     onClickDelete,
-	onClickEdit;
+    onClickEdit;
 	
 beforeEach(() => {
   onClickDelete = spy();
   onClickEdit = spy();
 
   grainTable = shallow(
-    <GrainTable grains={grains} onClickDelete={onClickDelete} onClickEdit={onClickEdit}/>
+    <GrainTable
+      grains={grains}
+      onClickDelete={onClickDelete}
+      onClickEdit={onClickEdit} />
   );
 });
 
@@ -40,16 +52,36 @@ it('renders', () => {
 it('passes onClickDelete to Grain Actions Column', () => {
   grainTable
     .find(GrainActionsColumn)
-    .prop('onClickDelete')();
+    .forEach(col => col.prop('onClickDelete')());
 
-  onClickDelete.should.have.been.calledWith();
+  onClickDelete.should.have.been.called.twice;
 });
 
 it('passes onClickEdit to Grain Actions Column', () => {
   grainTable
     .find(GrainActionsColumn)
-    .prop('onClickEdit')();
+    .forEach(col => col.prop('onClickEdit')());
 
-  onClickEdit.should.have.been.calledWith();
+  onClickEdit.should.have.been.called.twice;
 });
 
+it('renders EditableGrainFields for each grain', () => {
+  grainTable
+    .find('tbody tr')
+    .forEach(row => row.find(EditableGrainField).should.have.length.above(0));
+});
+
+it('passes grain.isEditing to EditableGrainField', () => {
+  const rows = grainTable
+    .find('tbody tr')
+
+  rows
+    .first()
+    .find(EditableGrainField)
+    .forEach(field => (!!field.props().isEditing).should.not.be.ok);
+
+  rows
+    .at(1)
+    .find(EditableGrainField)
+    .forEach(field => field.prop('isEditing').should.be.ok);
+});
