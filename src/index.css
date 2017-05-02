@@ -73,4 +73,16 @@
 	color: rgb(83,109,254);
 }
 
+.grains-table .mdl-textfield{
+  width: auto;
+}
+
+.grains-table td{
+  width: 24%;
+}
+
+ .grains-table tr td:last-child{
+  width: 4%;
+}
+
 
