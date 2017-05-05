@@ -87,5 +87,9 @@
 }
 
 .is-editing{
-  background-color: #fafafa;
+  background-color: #fafafa !important;
+}
+
+.grains-table tr .mdl-textfield__label:after{
+ bottom: 0px;
 }

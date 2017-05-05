@@ -73,7 +73,7 @@ it('renders EditableGrainFields for each grain', () => {
 
 it('passes grain.isEditing to EditableGrainField', () => {
   const rows = grainTable
-    .find('tbody tr')
+    .find('tbody tr');
 
   rows
     .first()
@@ -84,4 +84,19 @@ it('passes grain.isEditing to EditableGrainField', () => {
     .at(1)
     .find(EditableGrainField)
     .forEach(field => field.prop('isEditing').should.be.ok);
+});
+
+it('adds className is-editing to the table row when grain.isEditing', () => {
+  const rows = grainTable
+    .find('tbody tr');
+	
+  rows
+    .first()
+	.find('.is-editing')
+	.should.have.lengthOf(0);
+	
+  rows
+    .at(1)
+	.find('.is-editing')
+	.should.have.lengthOf(1);
 });
