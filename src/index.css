@@ -75,6 +75,7 @@
 
 .grains-table .mdl-textfield{
   width: auto;
+  padding: 0;
 }
 
 .grains-table td{
@@ -85,4 +86,6 @@
   width: 4%;
 }
 
-
+.is-editing{
+  background-color: #fafafa;
+}

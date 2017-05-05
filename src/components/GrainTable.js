@@ -19,7 +19,7 @@ export default function GrainTable({ grains, onClickDelete, onClickEdit }) {
       <tbody>
         {
           map(grains, (grain, key) => (
-            <tr key={key}>
+            <tr key={key} className={grain.isEditing ? 'is-editing' : ''}>
               <td className="mdl-data-table__cell--non-numeric">
                 <EditableGrainField
                   isEditing={grain.isEditing}
