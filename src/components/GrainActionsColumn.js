@@ -1,5 +1,6 @@
 import IconButton from 'react-mdl/lib/IconButton';
 import React, { PropTypes } from 'react';
+import Tooltip from 'react-mdl/lib/Tooltip';
 
 export default function GrainActionsColumn({ id, onClickDelete, onClickEdit }) {
   function deleteRow() {
@@ -12,15 +13,31 @@ export default function GrainActionsColumn({ id, onClickDelete, onClickEdit }) {
 
   return (
     <div className="icon-group">
-      <IconButton 
-        name="delete" 
-        onClick={deleteRow}
-        ripple />
+      <Tooltip label="Delete">
+        <IconButton 
+          name="delete" 
+          onClick={deleteRow}
+          ripple />
+      </Tooltip>
 
-      <IconButton 
-        name="create"
-        onClick={editRow}		
-        ripple />
+      <Tooltip label="Edit">
+        <IconButton 
+          name="create"
+          onClick={editRow}     
+          ripple />
+      </Tooltip>
+      
+      <Tooltip label="Cancel">
+        <IconButton 
+          name="clear"
+          ripple />
+      </Tooltip>
+    
+      <Tooltip label="Save">
+        <IconButton 
+          name="check"      
+          ripple />
+      </Tooltip>
     </div>
   );
 }
