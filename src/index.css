@@ -73,9 +73,13 @@
 	color: rgb(83,109,254);
 }
 
-.grains-table .mdl-textfield{
+.grains-table .mdl-textfield {
   width: auto;
   padding: 0;
+}
+
+.grains-table input {
+  font-size: 14px;
 }
 
 .grains-table td{
