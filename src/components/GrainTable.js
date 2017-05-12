@@ -51,7 +51,8 @@ export default function GrainTable({ grains, onClickDelete, onClickEdit }) {
                 <GrainActionsColumn
                   id={key}
                   onClickDelete={onClickDelete}
-				  onClickEdit={onClickEdit} />
+				  onClickEdit={onClickEdit}	
+				  grain={grain} />
               </td>
             </tr>
           ))

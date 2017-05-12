@@ -100,3 +100,18 @@ it('adds className is-editing to the table row when grain.isEditing', () => {
 	.find('.is-editing')
 	.should.have.lengthOf(1);
 });
+
+it('passes grain to Grain Actions Column', () => {
+  const grainActionsColumns = grainTable
+    .find(GrainActionsColumn);
+	
+	grainActionsColumns
+	  .first()
+	  .prop('grain')
+	  .should.deep.equal(grains['0']);
+	  
+    grainActionsColumns
+	  .at(1)
+	  .prop('grain')
+	  .should.deep.equal(grains['1']);
+});
