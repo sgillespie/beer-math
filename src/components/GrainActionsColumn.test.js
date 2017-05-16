@@ -58,6 +58,16 @@ it('click edit triggers onClickEdit', () => {
   onClickEdit.should.have.been.calledWith('0');
 });
 
+it('click clear triggers onClickEdit', () => {
+  grain.isEditing = true;
+
+  render(grain)
+    .find('IconButton[name="clear"]')
+    .simulate('click');
+
+  onClickEdit.should.have.been.calledWith('0');
+});
+
 it('on page load displays edit and delete buttons', () => {
   const grainActions = render(grain);
 

@@ -13,9 +13,9 @@ export default function GrainActionsColumn({ id, onClickDelete, onClickEdit, gra
 
   return (
     <div className="icon-group">
-	  { !grain.isEditing &&
+      { !grain.isEditing &&
         <div>
-	      <Tooltip label="Delete">
+	  <Tooltip label="Delete">
             <IconButton 
               name="delete" 
               onClick={deleteRow}
@@ -28,14 +28,15 @@ export default function GrainActionsColumn({ id, onClickDelete, onClickEdit, gra
               onClick={editRow}     
               ripple />
           </Tooltip>
-	    </div>
-	  }
+	</div>
+      }
 	  
-	  { grain.isEditing &&
+      { grain.isEditing &&
         <div>
-	      <Tooltip label="Cancel">
+          <Tooltip label="Cancel">
             <IconButton 
               name="clear"
+              onClick={editRow}
               ripple />
           </Tooltip>
     
@@ -44,8 +45,8 @@ export default function GrainActionsColumn({ id, onClickDelete, onClickEdit, gra
               name="check"      
               ripple />
           </Tooltip>
-	    </div>
-	  }
+        </div>
+      }
     </div>
   );
 }

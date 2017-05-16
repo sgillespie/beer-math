@@ -59,11 +59,11 @@ function grains(state = {}, action) {
       const key = action.payload;
       return omit(key, state);
 	  
-	case EDIT_GRAIN:
-		const _key = action.payload;
-		return u({ 
-		  [_key]: { isEditing: val => !val } 
-		}, state);
+    case EDIT_GRAIN:
+      const _key = action.payload;
+      return u({ 
+	[_key]: { isEditing: val => !val } 
+      }, state);
 
     default: 
       return state;
