@@ -9,7 +9,6 @@ import {
   ADD_GRAIN, 
   DELETE_GRAIN,
   EDIT_GRAIN,
-  UPDATE_GRAIN,
 } from '../actions';
 
 function newId(grains) {

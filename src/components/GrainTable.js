@@ -2,7 +2,6 @@ import React, { PropTypes } from 'react';
 import EditableGrainField from './EditableGrainField';
 import GrainActionsColumn from './GrainActionsColumn';
 import { map } from 'lodash';
-import Textfield from 'react-mdl/lib/Textfield';
 
 export default function GrainTable({ grains, onClickDelete, onClickEdit }) {
   return (
