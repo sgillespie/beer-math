@@ -9,37 +9,41 @@ import GrainActionsColumn from './GrainActionsColumn';
 chai.use(sinonChai);
 const should = chai.should();
 
-const grain = {
-  grainType: 'type',
-  maxPpg: '0',
-  proportion: '1',
-  weight: '2',
-};
-
-let grainActions,
+let grain,
     onClickDelete,
-	onClickEdit;
-	
+    onClickEdit;
+
 beforeEach(() => {
   onClickDelete = spy();
   onClickEdit = spy();
 
-  grainActions = shallow(
-    <GrainActionsColumn 
-      id="0"
-      onClickDelete={onClickDelete}
-	  onClickEdit={onClickEdit}
-	  grain={grain} />
-  );
+  grain = {
+    grainType: 'type',
+    maxPpg: '0',
+    proportion: '1',
+    weight: '2',
+  };
 });
 
+function render(grain) {
+  return shallow(
+    <GrainActionsColumn
+      id="0"
+      onClickDelete={onClickDelete}
+      onClickEdit={onClickEdit}
+      grain={grain} />
+  );
+}
+
 it('renders', () => {
+  const grainActions = render(grain);
+
   should.exist(grainActions);
   grainActions.should.have.lengthOf(1);
 });
 
 it('click delete triggers onClickDelete', () => {
-  grainActions 
+  render(grain)
     .find('IconButton[name="delete"]')
     .simulate('click');
 
@@ -47,7 +51,7 @@ it('click delete triggers onClickDelete', () => {
 });
 
 it('click edit triggers onClickEdit', () => {
-  grainActions 
+  render(grain)
     .find('IconButton[name="create"]')
     .simulate('click');
 
@@ -55,53 +59,42 @@ it('click edit triggers onClickEdit', () => {
 });
 
 it('on page load displays edit and delete buttons', () => {
-  grainActions 
+  const grainActions = render(grain);
+
+  grainActions
     .find('IconButton[name="create"]')
-	.should.have.lengthOf('1');
-	
-  grainActions 
+    .should.have.lengthOf('1');
+
+  grainActions
     .find('IconButton[name="delete"]')
-	.should.have.lengthOf('1');
-	
-  grainActions 
+    .should.have.lengthOf('1');
+
+  grainActions
     .find('IconButton[name="clear"]')
-	.should.have.lengthOf('0');
-	
-  grainActions 
+    .should.have.lengthOf('0');
+
+  grainActions
     .find('IconButton[name="check"]')
-	.should.have.lengthOf('0');
+    .should.have.lengthOf('0');
 });
 
 it('save and cancel buttons display when grains.isEditing', () => {
-  const grain = {
-    grainType: 'type',
-    maxPpg: '0',
-    proportion: '1',
-    weight: '2',
-	isEditing: true,
-  };
+  grain.isEditing = true;
+  const grainActions = render(grain);
 
-  grainActions = shallow(
-    <GrainActionsColumn 
-      id="0"
-      onClickDelete={onClickDelete}
-      onClickEdit={onClickEdit}
-      grain={grain} />
-  );
-
-  grainActions 
+  grainActions
     .find('IconButton[name="create"]')
-	.should.have.lengthOf('0');
-	
-  grainActions 
+    .should.have.lengthOf('0');
+
+  grainActions
     .find('IconButton[name="delete"]')
-	.should.have.lengthOf('0');
-	
-  grainActions 
+    .should.have.lengthOf('0');
+
+  grainActions
     .find('IconButton[name="clear"]')
-	.should.have.lengthOf('1');
-	
-  grainActions 
+    .should.have.lengthOf('1');
+
+  grainActions
     .find('IconButton[name="check"]')
-	.should.have.lengthOf('1');
+    .should.have.lengthOf('1');
 });
