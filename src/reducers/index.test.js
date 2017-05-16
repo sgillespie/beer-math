@@ -1,6 +1,14 @@
 import chai from 'chai';
 
-import { updateGravity, updateVolume, updateEfficiency, addGrain, deleteGrain, editGrain } from '../actions';
+import {
+  updateGravity,
+  updateVolume,
+  updateEfficiency,
+  addGrain,
+  deleteGrain,
+  editGrain,
+  updateGrain,
+} from '../actions';
 import reduce from '.';
 
 const should = chai.should();
@@ -17,6 +25,12 @@ const state = {
       grainType: 'US Two Row',
       maxPpg: '1.034', 
       proportion: '90%', 
+    },
+
+    1: {
+      grainType: 'Crystal 40L',
+      maxPpg: '1.036', 
+      proportion: '10%', 
     },
   }
 };
@@ -51,7 +65,8 @@ it('adds grain when type is ADD_GRAIN', () => {
   
   should.exist(newState.grains['0']);
   should.exist(newState.grains['1']);
-  newState.grains['1'].should.deep.equal({
+  should.exist(newState.grains['2']);
+  newState.grains['2'].should.deep.equal({
     grainType: 1,
     maxPpg: 2,
     proportion: 3,
@@ -77,7 +92,18 @@ it('isEditing equals false when EDIT_GRAIN called twice', () => {
   const action = editGrain('0');
   const newState = reduce( reduce(state, action), action);
   
-  
   should.exist(newState.grains['0'].isEditing);
   newState.grains['0'].isEditing.should.be.false;
+});
+
+it('updates grain when type is UPDATE_GRAIN', () => {
+  const action = updateGrain('0', 'US Three Row', '1.040', '60%');
+  const newState = reduce(state, action);
+
+  should.exist(newState.grains['0']);
+  newState.grains['0'].should.deep.equal({
+    grainType: 'US Three Row',
+    maxPpg: '1.040',
+    proportion: '60%',
+  });
 });

@@ -47,21 +47,21 @@ export function deleteGrain(key) {
 }
 
 export function editGrain(key) {
-  return{
+  return {
     type: EDIT_GRAIN,
     payload: key,
   };
 }
 
-export function updateGrain( key, grainType, maxPpg, proportion ) {
+export function updateGrain(key, grainType, maxPpg, proportion) {
   return{
     type: UPDATE_GRAIN,
 	
-	payload: {
-	  key,
-	  grainType,
-	  maxPpg,
-	  proportion,
-	},
+    payload: {
+      key,
+      grainType,
+      maxPpg,
+      proportion,
+    },
   };
 }

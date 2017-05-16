@@ -9,6 +9,7 @@ import {
   ADD_GRAIN, 
   DELETE_GRAIN,
   EDIT_GRAIN,
+  UPDATE_GRAIN,
 } from '../actions';
 
 function newId(grains) {
@@ -55,13 +56,22 @@ function grains(state = {}, action) {
       }, state);
 	
     case DELETE_GRAIN:
-      const key = action.payload;
-      return omit(key, state);
+      // action.payload is the grain key
+      return omit(action.payload, state);
 	  
     case EDIT_GRAIN:
-      const _key = action.payload;
+      // action.payload is the grain key
       return u({ 
-	[_key]: { isEditing: val => !val } 
+	[action.payload]: { isEditing: val => !val } 
+      }, state);
+
+    case UPDATE_GRAIN:
+      return u({
+        [action.payload.key]: {
+          grainType: action.payload.grainType,
+          maxPpg: action.payload.maxPpg,
+          proportion: action.payload.proportion,
+        }
       }, state);
 
     default: 
