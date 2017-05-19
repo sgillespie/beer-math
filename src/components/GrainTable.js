@@ -3,7 +3,7 @@ import EditableGrainField from './EditableGrainField';
 import GrainActionsColumn from './GrainActionsColumn';
 import { map } from 'lodash';
 
-export default function GrainTable({ grains, onClickDelete, onClickEdit }) {
+export default function GrainTable({ grains, onClickDelete, onClickEdit, onClickUpdate }) {
   return (
     <table className="grains-table mdl-data-table">
       <thead>
@@ -50,7 +50,8 @@ export default function GrainTable({ grains, onClickDelete, onClickEdit }) {
                 <GrainActionsColumn
                   id={key}
                   onClickDelete={onClickDelete}
-				  onClickEdit={onClickEdit}	
+				  onClickEdit={onClickEdit}
+                  onClickUpdate={onClickUpdate}
 				  grain={grain} />
               </td>
             </tr>
@@ -74,4 +75,5 @@ GrainTable.propTypes = {
   grains: PropTypes.object.isRequired,
   onClickDelete: PropTypes.func.isRequired,
   onClickEdit: PropTypes.func.isRequired,
+  onClickUpdate: PropTypes.func.isRequired,
 };

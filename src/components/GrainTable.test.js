@@ -30,17 +30,20 @@ const grains = {
 
 let grainTable,
     onClickDelete,
-    onClickEdit;
+    onClickEdit,
+    onClickUpdate;
 	
 beforeEach(() => {
   onClickDelete = spy();
   onClickEdit = spy();
+  onClickUpdate = spy();
 
   grainTable = shallow(
     <GrainTable
       grains={grains}
       onClickDelete={onClickDelete}
-      onClickEdit={onClickEdit} />
+      onClickEdit={onClickEdit}
+      onClickUpdate={onClickUpdate} />
   );
 });
 
@@ -63,6 +66,14 @@ it('passes onClickEdit to Grain Actions Column', () => {
     .forEach(col => col.prop('onClickEdit')());
 
   onClickEdit.should.have.been.called.twice;
+});
+
+it('passes onClickUpdate to Grain Actions Column', () => {
+  grainTable
+    .find(GrainActionsColumn)
+    .forEach(col => col.prop('onClickUpdate')());
+
+  onClickUpdate.should.have.been.called.twice;
 });
 
 it('renders EditableGrainFields for each grain', () => {

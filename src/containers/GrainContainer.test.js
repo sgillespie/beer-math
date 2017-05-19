@@ -3,7 +3,7 @@ import chai from 'chai';
 import sinonChai from 'sinon-chai';
 
 import { mapDispatchToProps, mapStateToProps } from './GrainContainer';
-import { addGrain, deleteGrain, editGrain } from '../actions';
+import { addGrain, deleteGrain, editGrain, updateGrain } from '../actions';
 
 chai.use(sinonChai);
 const should = chai.should();
@@ -61,3 +61,11 @@ it('mapDispatchToProps should map onClickEdit', () => {
   dispatch.should.have.been.calledWith(editGrain('0'));
 });
 
+it('mapDispatchToProps should map onClickUpdate', () => {
+  const props = mapDispatchToProps(dispatch);
+
+  should.exist(props.onClickUpdate);
+  props.onClickUpdate( '0', '1', '2', '3' );
+
+  dispatch.should.have.been.calledWith(updateGrain( '0', '1', '2', '3' ));
+});
