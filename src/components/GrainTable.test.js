@@ -7,6 +7,7 @@ import sinonChai from 'sinon-chai';
 import EditableGrainField from './EditableGrainField';
 import GrainTable from './GrainTable';
 import GrainActionsColumn from './GrainActionsColumn';
+import GrainTableRow from './GrainTableRow';
 
 chai.use(sinonChai);
 const should = chai.should();
@@ -52,77 +53,62 @@ it('renders', () => {
   grainTable.should.have.lengthOf(1);
 });
 
-it('passes onClickDelete to Grain Actions Column', () => {
+it('renders GrainTableRow for each grain', () => {
   grainTable
-    .find(GrainActionsColumn)
+    .find(GrainTableRow)
+    .should.have.lengthOf(2);
+});
+
+it('passes onClickDelete to GrainTableRow', () => {
+  grainTable
+    .find(GrainTableRow)
     .forEach(col => col.prop('onClickDelete')());
 
   onClickDelete.should.have.been.called.twice;
 });
 
-it('passes onClickEdit to Grain Actions Column', () => {
+it('passes onClickEdit to GrainTableRow', () => {
   grainTable
-    .find(GrainActionsColumn)
+    .find(GrainTableRow)
     .forEach(col => col.prop('onClickEdit')());
 
   onClickEdit.should.have.been.called.twice;
 });
 
-it('passes onClickUpdate to Grain Actions Column', () => {
+it('passes onClickUpdate to GrainTableRow', () => {
   grainTable
-    .find(GrainActionsColumn)
+    .find(GrainTableRow)
     .forEach(col => col.prop('onClickUpdate')());
 
   onClickUpdate.should.have.been.called.twice;
 });
 
-it('renders EditableGrainFields for each grain', () => {
-  grainTable
-    .find('tbody tr')
-    .forEach(row => row.find(EditableGrainField).should.have.length.above(0));
-});
-
-it('passes grain.isEditing to EditableGrainField', () => {
-  const rows = grainTable
-    .find('tbody tr');
-
-  rows
-    .first()
-    .find(EditableGrainField)
-    .forEach(field => (!!field.props().isEditing).should.not.be.ok);
-
-  rows
-    .at(1)
-    .find(EditableGrainField)
-    .forEach(field => field.prop('isEditing').should.be.ok);
-});
-
-it('adds className is-editing to the table row when grain.isEditing', () => {
-  const rows = grainTable
-    .find('tbody tr');
+it('passes grain to GrainTableRow', () => {
+  const grainTableRow = grainTable
+    .find(GrainTableRow);
 	
-  rows
-    .first()
-	.find('.is-editing')
-	.should.have.lengthOf(0);
-	
-  rows
-    .at(1)
-	.find('.is-editing')
-	.should.have.lengthOf(1);
-});
-
-it('passes grain to Grain Actions Column', () => {
-  const grainActionsColumns = grainTable
-    .find(GrainActionsColumn);
-	
-	grainActionsColumns
+	grainTableRow
 	  .first()
 	  .prop('grain')
 	  .should.deep.equal(grains['0']);
 	  
-    grainActionsColumns
+    grainTableRow
 	  .at(1)
 	  .prop('grain')
 	  .should.deep.equal(grains['1']);
+});
+
+it('passes grainId to GrainTableRow', () => {
+  const grainTableRow = grainTable
+    .find(GrainTableRow);
+	
+	grainTableRow
+	  .first()
+	  .prop('grainId')
+	  .should.equal('0');
+	  
+    grainTableRow
+	  .at(1)
+	  .prop('grainId')
+	  .should.equal('1');
 });

@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import EditableGrainField from './EditableGrainField';
 import GrainActionsColumn from './GrainActionsColumn';
+import GrainTableRow from './GrainTableRow';
 import { map } from 'lodash';
 
 export default function GrainTable({ grains, onClickDelete, onClickEdit, onClickUpdate }) {
@@ -18,45 +19,9 @@ export default function GrainTable({ grains, onClickDelete, onClickEdit, onClick
       <tbody>
         {
           map(grains, (grain, key) => (
-            <tr key={key} className={grain.isEditing ? 'is-editing' : ''}>
-              <td className="mdl-data-table__cell--non-numeric">
-                <EditableGrainField
-                  isEditing={grain.isEditing}
-                  name="grainType"
-                  label="Grain Type"
-                  value={grain.grainType} />
-
-              </td>
-
-              <td className="mdl-data-table__cell--non-numeric">
-                <EditableGrainField
-                  isEditing={grain.isEditing}
-                  name="grainMaxPpg"
-                  label="Max PPG"
-                  value={grain.maxPpg} />
-
-              </td>
-
-              <td className="mdl-data-table__cell--non-numeric">
-                <EditableGrainField
-                  isEditing={grain.isEditing}
-                  name="grainProportion"
-                  label="Proportion (%)"
-                  value={grain.proportion} />
-
-              </td>
-              <td className="mdl-data-table__cell--non-numeric">X lbs Y oz</td>
-              <td className="mdl-data-table__cell--non-numeric">
-                <GrainActionsColumn
-                  id={key}
-                  onClickDelete={onClickDelete}
-				  onClickEdit={onClickEdit}
-                  onClickUpdate={onClickUpdate}
-				  grain={grain} />
-              </td>
-            </tr>
+            <GrainTableRow grain={grain} grainId={key} key={key} onClickDelete={onClickDelete} onClickEdit={onClickEdit} onClickUpdate={onClickUpdate} />
           ))
-	}
+	    }
       </tbody>
       <tfoot>
         <tr>

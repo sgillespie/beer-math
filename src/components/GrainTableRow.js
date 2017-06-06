@@ -3,7 +3,7 @@ import EditableGrainField from './EditableGrainField';
 import GrainActionsColumn from './GrainActionsColumn';
 import { map } from 'lodash';
 
-export default function GrainTable({ grain, grainId, onClickDelete, onClickEdit, onClickUpdate }) {
+export default function GrainTableRow({ grain, grainId, onClickDelete, onClickEdit, onClickUpdate }) {
   return (
     <tr className={grain.isEditing ? 'is-editing' : ''}>
       <td className="mdl-data-table__cell--non-numeric">
