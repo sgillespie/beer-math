@@ -1,6 +1,4 @@
 import React, { PropTypes } from 'react';
-import EditableGrainField from './EditableGrainField';
-import GrainActionsColumn from './GrainActionsColumn';
 import GrainTableRow from './GrainTableRow';
 import { map } from 'lodash';
 

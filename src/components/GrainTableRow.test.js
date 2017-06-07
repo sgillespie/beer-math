@@ -111,3 +111,54 @@ it('passes grain to Grain Actions Column', () => {
       .prop('grain')
       .should.deep.equal(grain);
 });
+
+it('change to grain.grainType updates state', () => {
+  const event = {
+    target: {
+      value: 'butt juice grain',
+	},
+  };
+  
+  const grainTableRow = render();
+  
+  grainTableRow
+    .find('EditableGrainField[name="grainType"]')
+    .simulate('change', event);
+  
+  grainTableRow
+    .state('grainType').should.equal('butt juice grain');
+});
+
+it('change to grain.maxPpg updates state', () => {
+  const event = {
+    target: {
+      value: 'butt juice PPG',
+	},
+  };
+  
+  const grainTableRow = render();
+  
+  grainTableRow
+    .find('EditableGrainField[name="grainMaxPpg"]')
+    .simulate('change', event);
+  
+  grainTableRow
+    .state('maxPpg').should.equal('butt juice PPG');
+});
+
+it('change to grain.proportion updates state', () => {
+  const event = {
+    target: {
+      value: 'butt juice Proportion',
+	},
+  };
+  
+  const grainTableRow = render();
+  
+  grainTableRow
+    .find('EditableGrainField[name="grainProportion"]')
+    .simulate('change', event);
+  
+  grainTableRow
+    .state('proportion').should.equal('butt juice Proportion');
+});

@@ -2,7 +2,7 @@ import IconButton from 'react-mdl/lib/IconButton';
 import React, { PropTypes } from 'react';
 import Tooltip from 'react-mdl/lib/Tooltip';
 
-export default function GrainActionsColumn({ id, onClickDelete, onClickEdit, grain }) {
+export default function GrainActionsColumn({ grain, id, onClickDelete, onClickEdit, onClickUpdate }) {
   function deleteRow() {
     onClickDelete(id);
   }

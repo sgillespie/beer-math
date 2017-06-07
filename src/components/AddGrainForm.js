@@ -4,8 +4,8 @@ import React, { Component, PropTypes, } from 'react';
 import Textfield from 'react-mdl/lib/Textfield';
 
 export default class AddGrainForm extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 	
     this.onChangeGrainType = this.onChangeGrainType.bind(this);
     this.onChangeMaxPpg = this.onChangeMaxPpg.bind(this);
