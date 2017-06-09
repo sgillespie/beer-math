@@ -62,7 +62,7 @@ function grains(state = {}, action) {
     case EDIT_GRAIN:
       // action.payload is the grain key
       return u({ 
-	[action.payload]: { isEditing: val => !val } 
+	    [action.payload]: { isEditing: val => !val } 
       }, state);
 
     case UPDATE_GRAIN:
@@ -71,6 +71,7 @@ function grains(state = {}, action) {
           grainType: action.payload.grainType,
           maxPpg: action.payload.maxPpg,
           proportion: action.payload.proportion,
+          isEditing: false,
         }
       }, state);
 

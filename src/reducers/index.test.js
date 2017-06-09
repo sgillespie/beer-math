@@ -105,5 +105,6 @@ it('updates grain when type is UPDATE_GRAIN', () => {
     grainType: 'US Three Row',
     maxPpg: '1.040',
     proportion: '60%',
+    isEditing: false,
   });
 });

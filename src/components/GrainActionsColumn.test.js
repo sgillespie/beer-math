@@ -11,11 +11,13 @@ const should = chai.should();
 
 let grain,
     onClickDelete,
-    onClickEdit;
+    onClickEdit,
+    onClickUpdate;
 
 beforeEach(() => {
   onClickDelete = spy();
   onClickEdit = spy();
+  onClickUpdate = spy();
 
   grain = {
     grainType: 'type',
@@ -31,6 +33,7 @@ function render(grain) {
       id="0"
       onClickDelete={onClickDelete}
       onClickEdit={onClickEdit}
+      onClickUpdate={onClickUpdate}
       grain={grain} />
   );
 }
@@ -66,6 +69,16 @@ it('click clear triggers onClickEdit', () => {
     .simulate('click');
 
   onClickEdit.should.have.been.calledWith('0');
+});
+
+it('click save triggers onClickUpdate', () => {
+  grain.isEditing = true;
+
+  render(grain)
+    .find('IconButton[name="check"]')
+    .simulate('click');
+
+  onClickUpdate.should.have.been.calledWith();
 });
 
 it('on page load displays edit and delete buttons', () => {

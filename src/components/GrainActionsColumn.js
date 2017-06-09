@@ -42,7 +42,8 @@ export default function GrainActionsColumn({ grain, id, onClickDelete, onClickEd
     
           <Tooltip label="Save">
             <IconButton 
-              name="check"      
+              name="check"
+              onClick={onClickUpdate}
               ripple />
           </Tooltip>
         </div>
@@ -52,10 +53,11 @@ export default function GrainActionsColumn({ grain, id, onClickDelete, onClickEd
 }
 
 GrainActionsColumn.propTypes = {
+  grain: PropTypes.object.isRequired,
   id: PropTypes.string.isRequired,
   onClickDelete: PropTypes.func.isRequired,
   onClickEdit: PropTypes.func.isRequired,
-  grain: PropTypes.object.isRequired,
+  onClickUpdate: PropTypes.func.isRequired,
 };
 
 

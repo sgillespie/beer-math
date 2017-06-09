@@ -68,7 +68,7 @@ it('passes onClickUpdate to Grain Actions Column', () => {
     .find(GrainActionsColumn)
     .prop('onClickUpdate')();
 
-  onClickUpdate.should.have.been.calledWith();
+  onClickUpdate.should.have.been.calledWith('0', 'type', '0', '1' );
 });
 
 it('renders EditableGrainFields for each grain', () => {

@@ -12,10 +12,12 @@ export default class GrainTableRow extends Component {
     this.onChangeProportion = this.onChangeProportion.bind(this);
     this.onClickUpdate = this.onClickUpdate.bind(this);
     
+    const { grain } = props;
+    
     this.state = {
-      grainType: '',
-      maxPpg: '',
-      proportion: '',
+      grainType: grain.grainType,
+      maxPpg: grain.maxPpg,
+      proportion: grain.proportion,
     };
   }
   
@@ -43,13 +45,20 @@ export default class GrainTableRow extends Component {
 	});
   }
   
-  onClickUpdate () {
-    /*todo*/
+  onClickUpdate() { 
+     
+    const { grainId, onClickUpdate } = this.props;
+
+    const { grainType, maxPpg, proportion } = this.state;
+    
+    onClickUpdate( grainId, grainType, maxPpg, proportion );
   }
+  
+  /*TODO: reset state when onClickEdit*/
   
   render () {
     
-    const { grain, grainId, onClickEdit, onClickDelete, onClickUpdate } = this.props
+    const { grain, grainId, onClickEdit, onClickDelete } = this.props
     
     return (
       <tr className={grain.isEditing ? 'is-editing' : ''}>
@@ -87,7 +96,7 @@ export default class GrainTableRow extends Component {
             id={grainId}
             onClickDelete={onClickDelete}
             onClickEdit={onClickEdit}
-            onClickUpdate={onClickUpdate}
+            onClickUpdate={this.onClickUpdate}
             grain={grain} />
         </td>
       </tr>
