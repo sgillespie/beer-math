@@ -60,7 +60,25 @@ it('passes onClickEdit to Grain Actions Column', () => {
     .find(GrainActionsColumn)
     .prop('onClickEdit')();
 
-  onClickEdit.should.have.been.calledWith();
+  onClickEdit.should.have.been.calledWith('0');
+});
+
+it('when onClickEdit is called the state is reset', () => {
+  const grainTableRow = render()
+  
+  grainTableRow
+    .setState({
+      grainType: 'type2',
+      maxPpg: '3',
+      proportion: '4',
+    });
+  
+  grainTableRow
+    .find(GrainActionsColumn)
+    .prop('onClickEdit')();
+  
+  grainTableRow
+    .state().should.deep.equal({grainType: 'type', maxPpg: '0', proportion: '1'});
 });
 
 it('passes onClickUpdate to Grain Actions Column', () => {

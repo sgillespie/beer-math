@@ -11,6 +11,7 @@ export default class GrainTableRow extends Component {
     this.onChangeMaxPpg = this.onChangeMaxPpg.bind(this);
     this.onChangeProportion = this.onChangeProportion.bind(this);
     this.onClickUpdate = this.onClickUpdate.bind(this);
+    this.onClickEdit = this.onClickEdit.bind(this);
     
     const { grain } = props;
     
@@ -56,6 +57,20 @@ export default class GrainTableRow extends Component {
   
   /*TODO: reset state when onClickEdit*/
   
+  onClickEdit() {
+    
+    const { grainId, onClickEdit, grain } = this.props;
+    
+    this.setState({
+      grainType: grain.grainType,
+      maxPpg: grain.maxPpg,
+      proportion: grain.proportion,
+    });
+    
+    onClickEdit(grainId);
+    
+  }
+  
   render () {
     
     const { grain, grainId, onClickEdit, onClickDelete } = this.props
@@ -95,7 +110,7 @@ export default class GrainTableRow extends Component {
           <GrainActionsColumn
             id={grainId}
             onClickDelete={onClickDelete}
-            onClickEdit={onClickEdit}
+            onClickEdit={this.onClickEdit}
             onClickUpdate={this.onClickUpdate}
             grain={grain} />
         </td>

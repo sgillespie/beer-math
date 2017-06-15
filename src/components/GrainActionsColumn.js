@@ -6,10 +6,6 @@ export default function GrainActionsColumn({ grain, id, onClickDelete, onClickEd
   function deleteRow() {
     onClickDelete(id);
   }
-  
-  function editRow() {
-    onClickEdit(id);
-  }
 
   return (
     <div className="icon-group">
@@ -25,7 +21,7 @@ export default function GrainActionsColumn({ grain, id, onClickDelete, onClickEd
           <Tooltip label="Edit">
             <IconButton 
               name="create"
-              onClick={editRow}     
+              onClick={onClickEdit}     
               ripple />
           </Tooltip>
 	</div>
@@ -36,7 +32,7 @@ export default function GrainActionsColumn({ grain, id, onClickDelete, onClickEd
           <Tooltip label="Cancel">
             <IconButton 
               name="clear"
-              onClick={editRow}
+              onClick={onClickEdit}
               ripple />
           </Tooltip>
     

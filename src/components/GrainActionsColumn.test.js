@@ -58,7 +58,7 @@ it('click edit triggers onClickEdit', () => {
     .find('IconButton[name="create"]')
     .simulate('click');
 
-  onClickEdit.should.have.been.calledWith('0');
+  onClickEdit.should.have.been.calledWith();
 });
 
 it('click clear triggers onClickEdit', () => {
@@ -68,7 +68,7 @@ it('click clear triggers onClickEdit', () => {
     .find('IconButton[name="clear"]')
     .simulate('click');
 
-  onClickEdit.should.have.been.calledWith('0');
+  onClickEdit.should.have.been.calledWith();
 });
 
 it('click save triggers onClickUpdate', () => {
