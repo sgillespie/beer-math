@@ -1,4 +1,5 @@
 import { Card, CardText, CardTitle } from 'react-mdl/lib/Card';
+import { func, object } from 'prop-types';
 import React, { PropTypes } from 'react';
 
 import AddGrainForm from './AddGrainForm';
@@ -17,9 +18,9 @@ export default function GristCalculator({ grains, onClickAdd, onClickDelete, onC
 }
 
 GristCalculator.propTypes = {
-  grains: PropTypes.object.isRequired,
-  onClickAdd: PropTypes.func.isRequired,
-  onClickDelete: PropTypes.func.isRequired,
-  onClickEdit: PropTypes.func.isRequired,
-  onClickUpdate: PropTypes.func.isRequired,
+  grains: object.isRequired,
+  onClickAdd: func.isRequired,
+  onClickDelete: func.isRequired,
+  onClickEdit: func.isRequired,
+  onClickUpdate: func.isRequired,
 };

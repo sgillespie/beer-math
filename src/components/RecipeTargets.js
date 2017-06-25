@@ -1,6 +1,7 @@
 import { Card, CardText, CardTitle } from 'react-mdl/lib/Card';
 import { Cell, Grid } from 'react-mdl/lib/Grid';
-import React, { Component, PropTypes } from 'react';
+import { func, string } from 'prop-types';
+import React, { Component } from 'react';
 import Textfield from 'react-mdl/lib/Textfield';
 
 export default class RecipeTargets extends Component {
@@ -88,11 +89,11 @@ export default class RecipeTargets extends Component {
 }
 
 RecipeTargets.propTypes = {
-  onChangeGravity: PropTypes.func.isRequired,
-  onChangeVolume: PropTypes.func.isRequired,
-  onChangeEfficiency: PropTypes.func.isRequired,
+  onChangeGravity: func.isRequired,
+  onChangeVolume: func.isRequired,
+  onChangeEfficiency: func.isRequired,
 
-  gravity: PropTypes.string.isRequired,
-  volume: PropTypes.string.isRequired,
-  efficiency: PropTypes.string.isRequired,
+  gravity: string.isRequired,
+  volume: string.isRequired,
+  efficiency: string.isRequired,
 };

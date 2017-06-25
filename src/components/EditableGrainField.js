@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import { bool, node, string } from 'prop-types';
+import React from 'react';
 import Textfield from 'react-mdl/lib/Textfield';
 
 export default function EditableGrainField(props) {
@@ -16,9 +17,9 @@ export default function EditableGrainField(props) {
 }
 
 EditableGrainField.propTypes = {
-  isEditing: PropTypes.bool,
-  value: PropTypes.node.isRequired,
-  label: PropTypes.string.isRequired,
+  isEditing: bool,
+  value: node.isRequired,
+  label: string.isRequired,
 };
 
 EditableGrainField.defaultProps = {

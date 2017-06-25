@@ -1,4 +1,5 @@
 import { Cell, Grid } from 'react-mdl/lib/Grid';
+import { func } from 'prop-types';
 import Button from 'react-mdl/lib/Button';
 import React, { Component, PropTypes, } from 'react';
 import Textfield from 'react-mdl/lib/Textfield';
@@ -89,5 +90,5 @@ export default class AddGrainForm extends Component {
 }
 
 AddGrainForm.propTypes = {
-  onClickAdd: PropTypes.func.isRequired,
+  onClickAdd: func.isRequired,
 };

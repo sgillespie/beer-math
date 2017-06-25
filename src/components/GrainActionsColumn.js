@@ -1,5 +1,6 @@
+import { func, object, string } from 'prop-types'
 import IconButton from 'react-mdl/lib/IconButton';
-import React, { PropTypes } from 'react';
+import React from 'react';
 import Tooltip from 'react-mdl/lib/Tooltip';
 
 export default function GrainActionsColumn({ grain, id, onClickDelete, onClickEdit, onClickUpdate }) {
@@ -49,11 +50,11 @@ export default function GrainActionsColumn({ grain, id, onClickDelete, onClickEd
 }
 
 GrainActionsColumn.propTypes = {
-  grain: PropTypes.object.isRequired,
-  id: PropTypes.string.isRequired,
-  onClickDelete: PropTypes.func.isRequired,
-  onClickEdit: PropTypes.func.isRequired,
-  onClickUpdate: PropTypes.func.isRequired,
+  grain: object.isRequired,
+  id: string.isRequired,
+  onClickDelete: func.isRequired,
+  onClickEdit: func.isRequired,
+  onClickUpdate: func.isRequired,
 };
 
 

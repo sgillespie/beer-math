@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import { func, object } from 'prop-types';
+import React from 'react';
 import GrainTableRow from './GrainTableRow';
 import { map } from 'lodash';
 
@@ -35,8 +36,8 @@ export default function GrainTable({ grains, onClickDelete, onClickEdit, onClick
 }
 
 GrainTable.propTypes = {
-  grains: PropTypes.object.isRequired,
-  onClickDelete: PropTypes.func.isRequired,
-  onClickEdit: PropTypes.func.isRequired,
-  onClickUpdate: PropTypes.func.isRequired,
+  grains: object.isRequired,
+  onClickDelete: func.isRequired,
+  onClickEdit: func.isRequired,
+  onClickUpdate: func.isRequired,
 };

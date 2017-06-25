@@ -1,4 +1,5 @@
-import React, { PropTypes, Component } from 'react';
+import { func, object, string } from 'prop-types';
+import React, { Component } from 'react';
 import EditableGrainField from './EditableGrainField';
 import GrainActionsColumn from './GrainActionsColumn';
 
@@ -120,9 +121,9 @@ export default class GrainTableRow extends Component {
 }
 
 GrainTableRow.propTypes = {
-  grain: PropTypes.object.isRequired,
-  grainId: PropTypes.string.isRequired,
-  onClickDelete: PropTypes.func.isRequired,
-  onClickEdit: PropTypes.func.isRequired,
-  onClickUpdate: PropTypes.func.isRequired,
+  grain: object.isRequired,
+  grainId: string.isRequired,
+  onClickDelete: func.isRequired,
+  onClickEdit: func.isRequired,
+  onClickUpdate: func.isRequired,
 };

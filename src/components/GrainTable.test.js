@@ -64,7 +64,7 @@ it('passes onClickDelete to GrainTableRow', () => {
     .find(GrainTableRow)
     .forEach(col => col.prop('onClickDelete')());
 
-  onClickDelete.should.have.been.called.twice;
+  onClickDelete.should.have.been.calledTwice;
 });
 
 it('passes onClickEdit to GrainTableRow', () => {
@@ -72,7 +72,7 @@ it('passes onClickEdit to GrainTableRow', () => {
     .find(GrainTableRow)
     .forEach(col => col.prop('onClickEdit')());
 
-  onClickEdit.should.have.been.called.twice;
+  onClickEdit.should.have.been.calledTwice;
 });
 
 it('passes onClickUpdate to GrainTableRow', () => {
@@ -80,7 +80,7 @@ it('passes onClickUpdate to GrainTableRow', () => {
     .find(GrainTableRow)
     .forEach(col => col.prop('onClickUpdate')());
 
-  onClickUpdate.should.have.been.called.twice;
+  onClickUpdate.should.have.been.calledTwice;
 });
 
 it('passes grain to GrainTableRow', () => {
