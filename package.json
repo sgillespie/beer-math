@@ -9,8 +9,11 @@
     "enzyme": "2.9.1",
     "gh-pages": "1.0.0",
     "jest-cli": "20.0.4",
-    "react-scripts": "1.0.7",
-    "react-test-renderer": "^15.6.1",
+    "neutrino": "6.1.1",
+    "neutrino-preset-jest": "6.1.1",
+    "neutrino-preset-node": "6.1.1",
+    "neutrino-preset-react": "6.1.1",
+    "react-test-renderer": "15.6.1",
     "sinon": "2.3.5",
     "sinon-chai": "2.11.0"
   },
@@ -33,11 +36,10 @@
     "updeep": "1.0.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "deploy": "npm run build && gh-pages -d build",
-    "test": "react-scripts test --env=jsdom",
-    "test:ci": "CI=true react-scripts test --env=jsdom --coverage && coveralls < coverage/lcov.info",
-    "eject": "react-scripts eject"
+    "start": "neutrino start",
+    "build": "neutrino build",
+    "deploy": "neutrino build && gh-pages -d build",
+    "test": "neutrino test --watch",
+    "test:ci": "neutrino test --coverage && coveralls < coverage/lcov.info"
   }
 }
