@@ -14,9 +14,9 @@ let onClickAdd;
 
 beforeEach(() => {
   onClickAdd = spy();
-  
+
   grainForm = shallow(
-    <AddGrainForm onClickAdd={onClickAdd}/>
+    <AddGrainForm onClickAdd={onClickAdd} />
   );
 });
 
@@ -33,16 +33,16 @@ it('change grain type update state', () => {
   const event = {
     target: {
       value: '9',
-	},
+    },
   };
-  
+
   grainForm.find('Textfield[name="grainType"]').simulate('change', event);
-  
+
   grainForm.state('grainType').should.equal('9');
 });
 
-it('click Add triggers onClickAdd', () => {  
+it('click Add triggers onClickAdd', () => {
   grainForm.find('Button').simulate('click');
-  
+
   onClickAdd.should.have.been.calledWith();
 });

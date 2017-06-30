@@ -12,17 +12,17 @@ const state = {
   grains: {
     0: {
       grainType: 'type-0',
-      maxPpg: '0', 
-      proportion: '1', 
+      maxPpg: '0',
+      proportion: '1',
     },
 
     1: {
       grainType: 'type-1',
-      maxPpg: '2', 
-      proportion: '3', 
+      maxPpg: '2',
+      proportion: '3',
     },
   },
-}
+};
 
 let dispatch;
 beforeEach(() => {
@@ -33,9 +33,9 @@ it('mapDispatchToProps should map onClickAdd', () => {
   const props = mapDispatchToProps(dispatch);
 
   should.exist(props.onClickAdd);
-  props.onClickAdd( '0', '1', '2' );
+  props.onClickAdd('0', '1', '2');
 
-  dispatch.should.have.been.calledWith(addGrain( '0', '1', '2' ));
+  dispatch.should.have.been.calledWith(addGrain('0', '1', '2'));
 });
 
 it('mapDispatchToProps should map onClickDelete', () => {
@@ -65,7 +65,7 @@ it('mapDispatchToProps should map onClickUpdate', () => {
   const props = mapDispatchToProps(dispatch);
 
   should.exist(props.onClickUpdate);
-  props.onClickUpdate( '0', '1', '2', '3' );
+  props.onClickUpdate('0', '1', '2', '3');
 
-  dispatch.should.have.been.calledWith(updateGrain( '0', '1', '2', '3' ));
+  dispatch.should.have.been.calledWith(updateGrain('0', '1', '2', '3'));
 });

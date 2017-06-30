@@ -1,20 +1,27 @@
 import { Card, CardText, CardTitle } from 'react-mdl/lib/Card';
 import { func, object } from 'prop-types';
-import React, { PropTypes } from 'react';
+import React from 'react';
 
 import AddGrainForm from './AddGrainForm';
 import GrainTable from './GrainTable';
 
-export default function GristCalculator({ grains, onClickAdd, onClickDelete, onClickEdit, onClickUpdate }) {
-	return (
+export default function GristCalculator(props) {
+  const { grains, onClickAdd, onClickDelete, onClickEdit, onClickUpdate } = props;
+
+  return (
     <Card shadow={1}>
       <CardTitle>Grains</CardTitle>
       <CardText className="wd-auto">
-        <GrainTable grains={grains} onClickDelete={onClickDelete} onClickEdit={onClickEdit} onClickUpdate={onClickUpdate}/>
+        <GrainTable
+          grains={grains}
+          onClickDelete={onClickDelete}
+          onClickEdit={onClickEdit}
+          onClickUpdate={onClickUpdate} />
+
         <AddGrainForm onClickAdd={onClickAdd} />
       </CardText>
     </Card>
-	);
+  );
 }
 
 GristCalculator.propTypes = {

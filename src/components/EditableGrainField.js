@@ -6,9 +6,9 @@ export default function EditableGrainField(props) {
   const { isEditing, value, ...rest } = props;
 
   if (isEditing) {
-      return (
-          <Textfield defaultValue={value} {...rest} />
-      );
+    return (
+      <Textfield defaultValue={value} {...rest} />
+    );
   }
 
   return (

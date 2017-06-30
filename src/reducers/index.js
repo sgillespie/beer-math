@@ -2,11 +2,11 @@ import { combineReducers } from 'redux';
 import { reduce, toNumber } from 'lodash';
 import u, { omit } from 'updeep';
 
-import { 
-  UPDATE_GRAVITY, 
-  UPDATE_VOLUME, 
-  UPDATE_EFFICIENCY, 
-  ADD_GRAIN, 
+import {
+  UPDATE_GRAVITY,
+  UPDATE_VOLUME,
+  UPDATE_EFFICIENCY,
+  ADD_GRAIN,
   DELETE_GRAIN,
   EDIT_GRAIN,
   UPDATE_GRAIN,
@@ -22,29 +22,29 @@ function newId(grains) {
 }
 
 export default combineReducers({
-  targets: targets,
-  grains: grains,
+  targets,
+  grains,
 });
 
 function targets(state = {}, action) {
   switch (action.type) {
     case UPDATE_GRAVITY:
-      return u({ 
-        gravity: action.payload 
+      return u({
+        gravity: action.payload,
       }, state);
 
     case UPDATE_VOLUME:
-      return u({ 
-        volume: action.payload 
+      return u({
+        volume: action.payload,
       }, state);
 
     case UPDATE_EFFICIENCY:
-      return u({ 
-        efficiency: action.payload 
+      return u({
+        efficiency: action.payload,
       }, state);
 
     default:
-      return state; 
+      return state;
   }
 }
 
@@ -54,15 +54,15 @@ function grains(state = {}, action) {
       return u({
         [newId(state)]: action.payload,
       }, state);
-	
+
     case DELETE_GRAIN:
       // action.payload is the grain key
       return omit(action.payload, state);
-	  
+
     case EDIT_GRAIN:
       // action.payload is the grain key
-      return u({ 
-	    [action.payload]: { isEditing: val => !val } 
+      return u({
+        [action.payload]: { isEditing: val => !val }
       }, state);
 
     case UPDATE_GRAIN:
@@ -75,7 +75,7 @@ function grains(state = {}, action) {
         }
       }, state);
 
-    default: 
+    default:
       return state;
   }
 }

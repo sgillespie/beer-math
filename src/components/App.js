@@ -4,7 +4,7 @@ import { Content, Header, Layout, Navigation, Drawer } from 'react-mdl/lib/Layou
 import GrainContainer from '../containers/GrainContainer';
 import RecipeTargetsContainer from '../containers/RecipeTargetsContainer';
 
-export default function() {
+export default function () {
   return (
     <Layout fixedHeader>
       <Header title="🍺+🍺=🍻">
@@ -14,7 +14,7 @@ export default function() {
           <a href="#">Contact</a>
         </Navigation>
       </Header>
-	  
+
       <Drawer title="🍺+🍺=🍻">
         <Navigation>
           <a href="#">Home</a>
@@ -22,7 +22,7 @@ export default function() {
           <a href="#">Contact</a>
         </Navigation>
       </Drawer>
-	  
+
       <Content>
         <div className="page-content">
           <RecipeTargetsContainer />

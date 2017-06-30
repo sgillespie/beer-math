@@ -4,29 +4,19 @@ import { func, string } from 'prop-types';
 import React, { Component } from 'react';
 import Textfield from 'react-mdl/lib/Textfield';
 
+function onChange(handler) {
+  return event => handler(event.target.value);
+}
+
 export default class RecipeTargets extends Component {
   constructor(props) {
     super(props);
 
     const { onChangeEfficiency, onChangeGravity, onChangeVolume } = this.props;
 
-    this.onChangeGravity = this
-      .onChange(onChangeGravity)
-      .bind(this);
-
-    this.onChangeVolume = this
-      .onChange(onChangeVolume)
-      .bind(this);
-
-    this.onChangeEfficiency = this
-      .onChange(onChangeEfficiency)
-      .bind(this);
-  }
-
-  onChange(handler) {
-    return (event) => {
-      handler(event.target.value);
-    }
+    this.onChangeGravity = onChange(onChangeGravity).bind(this);
+    this.onChangeVolume = onChange(onChangeVolume).bind(this);
+    this.onChangeEfficiency = onChange(onChangeEfficiency).bind(this);
   }
 
   onChangeGravity(event) {
@@ -34,13 +24,13 @@ export default class RecipeTargets extends Component {
 
     onChangeGravity(event.target.value);
   }
-  
+
   onChangeVolume(event) {
     const { onChangeVolume } = this.props;
 
     onChangeVolume(event.target.value);
   }
-  
+
   onChangeEfficiency(event) {
     const { onChangeEfficiency } = this.props;
 
@@ -56,30 +46,30 @@ export default class RecipeTargets extends Component {
         <CardText>
           <Grid>
             <Cell col={4}>
-              <Textfield 
+              <Textfield
                 defaultValue={gravity}
                 label="Preboil Gravity (SG)"
                 name="gravity"
                 onChange={this.onChangeGravity}
-                floatingLabel /> 
+                floatingLabel />
             </Cell>
 
             <Cell col={4}>
-              <Textfield 
+              <Textfield
                 defaultValue={volume}
                 label="Preboil Volume (Gallons)"
                 name="volume"
                 onChange={this.onChangeVolume}
-                floatingLabel /> 
+                floatingLabel />
             </Cell>
 
             <Cell col={4}>
-              <Textfield 
+              <Textfield
                 defaultValue={efficiency}
                 label="Extract Efficiency"
                 name="efficiency"
                 onChange={this.onChangeEfficiency}
-                floatingLabel /> 
+                floatingLabel />
             </Cell>
           </Grid>
         </CardText>

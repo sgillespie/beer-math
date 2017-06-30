@@ -20,7 +20,7 @@ function render(isEditing) {
 
 it('renders', () => {
   const field = render(true);
-  
+
   should.exist(field);
   field.should.have.lengthOf(1);
 });

@@ -14,15 +14,15 @@ export function mapDispatchToProps(dispatch) {
     onClickAdd(grainType, maxPpg, proportion) {
       dispatch(addGrain(grainType, maxPpg, proportion));
     },
-	
+
     onClickDelete(key) {
       dispatch(deleteGrain(key));
     },
-	
-	onClickEdit(key) {
-	  dispatch(editGrain(key));
-	},
-    
+
+    onClickEdit(key) {
+      dispatch(editGrain(key));
+    },
+
     onClickUpdate(key, grainType, maxPpg, proportion) {
       dispatch(updateGrain(key, grainType, maxPpg, proportion));
     },

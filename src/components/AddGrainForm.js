@@ -1,63 +1,62 @@
 import { Cell, Grid } from 'react-mdl/lib/Grid';
 import { func } from 'prop-types';
 import Button from 'react-mdl/lib/Button';
-import React, { Component, PropTypes, } from 'react';
+import React, { Component } from 'react';
 import Textfield from 'react-mdl/lib/Textfield';
 
 export default class AddGrainForm extends Component {
   constructor(props) {
     super(props);
-	
+
     this.onChangeGrainType = this.onChangeGrainType.bind(this);
     this.onChangeMaxPpg = this.onChangeMaxPpg.bind(this);
     this.onChangeProportion = this.onChangeProportion.bind(this);
     this.onClickAdd = this.onClickAdd.bind(this);
-    
+
     this.state = {
       grainType: '',
       maxPpg: '',
       proportion: '',
     };
   }
-  
+
   onChangeGrainType(event) {
     const grainType = event.target.value;
-	
-	this.setState({
+
+    this.setState({
       grainType,
-	});
-  }
-  
-  onChangeMaxPpg(event) {
-    const maxPpg = event.target.value;
-	
-	this.setState({
-      maxPpg,
-	});
-  }
-  
-  onChangeProportion(event) {
-    const proportion = event.target.value;
-	
-	this.setState({
-      proportion,
-	});
-  }
-  
-  onClickAdd() {
-    const { onClickAdd } = this.props;
-	
-    const { grainType, maxPpg, proportion } = this.state;
-	
-    onClickAdd( grainType, maxPpg, proportion );
+    });
   }
 
-  render() { 
-	  
+  onChangeMaxPpg(event) {
+    const maxPpg = event.target.value;
+
+    this.setState({
+      maxPpg,
+    });
+  }
+
+  onChangeProportion(event) {
+    const proportion = event.target.value;
+
+    this.setState({
+      proportion,
+    });
+  }
+
+  onClickAdd() {
+    const { onClickAdd } = this.props;
+
+    const { grainType, maxPpg, proportion } = this.state;
+
+    onClickAdd(grainType, maxPpg, proportion);
+  }
+
+  render() {
     return (
       <Grid style={{ marginTop: '1rem' }}>
         <Cell col={3}>
-          <Textfield 
+          <Textfield
             label="Grain Type"
             name="grainType"
             onChange={this.onChangeGrainType}
@@ -65,19 +64,19 @@ export default class AddGrainForm extends Component {
         </Cell>
 
         <Cell col={3}>
-          <Textfield 
+          <Textfield
             label="Max PPG (SG)"
             name="maxPpg"
             onChange={this.onChangeMaxPpg}
-            floatingLabel /> 
+            floatingLabel />
         </Cell>
 
         <Cell col={3}>
-          <Textfield 
+          <Textfield
             label="Proportion (%)"
             name="proportion"
             onChange={this.onChangeProportion}
-            floatingLabel /> 
+            floatingLabel />
         </Cell>
 
         <Cell col={3} className="button-group">

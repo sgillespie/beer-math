@@ -4,78 +4,74 @@ import EditableGrainField from './EditableGrainField';
 import GrainActionsColumn from './GrainActionsColumn';
 
 export default class GrainTableRow extends Component {
-  
+
   constructor(props) {
     super(props);
-    
+
     this.onChangeGrainType = this.onChangeGrainType.bind(this);
     this.onChangeMaxPpg = this.onChangeMaxPpg.bind(this);
     this.onChangeProportion = this.onChangeProportion.bind(this);
     this.onClickUpdate = this.onClickUpdate.bind(this);
     this.onClickEdit = this.onClickEdit.bind(this);
-    
+
     const { grain } = props;
-    
+
     this.state = {
       grainType: grain.grainType,
       maxPpg: grain.maxPpg,
       proportion: grain.proportion,
     };
   }
-  
+
   onChangeGrainType(event) {
     const grainType = event.target.value;
-	
-	this.setState({
+
+    this.setState({
       grainType,
-	});
+    });
   }
-  
+
   onChangeMaxPpg(event) {
     const maxPpg = event.target.value;
-	
-	this.setState({
+
+    this.setState({
       maxPpg,
-	});
+    });
   }
-  
+
   onChangeProportion(event) {
     const proportion = event.target.value;
-	
-	this.setState({
+
+    this.setState({
       proportion,
-	});
+    });
   }
-  
-  onClickUpdate() { 
-     
+
+  onClickUpdate() {
     const { grainId, onClickUpdate } = this.props;
 
     const { grainType, maxPpg, proportion } = this.state;
-    
-    onClickUpdate( grainId, grainType, maxPpg, proportion );
+
+    onClickUpdate(grainId, grainType, maxPpg, proportion);
   }
-  
-  /*TODO: reset state when onClickEdit*/
-  
+
+  // TODO: reset state when onClickEdit
+
   onClickEdit() {
-    
     const { grainId, onClickEdit, grain } = this.props;
-    
+
     this.setState({
       grainType: grain.grainType,
       maxPpg: grain.maxPpg,
       proportion: grain.proportion,
     });
-    
+
     onClickEdit(grainId);
-    
   }
-  
-  render () {
-    
-    const { grain, grainId, onClickEdit, onClickDelete } = this.props
-    
+
+  render() {
+    const { grain, grainId, onClickDelete } = this.props;
+
     return (
       <tr className={grain.isEditing ? 'is-editing' : ''}>
         <td className="mdl-data-table__cell--non-numeric">
@@ -104,9 +100,9 @@ export default class GrainTableRow extends Component {
             value={grain.proportion}
             onChange={this.onChangeProportion} />
         </td>
-          
+
         <td className="mdl-data-table__cell--non-numeric">X lbs Y oz</td>
-          
+
         <td className="mdl-data-table__cell--non-numeric">
           <GrainActionsColumn
             id={grainId}

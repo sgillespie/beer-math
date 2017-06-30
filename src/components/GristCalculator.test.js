@@ -22,10 +22,10 @@ const grains = {
 
 let calculator,
     onClickAdd,
-	onClickDelete,
-	onClickEdit,
+    onClickDelete,
+    onClickEdit,
     onClickUpdate;
-	
+
 beforeEach(() => {
   onClickAdd = spy();
   onClickDelete = spy();
@@ -37,7 +37,7 @@ beforeEach(() => {
       grains={grains}
       onClickAdd={onClickAdd}
       onClickDelete={onClickDelete}
-	  onClickEdit={onClickEdit} 
+      onClickEdit={onClickEdit}
       onClickUpdate={onClickUpdate} />
   );
 });

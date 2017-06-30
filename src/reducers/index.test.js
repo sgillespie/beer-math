@@ -19,18 +19,18 @@ const state = {
     volume: 1,
     efficiency: 2,
   },
-  
+
   grains: {
     0: {
       grainType: 'US Two Row',
-      maxPpg: '1.034', 
-      proportion: '90%', 
+      maxPpg: '1.034',
+      proportion: '90%',
     },
 
     1: {
       grainType: 'Crystal 40L',
-      maxPpg: '1.036', 
-      proportion: '10%', 
+      maxPpg: '1.036',
+      proportion: '10%',
     },
   }
 };
@@ -60,9 +60,9 @@ it('updates efficiency when type is UPDATE_EFFICIENCY', () => {
 });
 
 it('adds grain when type is ADD_GRAIN', () => {
-  const action = addGrain( 1, 2, 3);
+  const action = addGrain(1, 2, 3);
   const newState = reduce(state, action);
-  
+
   should.exist(newState.grains['0']);
   should.exist(newState.grains['1']);
   should.exist(newState.grains['2']);
@@ -76,22 +76,22 @@ it('adds grain when type is ADD_GRAIN', () => {
 it('deletes grain when type is DELETE_GRAIN', () => {
   const action = deleteGrain(0);
   const newState = reduce(state, action);
-  
+
   should.not.exist(newState.grains['0']);
 });
 
 it('edits grain when type is EDIT_GRAIN', () => {
   const action = editGrain('0');
   const newState = reduce(state, action);
-  
+
   should.exist(newState.grains['0'].isEditing);
   newState.grains['0'].isEditing.should.be.true;
 });
 
 it('isEditing equals false when EDIT_GRAIN called twice', () => {
   const action = editGrain('0');
-  const newState = reduce( reduce(state, action), action);
-  
+  const newState = reduce(reduce(state, action), action);
+
   should.exist(newState.grains['0'].isEditing);
   newState.grains['0'].isEditing.should.be.false;
 });

@@ -27,8 +27,8 @@ export function updateEfficiency(efficiency) {
   };
 }
 
-export function addGrain( grainType, maxPpg, proportion ) {
-  return{
+export function addGrain(grainType, maxPpg, proportion) {
+  return {
     type: ADD_GRAIN,
 
     payload: {
@@ -40,7 +40,7 @@ export function addGrain( grainType, maxPpg, proportion ) {
 }
 
 export function deleteGrain(key) {
-  return{
+  return {
     type: DELETE_GRAIN,
     payload: key,
   };
@@ -54,9 +54,9 @@ export function editGrain(key) {
 }
 
 export function updateGrain(key, grainType, maxPpg, proportion) {
-  return{
+  return {
     type: UPDATE_GRAIN,
-	
+
     payload: {
       key,
       grainType,

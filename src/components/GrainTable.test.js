@@ -4,9 +4,7 @@ import React from 'react';
 import { spy } from 'sinon';
 import sinonChai from 'sinon-chai';
 
-import EditableGrainField from './EditableGrainField';
 import GrainTable from './GrainTable';
-import GrainActionsColumn from './GrainActionsColumn';
 import GrainTableRow from './GrainTableRow';
 
 chai.use(sinonChai);
@@ -33,7 +31,7 @@ let grainTable,
     onClickDelete,
     onClickEdit,
     onClickUpdate;
-	
+
 beforeEach(() => {
   onClickDelete = spy();
   onClickEdit = spy();
@@ -86,29 +84,29 @@ it('passes onClickUpdate to GrainTableRow', () => {
 it('passes grain to GrainTableRow', () => {
   const grainTableRow = grainTable
     .find(GrainTableRow);
-	
-	grainTableRow
-	  .first()
-	  .prop('grain')
-	  .should.deep.equal(grains['0']);
-	  
-    grainTableRow
-	  .at(1)
-	  .prop('grain')
-	  .should.deep.equal(grains['1']);
+
+  grainTableRow
+    .first()
+    .prop('grain')
+    .should.deep.equal(grains['0']);
+
+  grainTableRow
+    .at(1)
+    .prop('grain')
+    .should.deep.equal(grains['1']);
 });
 
 it('passes grainId to GrainTableRow', () => {
   const grainTableRow = grainTable
     .find(GrainTableRow);
-	
-	grainTableRow
-	  .first()
-	  .prop('grainId')
-	  .should.equal('0');
-	  
-    grainTableRow
-	  .at(1)
-	  .prop('grainId')
-	  .should.equal('1');
+
+  grainTableRow
+    .first()
+    .prop('grainId')
+    .should.equal('0');
+
+  grainTableRow
+    .at(1)
+    .prop('grainId')
+    .should.equal('1');
 });

@@ -1,7 +1,8 @@
 import { func, object } from 'prop-types';
 import React from 'react';
+import map from 'lodash.map';
+
 import GrainTableRow from './GrainTableRow';
-import { map } from 'lodash';
 
 export default function GrainTable({ grains, onClickDelete, onClickEdit, onClickUpdate }) {
   return (
@@ -18,17 +19,23 @@ export default function GrainTable({ grains, onClickDelete, onClickEdit, onClick
       <tbody>
         {
           map(grains, (grain, key) => (
-            <GrainTableRow grain={grain} grainId={key} key={key} onClickDelete={onClickDelete} onClickEdit={onClickEdit} onClickUpdate={onClickUpdate} />
+            <GrainTableRow
+              grain={grain}
+              grainId={key}
+              key={key}
+              onClickDelete={onClickDelete}
+              onClickEdit={onClickEdit}
+              onClickUpdate={onClickUpdate} />
           ))
-	    }
+      }
       </tbody>
       <tfoot>
         <tr>
           <th className="mdl-data-table__cell--non-numeric">Total Weight</th>
-          <th className="mdl-data-table__cell--non-numeric"></th>
+          <th className="mdl-data-table__cell--non-numeric" />
           <th className="mdl-data-table__cell--non-numeric">100 %</th>
-          <th className="mdl-data-table__cell--non-numeric"></th>
-          <th className="mdl-data-table__cell--non-numeric"></th>
+          <th className="mdl-data-table__cell--non-numeric" />
+          <th className="mdl-data-table__cell--non-numeric" />
         </tr>
       </tfoot>
     </table>
