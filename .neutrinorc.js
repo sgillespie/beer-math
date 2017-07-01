@@ -21,6 +21,7 @@ module.exports = {
           'no-use-before-define': 'off',
           'one-var': 'off',
           'jsx-a11y/href-no-hash': 'off',
+          'import/prefer-default-export': 'off',
           'react/jsx-filename-extension': 'off',
           'react/jsx-closing-bracket-location': 'off',
           'react/forbid-prop-types': 'off',
