@@ -1,13 +1,16 @@
-import { shallow } from 'enzyme';
+import { createShallow } from 'material-ui/test-utils';
 import { spy } from 'sinon';
 import React from 'react';
+import TextField from 'material-ui/TextField';
 import chai from 'chai';
 import sinonChai from 'sinon-chai';
 
 import RecipeTargets from './RecipeTargets';
 
 chai.use(sinonChai);
-const should = chai.should();
+
+const should = chai.should(),
+      shallow = createShallow({ dive: true });
 
 let onChangeGravity,
     onChangeVolume,
@@ -43,7 +46,7 @@ it('change gravity triggers onChangeGravity', () => {
   };
 
   recipeTargets
-    .find('Textfield[name="gravity"]')
+    .find('TextField[name="gravity"]')
     .simulate('change', event);
 
   onChangeGravity.should.have.been.calledWith('0');
@@ -57,7 +60,7 @@ it('change volume triggers onChangeVolume', () => {
   };
 
   recipeTargets
-    .find('Textfield[name="volume"]')
+    .find('TextField[name="volume"]')
     .simulate('change', event);
 
   onChangeVolume.should.have.been.calledWith('9');
@@ -71,7 +74,7 @@ it('change efficiency triggers onChangeEfficiency', () => {
   };
 
   recipeTargets
-    .find('Textfield[name="efficiency"]')
+    .find('TextField[name="efficiency"]')
     .simulate('change', event);
 
   onChangeEfficiency.should.have.been.calledWith('9');

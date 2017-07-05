@@ -1,4 +1,4 @@
-import { shallow } from 'enzyme';
+import { createShallow } from 'material-ui/test-utils';
 import chai from 'chai';
 import React from 'react';
 
@@ -7,7 +7,7 @@ import App from './App';
 const should = chai.should();
 
 it('renders', () => {
-  const wrapper = shallow(
+  const wrapper = createShallow()(
     <App />
   );
 

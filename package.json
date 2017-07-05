@@ -32,15 +32,17 @@
     "lodash.mapvalues": "4.6.0",
     "lodash.reduce": "4.6.0",
     "lodash.values": "4.3.0",
+    "material-ui": "next",
+    "material-ui-icons": "^1.0.0-alpha.19",
     "prop-types": "^15.5.10",
     "react": "15.6.1",
     "react-dom": "15.6.1",
-    "react-mdl": "1.10.3",
     "react-redux": "5.0.5",
     "redux": "3.7.0",
     "redux-devtools": "3.4.0",
     "redux-devtools-dock-monitor": "1.1.2",
     "redux-devtools-log-monitor": "1.3.0",
+    "typeface-roboto": "^0.0.29",
     "updeep": "1.0.0"
   },
   "scripts": {

@@ -1,4 +1,4 @@
-import { shallow } from 'enzyme';
+import { createShallow } from 'material-ui/test-utils';
 import chai from 'chai';
 import React from 'react';
 import { spy } from 'sinon';
@@ -8,7 +8,8 @@ import GrainTable from './GrainTable';
 import GrainTableRow from './GrainTableRow';
 
 chai.use(sinonChai);
-const should = chai.should();
+const shallow = createShallow({ dive: true }),
+      should = chai.should();
 
 const grains = {
   0: {

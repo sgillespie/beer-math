@@ -1,4 +1,4 @@
-import { shallow } from 'enzyme';
+import { createShallow } from 'material-ui/test-utils';
 import { spy } from 'sinon';
 import React from 'react';
 import chai from 'chai';
@@ -9,7 +9,8 @@ import GrainTable from './GrainTable';
 import GristCalculator from './GristCalculator';
 
 chai.use(sinonChai);
-const should = chai.should();
+const shallow = createShallow({ dive: true }),
+      should = chai.should();
 
 const grains = {
   0: {

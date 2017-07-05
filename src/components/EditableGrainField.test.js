@@ -1,11 +1,12 @@
-import { shallow } from 'enzyme';
+import { createShallow } from 'material-ui/test-utils';
 import chai from 'chai';
 import React from 'react';
-import Textfield from 'react-mdl/lib/Textfield';
+import Input from 'material-ui/Input';
 
 import EditableGrainField from './EditableGrainField';
 
-const should = chai.should();
+const shallow = createShallow({ dive: false }),
+      should = chai.should();
 
 function render(isEditing) {
   return shallow(
@@ -25,9 +26,9 @@ it('renders', () => {
   field.should.have.lengthOf(1);
 });
 
-it('renders a Textfield when isEditing', () => {
+it('renders a TextField when isEditing', () => {
   render(true)
-    .find(Textfield)
+    .find(Input)
     .should.have.lengthOf(1);
 });
 

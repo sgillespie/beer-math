@@ -1,9 +1,13 @@
 import { bool, func, shape, string } from 'prop-types';
-import IconButton from 'react-mdl/lib/IconButton';
+import CheckIcon from 'material-ui-icons/Check';
+import ClearIcon from 'material-ui-icons/Clear';
+import CreateIcon from 'material-ui-icons/Create';
+import DeleteIcon from 'material-ui-icons/Delete';
+import Grid from 'material-ui/Grid';
+import IconButton from 'material-ui/IconButton';
 import React from 'react';
-import Tooltip from 'react-mdl/lib/Tooltip';
 
-export default function GrainActionsColumn(props) {
+function GrainActionsColumn(props) {
   const { grain, id, onClickDelete, onClickEdit, onClickUpdate } = props;
 
   function deleteRow() {
@@ -11,43 +15,31 @@ export default function GrainActionsColumn(props) {
   }
 
   return (
-    <div className="icon-group">
+    <Grid justify="flex-end" container>
       { !grain.isEditing &&
-        <div>
-          <Tooltip label="Delete">
-            <IconButton
-              name="delete"
-              onClick={deleteRow}
-              ripple />
-          </Tooltip>
+        <Grid item>
+          <IconButton aria-label="delete" name="delete" onClick={deleteRow}>
+            <DeleteIcon />
+          </IconButton>
 
-          <Tooltip label="Edit">
-            <IconButton
-              name="create"
-              onClick={onClickEdit}
-              ripple />
-          </Tooltip>
-        </div>
+          <IconButton aria-label="edit" name="edit" onClick={onClickEdit}>
+            <CreateIcon />
+          </IconButton>
+        </Grid>
       }
 
       { grain.isEditing &&
-        <div>
-          <Tooltip label="Cancel">
-            <IconButton
-              name="clear"
-              onClick={onClickEdit}
-              ripple />
-          </Tooltip>
+        <Grid item>
+          <IconButton aria-label="cancel" name="cancel" onClick={onClickEdit}>
+            <ClearIcon />
+          </IconButton>
 
-          <Tooltip label="Save">
-            <IconButton
-              name="check"
-              onClick={onClickUpdate}
-              ripple />
-          </Tooltip>
-        </div>
+          <IconButton aria-label="save" name="save" onClick={onClickUpdate}>
+            <CheckIcon />
+          </IconButton>
+        </Grid>
       }
-    </div>
+    </Grid>
   );
 }
 
@@ -61,3 +53,4 @@ GrainActionsColumn.propTypes = {
   onClickUpdate: func.isRequired,
 };
 
+export default GrainActionsColumn;

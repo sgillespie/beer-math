@@ -1,13 +1,16 @@
-import { shallow } from 'enzyme';
-import chai from 'chai';
-import React from 'react';
+import { createShallow } from 'material-ui/test-utils';
 import { spy } from 'sinon';
+import Button from 'material-ui/Button';
+import React from 'react';
+import TextField from 'material-ui/TextField';
+import chai from 'chai';
 import sinonChai from 'sinon-chai';
 
 import AddGrainForm from './AddGrainForm';
 
 chai.use(sinonChai);
-const should = chai.should();
+const shallow = createShallow({ dive: true }),
+      should = chai.should();
 
 let grainForm;
 let onClickAdd;
@@ -36,13 +39,18 @@ it('change grain type update state', () => {
     },
   };
 
-  grainForm.find('Textfield[name="grainType"]').simulate('change', event);
+  grainForm
+    .find(TextField)
+    .find('[name="grainType"]')
+    .simulate('change', event);
 
   grainForm.state('grainType').should.equal('9');
 });
 
 it('click Add triggers onClickAdd', () => {
-  grainForm.find('Button').simulate('click');
+  grainForm
+    .find(Button)
+    .simulate('click');
 
   onClickAdd.should.have.been.calledWith();
 });

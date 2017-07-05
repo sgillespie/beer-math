@@ -1,22 +1,28 @@
 import { func, object } from 'prop-types';
+import { createStyleSheet, withStyles } from 'material-ui/styles';
 import React from 'react';
+import Table, { TableBody, TableCell, TableHead, TableRow } from 'material-ui/Table';
 import map from 'lodash.map';
 
 import GrainTableRow from './GrainTableRow';
 
-export default function GrainTable({ grains, onClickDelete, onClickEdit, onClickUpdate }) {
+const styleSheet = createStyleSheet('GrainTable', {
+});
+
+function GrainTable({ grains, onClickDelete, onClickEdit, onClickUpdate }) {
   return (
-    <table className="grains-table mdl-data-table">
-      <thead>
-        <tr>
-          <th className="mdl-data-table__cell--non-numeric">Grain Type</th>
-          <th className="mdl-data-table__cell--non-numeric">Max PPG (SG)</th>
-          <th className="mdl-data-table__cell--non-numeric">Proportion (%)</th>
-          <th className="mdl-data-table__cell--non-numeric">Weight (lbs/oz)</th>
-          <th className="text-right mdl-data-table__cell--non-numeric">Actions</th>
-        </tr>
-      </thead>
-      <tbody>
+    <Table>
+      <TableHead>
+        <TableRow>
+          <TableCell>Grain Type</TableCell>
+          <TableCell>Max PPG (SG)</TableCell>
+          <TableCell>Proportion (%)</TableCell>
+          <TableCell>Weight (lbs/oz)</TableCell>
+          <TableCell numeric>Actions</TableCell>
+        </TableRow>
+      </TableHead>
+
+      <TableBody>
         {
           map(grains, (grain, key) => (
             <GrainTableRow
@@ -27,18 +33,18 @@ export default function GrainTable({ grains, onClickDelete, onClickEdit, onClick
               onClickEdit={onClickEdit}
               onClickUpdate={onClickUpdate} />
           ))
-      }
-      </tbody>
-      <tfoot>
-        <tr>
-          <th className="mdl-data-table__cell--non-numeric">Total Weight</th>
-          <th className="mdl-data-table__cell--non-numeric" />
-          <th className="mdl-data-table__cell--non-numeric">100 %</th>
-          <th className="mdl-data-table__cell--non-numeric" />
-          <th className="mdl-data-table__cell--non-numeric" />
-        </tr>
-      </tfoot>
-    </table>
+        }
+
+        <TableRow>
+          <TableCell>Total Weight</TableCell>
+          <TableCell />
+          <TableCell>100 %</TableCell>
+          <TableCell />
+          <TableCell />
+        </TableRow>
+
+      </TableBody>
+    </Table>
   );
 }
 
@@ -48,3 +54,5 @@ GrainTable.propTypes = {
   onClickEdit: func.isRequired,
   onClickUpdate: func.isRequired,
 };
+
+export default withStyles(styleSheet)(GrainTable);

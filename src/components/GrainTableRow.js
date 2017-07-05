@@ -1,10 +1,20 @@
+import { createStyleSheet, withStyles } from 'material-ui/styles';
 import { func, object, string } from 'prop-types';
 import React, { Component } from 'react';
+import { TableCell, TableRow } from 'material-ui/Table';
 import EditableGrainField from './EditableGrainField';
 import GrainActionsColumn from './GrainActionsColumn';
 
-export default class GrainTableRow extends Component {
+export const styleSheet = createStyleSheet('GrainTableRow', {
+  defaultRow: {
+  },
 
+  isEditing: {
+    backgroundColor: '#fafafa',
+  },
+});
+
+class GrainTableRow extends Component {
   constructor(props) {
     super(props);
 
@@ -55,8 +65,6 @@ export default class GrainTableRow extends Component {
     onClickUpdate(grainId, grainType, maxPpg, proportion);
   }
 
-  // TODO: reset state when onClickEdit
-
   onClickEdit() {
     const { grainId, onClickEdit, grain } = this.props;
 
@@ -70,56 +78,59 @@ export default class GrainTableRow extends Component {
   }
 
   render() {
-    const { grain, grainId, onClickDelete } = this.props;
+    const { classes, grain, grainId, onClickDelete } = this.props;
 
     return (
-      <tr className={grain.isEditing ? 'is-editing' : ''}>
-        <td className="mdl-data-table__cell--non-numeric">
+      <TableRow hover className={grain.isEditing ? classes.isEditing : classes.defaultRow}>
+        <TableCell>
           <EditableGrainField
             isEditing={grain.isEditing}
             name="grainType"
             label="Grain Type"
             value={grain.grainType}
             onChange={this.onChangeGrainType} />
-        </td>
+        </TableCell>
 
-        <td className="mdl-data-table__cell--non-numeric">
+        <TableCell>
           <EditableGrainField
             isEditing={grain.isEditing}
             name="grainMaxPpg"
             label="Max PPG"
             value={grain.maxPpg}
             onChange={this.onChangeMaxPpg} />
-        </td>
+        </TableCell>
 
-        <td className="mdl-data-table__cell--non-numeric">
+        <TableCell>
           <EditableGrainField
             isEditing={grain.isEditing}
             name="grainProportion"
             label="Proportion (%)"
             value={grain.proportion}
             onChange={this.onChangeProportion} />
-        </td>
+        </TableCell>
 
-        <td className="mdl-data-table__cell--non-numeric">X lbs Y oz</td>
+        <TableCell>X lbs Y oz</TableCell>
 
-        <td className="mdl-data-table__cell--non-numeric">
+        <TableCell numeric>
           <GrainActionsColumn
             id={grainId}
             onClickDelete={onClickDelete}
             onClickEdit={this.onClickEdit}
             onClickUpdate={this.onClickUpdate}
             grain={grain} />
-        </td>
-      </tr>
+        </TableCell>
+      </TableRow>
     );
   }
 }
 
 GrainTableRow.propTypes = {
+  classes: object.isRequired,
   grain: object.isRequired,
   grainId: string.isRequired,
   onClickDelete: func.isRequired,
   onClickEdit: func.isRequired,
   onClickUpdate: func.isRequired,
 };
+
+export default withStyles(styleSheet)(GrainTableRow);

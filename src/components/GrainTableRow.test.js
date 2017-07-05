@@ -1,15 +1,18 @@
-import { shallow } from 'enzyme';
-import chai from 'chai';
-import React from 'react';
+import { TableRow } from 'material-ui/Table';
+import { createShallow } from 'material-ui/test-utils';
 import { spy } from 'sinon';
+import React from 'react';
+import chai from 'chai';
 import sinonChai from 'sinon-chai';
 
 import EditableGrainField from './EditableGrainField';
-import GrainTableRow from './GrainTableRow';
+import GrainTableRow, { styleSheet } from './GrainTableRow';
 import GrainActionsColumn from './GrainActionsColumn';
 
 chai.use(sinonChai);
-const should = chai.should();
+const shallow = createShallow({ dive: true }),
+      classes = shallow.context.styleManager.render(styleSheet),
+      should = chai.should();
 
 let grain,
     onClickDelete,
@@ -118,8 +121,9 @@ it('adds className is-editing to the table row when grain.isEditing', () => {
   grain.isEditing = true;
 
   render()
-    .find('.is-editing')
-    .should.have.lengthOf(1);
+    .find(TableRow)
+    .hasClass(classes.isEditing)
+    .should.be.true;
 });
 
 it('passes grain to Grain Actions Column', () => {

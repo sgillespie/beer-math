@@ -1,9 +1,11 @@
+import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
 import { Provider } from 'react-redux';
+import createPalette from 'material-ui/styles/palette';
 import { render } from 'react-dom';
 import React from 'react';
+import { indigo, teal } from 'material-ui/styles/colors';
 
-import 'react-mdl/extra/css/material.teal-indigo.min.css';
-import 'react-mdl/extra/material';
+import 'typeface-roboto/index.css';
 
 import App from './components/App';
 import DevTools from './containers/DevTools';
@@ -39,10 +41,20 @@ const appStore = store({
   },
 });
 
+const theme = createMuiTheme({
+  palette: createPalette({
+    type: 'light',
+    primary: teal,
+    accent: indigo,
+  }),
+});
+
 render(
   <Provider store={appStore}>
-    <div>
-      <DevTools />
-      <App />
-    </div>
+    <MuiThemeProvider theme={theme}>
+      <div>
+        <DevTools />
+        <App />
+      </div>
+    </MuiThemeProvider>
   </Provider>, document.getElementById('root'));

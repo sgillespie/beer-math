@@ -1,13 +1,15 @@
 import { bool, node, string } from 'prop-types';
 import React from 'react';
-import Textfield from 'react-mdl/lib/Textfield';
+import Input from 'material-ui/Input';
 
 export default function EditableGrainField(props) {
   const { isEditing, value, ...rest } = props;
 
   if (isEditing) {
     return (
-      <Textfield defaultValue={value} {...rest} />
+      <Input
+        defaultValue={value}
+        {...rest} />
     );
   }
 

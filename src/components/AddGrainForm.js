@@ -1,10 +1,17 @@
-import { Cell, Grid } from 'react-mdl/lib/Grid';
-import { func } from 'prop-types';
-import Button from 'react-mdl/lib/Button';
+import { func, object } from 'prop-types';
+import { createStyleSheet, withStyles } from 'material-ui/styles';
+import Button from 'material-ui/Button';
+import Grid from 'material-ui/Grid';
 import React, { Component } from 'react';
-import Textfield from 'react-mdl/lib/Textfield';
+import TextField from 'material-ui/TextField';
 
-export default class AddGrainForm extends Component {
+const styleSheet = createStyleSheet('AddGrainForm', theme => ({
+  root: {
+    marginTop: theme.spacing.unit,
+  },
+}));
+
+class AddGrainForm extends Component {
   constructor(props) {
     super(props);
 
@@ -53,35 +60,39 @@ export default class AddGrainForm extends Component {
   }
 
   render() {
+    const { classes } = this.props;
+
     return (
-      <Grid style={{ marginTop: '1rem' }}>
-        <Cell col={3}>
-          <Textfield
+      <Grid
+        align="flex-end"
+        className={classes.root}
+        justify="space-around"
+        container>
+
+        <Grid item>
+          <TextField
             label="Grain Type"
             name="grainType"
-            onChange={this.onChangeGrainType}
-            floatingLabel />
-        </Cell>
+            onChange={this.onChangeGrainType} />
+        </Grid>
 
-        <Cell col={3}>
-          <Textfield
+        <Grid item>
+          <TextField
             label="Max PPG (SG)"
             name="maxPpg"
-            onChange={this.onChangeMaxPpg}
-            floatingLabel />
-        </Cell>
+            onChange={this.onChangeMaxPpg} />
+        </Grid>
 
-        <Cell col={3}>
-          <Textfield
+        <Grid item>
+          <TextField
             label="Proportion (%)"
             name="proportion"
-            onChange={this.onChangeProportion}
-            floatingLabel />
-        </Cell>
+            onChange={this.onChangeProportion} />
+        </Grid>
 
-        <Cell col={3} className="button-group">
-          <Button raised ripple accent onClick={this.onClickAdd}>Add</Button>
-        </Cell>
+        <Grid item>
+          <Button color="accent" raised onClick={this.onClickAdd}>Add</Button>
+        </Grid>
       </Grid>
     );
   }
@@ -89,5 +100,8 @@ export default class AddGrainForm extends Component {
 }
 
 AddGrainForm.propTypes = {
+  classes: object.isRequired,
   onClickAdd: func.isRequired,
 };
+
+export default withStyles(styleSheet)(AddGrainForm);

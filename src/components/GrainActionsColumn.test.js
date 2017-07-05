@@ -1,5 +1,6 @@
-import { shallow } from 'enzyme';
+import { createShallow } from 'material-ui/test-utils';
 import { spy } from 'sinon';
+import IconButton from 'material-ui/IconButton';
 import React from 'react';
 import chai from 'chai';
 import sinonChai from 'sinon-chai';
@@ -7,7 +8,8 @@ import sinonChai from 'sinon-chai';
 import GrainActionsColumn from './GrainActionsColumn';
 
 chai.use(sinonChai);
-const should = chai.should();
+const shallow = createShallow({ dive: true }),
+      should = chai.should();
 
 let grain,
     onClickDelete,
@@ -47,7 +49,8 @@ it('renders', () => {
 
 it('click delete triggers onClickDelete', () => {
   render(grain)
-    .find('IconButton[name="delete"]')
+    .find(IconButton)
+    .find('[name="delete"]')
     .simulate('click');
 
   onClickDelete.should.have.been.calledWith('0');
@@ -55,7 +58,8 @@ it('click delete triggers onClickDelete', () => {
 
 it('click edit triggers onClickEdit', () => {
   render(grain)
-    .find('IconButton[name="create"]')
+    .find(IconButton)
+    .find('[name="edit"]')
     .simulate('click');
 
   onClickEdit.should.have.been.calledWith();
@@ -65,7 +69,8 @@ it('click clear triggers onClickEdit', () => {
   grain.isEditing = true;
 
   render(grain)
-    .find('IconButton[name="clear"]')
+    .find(IconButton)
+    .find('[name="cancel"]')
     .simulate('click');
 
   onClickEdit.should.have.been.calledWith();
@@ -75,49 +80,52 @@ it('click save triggers onClickUpdate', () => {
   grain.isEditing = true;
 
   render(grain)
-    .find('IconButton[name="check"]')
+    .find(IconButton)
+    .find('[name="save"]')
     .simulate('click');
 
   onClickUpdate.should.have.been.calledWith();
 });
 
-it('on page load displays edit and delete buttons', () => {
-  const grainActions = render(grain);
+it('displays edit and delete buttons by default', () => {
+  const grainActions = render(grain),
+        buttons = grainActions.find(IconButton);
 
-  grainActions
-    .find('IconButton[name="create"]')
+  buttons
+    .find('[name="edit"]')
     .should.have.lengthOf('1');
 
-  grainActions
-    .find('IconButton[name="delete"]')
+  buttons
+    .find('[name="delete"]')
     .should.have.lengthOf('1');
 
-  grainActions
-    .find('IconButton[name="clear"]')
+  buttons
+    .find('[name="cancel"]')
     .should.have.lengthOf('0');
 
-  grainActions
-    .find('IconButton[name="check"]')
+  buttons
+    .find('[name="save"]')
     .should.have.lengthOf('0');
 });
 
 it('save and cancel buttons display when grains.isEditing', () => {
   grain.isEditing = true;
-  const grainActions = render(grain);
+  const grainActions = render(grain),
+        buttons = grainActions.find(IconButton);
 
-  grainActions
-    .find('IconButton[name="create"]')
+  buttons
+    .find('[name="edit"]')
     .should.have.lengthOf('0');
 
-  grainActions
-    .find('IconButton[name="delete"]')
+  buttons
+    .find('[name="delete"]')
     .should.have.lengthOf('0');
 
-  grainActions
-    .find('IconButton[name="clear"]')
+  buttons
+    .find('[name="cancel"]')
     .should.have.lengthOf('1');
 
-  grainActions
-    .find('IconButton[name="check"]')
+  buttons
+    .find('[name="save"]')
     .should.have.lengthOf('1');
 });

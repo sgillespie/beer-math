@@ -33,9 +33,6 @@ module.exports = {
       html: {
         title: 'Beer Math',
         links: [
-          '//fonts.googleapis.com/css?family=Roboto:300,400,500,700',
-          '//fonts.googleapis.com/icon?family=Material+Icons',
-
           {
             href: 'static/favicon.ico',
             rel: 'shortcut icon',
