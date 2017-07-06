@@ -1,3 +1,13 @@
+/* TODO[sgillespie]:
+ * 
+ *  * Remove styles that have been ported
+ *  * Port responsive styles
+ */
+body {
+  margin: 0;
+}
+
+/* TODO: Port me */
 @media (min-width: 768px) {
   .mdl-layout__drawer-button { 
     display: none;
@@ -18,14 +28,7 @@
   }
 }
 
-.mdl-navigation__link {
-  opacity: .8;
-}
-
-.mdl-navigation__link:hover {
-  opacity: 100;
-}
-
+/* TODO: Port me now! */
 .page-content {
   padding: 1rem;
   background-color: #eeeeee;
@@ -39,40 +42,13 @@
   margin-top: 1rem;
 }
 
-.button-group {
-  display: flex;
-  justify-content: flex-end;
-  align-items: start;
-  padding-top: 10px;
-}
-
-.icon-group {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.grains-table {
-  width: 100%;
-  border: none;
-}
-
-.wd-100 {
-  width: 100%;
-}
-
-.wd-auto {
-  width: auto;
-}
-
-.text-right {
-  text-align: right !important;
-}
-
+/* TODO: Port me */
 .mdl-button:hover{
 	/*background-color: transparent;*/
 	color: rgb(83,109,254);
 }
 
+/* TODO[sgillespie]: Review grains-table alignment */
 .grains-table .mdl-textfield {
   width: auto;
   padding: 0;
@@ -82,18 +58,11 @@
   font-size: 14px;
 }
 
-.grains-table td{
+/* TODO[sgillespie]: Port me */
+.grains-table td {
   width: 24%;
 }
 
- .grains-table tr td:last-child{
+.grains-table tr td:last-child {
   width: 4%;
-}
-
-.is-editing{
-  background-color: #fafafa !important;
-}
-
-.grains-table tr .mdl-textfield__label:after{
- bottom: 0px;
 }
