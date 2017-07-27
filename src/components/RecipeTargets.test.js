@@ -1,7 +1,6 @@
 import { createShallow } from 'material-ui/test-utils';
 import { spy } from 'sinon';
 import React from 'react';
-import TextField from 'material-ui/TextField';
 import chai from 'chai';
 import sinonChai from 'sinon-chai';
 

@@ -58,11 +58,3 @@ body {
   font-size: 14px;
 }
 
-/* TODO[sgillespie]: Port me */
-.grains-table td {
-  width: 24%;
-}
-
-.grains-table tr td:last-child {
-  width: 4%;
-}
