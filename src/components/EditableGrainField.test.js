@@ -5,8 +5,8 @@ import Input from 'material-ui/Input';
 
 import EditableGrainField from './EditableGrainField';
 
-const shallow = createShallow({ dive: false }),
-      should = chai.should();
+const shallow = createShallow({ dive: false });
+const should = chai.should();
 
 function render(isEditing) {
   return shallow(

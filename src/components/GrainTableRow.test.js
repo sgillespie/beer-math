@@ -10,14 +10,14 @@ import GrainTableRow, { styleSheet } from './GrainTableRow';
 import GrainActionsColumn from './GrainActionsColumn';
 
 chai.use(sinonChai);
-const shallow = createShallow({ dive: true }),
-      classes = shallow.context.styleManager.render(styleSheet),
-      should = chai.should();
+const shallow = createShallow({ dive: true });
+const classes = shallow.context.styleManager.render(styleSheet);
+const should = chai.should();
 
-let grain,
-    onClickDelete,
-    onClickEdit,
-    onClickUpdate;
+let grain;
+let onClickDelete;
+let onClickEdit;
+let onClickUpdate;
 
 function render() {
   return shallow(

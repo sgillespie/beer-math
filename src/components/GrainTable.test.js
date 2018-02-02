@@ -8,8 +8,8 @@ import GrainTable from './GrainTable';
 import GrainTableRow from './GrainTableRow';
 
 chai.use(sinonChai);
-const shallow = createShallow({ dive: true }),
-      should = chai.should();
+const shallow = createShallow({ dive: true });
+const should = chai.should();
 
 const grains = {
   0: {
@@ -28,10 +28,10 @@ const grains = {
   },
 };
 
-let grainTable,
-    onClickDelete,
-    onClickEdit,
-    onClickUpdate;
+let grainTable;
+let onClickDelete;
+let onClickEdit;
+let onClickUpdate;
 
 beforeEach(() => {
   onClickDelete = spy();

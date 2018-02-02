@@ -11,7 +11,7 @@ import RecipeTargetsContainer from '../containers/RecipeTargetsContainer';
 
 const styleSheet = createStyleSheet('App', {
   flex: {
-    flex: 1
+    flex: 1,
   },
 });
 

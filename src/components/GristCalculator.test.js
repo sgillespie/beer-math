@@ -9,8 +9,8 @@ import GrainTable from './GrainTable';
 import GristCalculator from './GristCalculator';
 
 chai.use(sinonChai);
-const shallow = createShallow({ dive: true }),
-      should = chai.should();
+const shallow = createShallow({ dive: true });
+const should = chai.should();
 
 const grains = {
   0: {
@@ -18,14 +18,14 @@ const grains = {
     maxPpg: '0',
     proportion: '1',
     weight: '2',
-  }
+  },
 };
 
-let calculator,
-    onClickAdd,
-    onClickDelete,
-    onClickEdit,
-    onClickUpdate;
+let calculator;
+let onClickAdd;
+let onClickDelete;
+let onClickEdit;
+let onClickUpdate;
 
 beforeEach(() => {
   onClickAdd = spy();

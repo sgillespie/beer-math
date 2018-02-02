@@ -12,7 +12,7 @@ export const styleSheet = createStyleSheet('GrainTableRow', {
   button: {
     '&:hover': {
       color: 'rgb(83,109,254)',
-    }
+    },
   },
 });
 
@@ -23,7 +23,7 @@ function GrainActionsColumn(props) {
     id,
     onClickDelete,
     onClickEdit,
-    onClickUpdate
+    onClickUpdate,
   } = props;
 
   function deleteRow() {

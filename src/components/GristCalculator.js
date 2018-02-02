@@ -20,7 +20,7 @@ function GristCalculator(props) {
     onClickAdd,
     onClickDelete,
     onClickEdit,
-    onClickUpdate
+    onClickUpdate,
   } = props;
 
   return (

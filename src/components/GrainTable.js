@@ -12,7 +12,9 @@ const styleSheet = createStyleSheet('GrainTable', {
   },
 });
 
-function GrainTable({ classes, grains, onClickDelete, onClickEdit, onClickUpdate }) {
+function GrainTable(props) {
+  const { classes, grains, onClickDelete, onClickEdit, onClickUpdate } = props;
+
   return (
     <Table>
       <TableHead>

@@ -1,13 +1,10 @@
 module.exports = {
   use: [
-    ['neutrino-middleware-eslint', {
+    ['@neutrinojs/airbnb', {
       eslint: {
-        baseConfig: {
-          extends: ['airbnb']
-        },
-
         rules: {
-          'comma-dangle': 'off',
+          'comma-dangle': ['error', 'always-multiline'],
+          'function-paren-newline': 'off',
           'indent': ['error', 2, {
             SwitchCase: 1,
             VariableDeclarator: {
@@ -16,20 +13,34 @@ module.exports = {
               const: 3
             }
           }],
-          'no-shadow': 'off',
+          // We're setting this off for now, until neutrino decides to
+          // support overrides
           'no-unused-expressions': 'off',
-          'no-use-before-define': 'off',
-          'one-var': 'off',
-          'jsx-a11y/href-no-hash': 'off',
-          'import/prefer-default-export': 'off',
+          'no-use-before-define': ['error', {
+            "functions": false,
+          }],
+          'object-curly-newline': ['error', {
+            consistent: true,
+          }],
+          'react/forbid-prop-types': ['error', {
+            forbid: ['any', 'array'],
+          }],
           'react/jsx-filename-extension': 'off',
-          'react/jsx-closing-bracket-location': 'off',
-          'react/forbid-prop-types': 'off',
-        }
+          'react/jsx-closing-bracket-location': ['error', {
+            location: 'after-props',
+          }],
+        },
+
+        overrides: {
+          files: ['**/*.test.js'],
+          rules: {
+            'no-unused-expressions': 'off',
+          },
+        },
       }
     }],
 
-    ['neutrino-preset-react', {
+    ['@neutrinojs/react', {
       html: {
         title: 'Beer Math',
         links: [
@@ -52,7 +63,7 @@ module.exports = {
       }
     }],
 
-    'neutrino-preset-jest',
+    '@neutrinojs/jest',
   ],
 
   options: {

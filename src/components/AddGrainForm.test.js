@@ -9,8 +9,8 @@ import sinonChai from 'sinon-chai';
 import AddGrainForm from './AddGrainForm';
 
 chai.use(sinonChai);
-const shallow = createShallow({ dive: true }),
-      should = chai.should();
+const shallow = createShallow({ dive: true });
+const should = chai.should();
 
 let grainForm;
 let onClickAdd;

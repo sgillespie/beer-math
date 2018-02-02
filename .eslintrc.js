@@ -1,9 +1,9 @@
 // .eslintrc.js
-
-// If you do not specify any middleware to call(),
-// it will use the local .neutrinorc.js file
-
 const { Neutrino } = require('neutrino');
-const api = Neutrino();
 
-module.exports = api.call('eslintrc');
+// Specify middleware to Neutrino prior to calling eslintrc.
+// Even if using .neutrinorc.js, you must specify it when using
+// the API
+module.exports = Neutrino()
+  .use(`${__dirname}/.neutrinorc.js`)
+  .call('eslintrc');

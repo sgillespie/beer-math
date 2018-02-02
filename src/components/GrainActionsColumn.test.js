@@ -8,13 +8,13 @@ import sinonChai from 'sinon-chai';
 import GrainActionsColumn from './GrainActionsColumn';
 
 chai.use(sinonChai);
-const shallow = createShallow({ dive: true }),
-      should = chai.should();
+const shallow = createShallow({ dive: true });
+const should = chai.should();
 
-let grain,
-    onClickDelete,
-    onClickEdit,
-    onClickUpdate;
+let grain;
+let onClickDelete;
+let onClickEdit;
+let onClickUpdate;
 
 beforeEach(() => {
   onClickDelete = spy();
@@ -29,14 +29,14 @@ beforeEach(() => {
   };
 });
 
-function render(grain) {
+function render(_grain) {
   return shallow(
     <GrainActionsColumn
       id="0"
       onClickDelete={onClickDelete}
       onClickEdit={onClickEdit}
       onClickUpdate={onClickUpdate}
-      grain={grain} />
+      grain={_grain} />
   );
 }
 
@@ -88,8 +88,8 @@ it('click save triggers onClickUpdate', () => {
 });
 
 it('displays edit and delete buttons by default', () => {
-  const grainActions = render(grain),
-        buttons = grainActions.find(IconButton);
+  const grainActions = render(grain);
+  const buttons = grainActions.find(IconButton);
 
   buttons
     .find('[name="edit"]')
@@ -110,8 +110,8 @@ it('displays edit and delete buttons by default', () => {
 
 it('save and cancel buttons display when grains.isEditing', () => {
   grain.isEditing = true;
-  const grainActions = render(grain),
-        buttons = grainActions.find(IconButton);
+  const grainActions = render(grain);
+  const buttons = grainActions.find(IconButton);
 
   buttons
     .find('[name="edit"]')

@@ -32,7 +32,7 @@ const state = {
       maxPpg: '1.036',
       proportion: '10%',
     },
-  }
+  },
 };
 
 it('updates gravity when type is UPDATE_GRAVITY', () => {

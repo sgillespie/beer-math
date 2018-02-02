@@ -14,7 +14,7 @@ describe('totalGristWeight', () => {
       {
         maxPpg: 1,
         proportion: 1,
-      }
+      },
     ]).should.equal(6);
   });
 
@@ -26,8 +26,8 @@ describe('totalGristWeight', () => {
       },
       {
         maxPpg: 3,
-        proportion: 0.5
-      }
+        proportion: 0.5,
+      },
     ]).should.equal(3);
   });
 });
@@ -85,7 +85,7 @@ describe('calculateGrist', () => {
           maxPpg: 1,
           proportion: 1,
           weight: 6,
-        }]
+        }],
       });
   });
 
@@ -98,8 +98,8 @@ describe('calculateGrist', () => {
 
       {
         maxPpg: 3,
-        proportion: 0.5
-      }
+        proportion: 0.5,
+      },
     ];
 
     calculateGrist(1, 6, 1, grains)
@@ -117,7 +117,7 @@ describe('calculateGrist', () => {
             maxPpg: 3,
             proportion: 0.5,
             weight: 1.5,
-          }
+          },
         ],
       });
   });

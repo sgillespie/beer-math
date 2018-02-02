@@ -8,13 +8,13 @@ import RecipeTargets from './RecipeTargets';
 
 chai.use(sinonChai);
 
-const should = chai.should(),
-      shallow = createShallow({ dive: true });
+const should = chai.should();
+const shallow = createShallow({ dive: true });
 
-let onChangeGravity,
-    onChangeVolume,
-    onChangeEfficiency,
-    recipeTargets;
+let onChangeGravity;
+let onChangeVolume;
+let onChangeEfficiency;
+let recipeTargets;
 
 beforeEach(() => {
   onChangeGravity = spy();

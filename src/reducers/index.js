@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
-import { reduce, toNumber } from 'lodash';
+import reduce from 'lodash.reduce';
+import toNumber from 'lodash.tonumber';
 import u, { omit } from 'updeep';
 
 import {
@@ -12,8 +13,8 @@ import {
   UPDATE_GRAIN,
 } from '../actions';
 
-function newId(grains) {
-  return reduce(grains, (accum, value, key) => {
+function newId(_grains) {
+  return reduce(_grains, (accum, value, key) => {
     const id = toNumber(key);
 
     if (accum > id) return accum;
@@ -62,7 +63,7 @@ function grains(state = {}, action) {
     case EDIT_GRAIN:
       // action.payload is the grain key
       return u({
-        [action.payload]: { isEditing: val => !val }
+        [action.payload]: { isEditing: val => !val },
       }, state);
 
     case UPDATE_GRAIN:
@@ -72,7 +73,7 @@ function grains(state = {}, action) {
           maxPpg: action.payload.maxPpg,
           proportion: action.payload.proportion,
           isEditing: false,
-        }
+        },
       }, state);
 
     default:

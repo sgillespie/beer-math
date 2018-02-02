@@ -1,15 +1,15 @@
 import { func, object } from 'prop-types';
-import { createStyleSheet, withStyles } from 'material-ui/styles';
+import { withStyles } from 'material-ui/styles';
 import Button from 'material-ui/Button';
 import Grid from 'material-ui/Grid';
 import React, { Component } from 'react';
 import TextField from 'material-ui/TextField';
 
-const styleSheet = createStyleSheet('AddGrainForm', theme => ({
+const styleSheet = theme => ({
   root: {
     marginTop: theme.spacing.unit,
   },
-}));
+});
 
 class AddGrainForm extends Component {
   constructor(props) {
@@ -96,7 +96,6 @@ class AddGrainForm extends Component {
       </Grid>
     );
   }
-
 }
 
 AddGrainForm.propTypes = {
