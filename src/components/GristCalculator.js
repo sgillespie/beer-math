@@ -1,4 +1,4 @@
-import { createStyleSheet, withStyles } from 'material-ui/styles';
+import { withStyles } from 'material-ui/styles';
 import { func, object } from 'prop-types';
 import Paper from 'material-ui/Paper';
 import React from 'react';
@@ -7,11 +7,11 @@ import Typography from 'material-ui/Typography';
 import AddGrainForm from './AddGrainForm';
 import GrainTable from './GrainTable';
 
-const styleSheet = createStyleSheet('GristCalculator', theme => ({
+const styleSheet = theme => ({
   root: {
     padding: theme.spacing.unit * 2,
   },
-}));
+});
 
 function GristCalculator(props) {
   const {

@@ -1,16 +1,16 @@
 import { func, object } from 'prop-types';
-import { createStyleSheet, withStyles } from 'material-ui/styles';
+import { withStyles } from 'material-ui/styles';
 import React from 'react';
 import Table, { TableBody, TableCell, TableHead, TableRow } from 'material-ui/Table';
 import map from 'lodash.map';
 
 import GrainTableRow from './GrainTableRow';
 
-const styleSheet = createStyleSheet('GrainTable', {
+const styleSheet = {
   tableRow: {
     width: '24%',
   },
-});
+};
 
 function GrainTable(props) {
   const { classes, grains, onClickDelete, onClickEdit, onClickUpdate } = props;

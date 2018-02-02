@@ -63,7 +63,10 @@ module.exports = {
       }
     }],
 
-    '@neutrinojs/jest',
+    ['@neutrinojs/jest', {
+      setupTestFrameworkScriptFile: '<rootDir>/src/setup.test.js',
+      testPathIgnorePatterns: ['setup.test.js', '/node_modules/']
+    }],
   ],
 
   options: {

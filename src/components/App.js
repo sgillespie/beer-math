@@ -1,5 +1,5 @@
 import { object } from 'prop-types';
-import { withStyles, createStyleSheet } from 'material-ui/styles';
+import { withStyles } from 'material-ui/styles';
 import React from 'react';
 import AppBar from 'material-ui/AppBar';
 import Button from 'material-ui/Button';
@@ -9,11 +9,11 @@ import Typography from 'material-ui/Typography';
 import GrainContainer from '../containers/GrainContainer';
 import RecipeTargetsContainer from '../containers/RecipeTargetsContainer';
 
-const styleSheet = createStyleSheet('App', {
+const styleSheet = {
   flex: {
     flex: 1,
   },
-});
+};
 
 function App({ classes }) {
   return (

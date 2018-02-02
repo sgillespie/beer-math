@@ -2,19 +2,19 @@ import { bool, func, object, shape, string } from 'prop-types';
 import CheckIcon from 'material-ui-icons/Check';
 import ClearIcon from 'material-ui-icons/Clear';
 import CreateIcon from 'material-ui-icons/Create';
-import { createStyleSheet, withStyles } from 'material-ui/styles';
+import { withStyles } from 'material-ui/styles';
 import DeleteIcon from 'material-ui-icons/Delete';
 import Grid from 'material-ui/Grid';
 import IconButton from 'material-ui/IconButton';
 import React from 'react';
 
-export const styleSheet = createStyleSheet('GrainTableRow', {
+export const styleSheet = {
   button: {
     '&:hover': {
       color: 'rgb(83,109,254)',
     },
   },
-});
+};
 
 function GrainActionsColumn(props) {
   const {

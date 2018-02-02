@@ -1,5 +1,5 @@
 import { func, object, string } from 'prop-types';
-import { createStyleSheet, withStyles } from 'material-ui/styles';
+import { withStyles } from 'material-ui/styles';
 import Grid from 'material-ui/Grid';
 import TextField from 'material-ui/TextField';
 import React, { Component } from 'react';
@@ -10,7 +10,7 @@ function onChange(handler) {
   return event => handler(event.target.value);
 }
 
-const styleSheet = createStyleSheet('RecipeTargets', theme => ({
+const styleSheet = theme => ({
   root: {
     padding: theme.spacing.unit * 2,
   },
@@ -18,7 +18,7 @@ const styleSheet = createStyleSheet('RecipeTargets', theme => ({
   grid: {
     padding: theme.spacing.unit * 2,
   },
-}));
+});
 
 class RecipeTargets extends Component {
   constructor(props) {

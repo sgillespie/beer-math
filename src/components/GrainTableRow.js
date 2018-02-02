@@ -1,18 +1,18 @@
-import { createStyleSheet, withStyles } from 'material-ui/styles';
+import { withStyles } from 'material-ui/styles';
 import { func, object, string } from 'prop-types';
 import React, { Component } from 'react';
 import { TableCell, TableRow } from 'material-ui/Table';
 import EditableGrainField from './EditableGrainField';
 import GrainActionsColumn from './GrainActionsColumn';
 
-export const styleSheet = createStyleSheet('GrainTableRow', {
+export const styleSheet = {
   defaultRow: {
   },
 
   isEditing: {
     backgroundColor: '#fafafa',
   },
-});
+};
 
 class GrainTableRow extends Component {
   constructor(props) {

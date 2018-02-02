@@ -1,5 +1,5 @@
 import { TableRow } from 'material-ui/Table';
-import { createShallow } from 'material-ui/test-utils';
+import { createShallow, getClasses } from 'material-ui/test-utils';
 import { spy } from 'sinon';
 import React from 'react';
 import chai from 'chai';
@@ -11,7 +11,6 @@ import GrainActionsColumn from './GrainActionsColumn';
 
 chai.use(sinonChai);
 const shallow = createShallow({ dive: true });
-const classes = shallow.context.styleManager.render(styleSheet);
 const should = chai.should();
 
 let grain;
@@ -112,15 +111,38 @@ it('passes grain.isEditing to EditableGrainField', () => {
 });
 
 it('table row does not have className is-editing when NOT grain.isEditing', () => {
-  render()
-    .find('.is-editing')
-    .should.have.lengthOf(0);
+  const grainTableRow = (
+    <GrainTableRow
+      grain={grain}
+      grainId="0"
+      onClickDelete={onClickDelete}
+      onClickEdit={onClickEdit}
+      onClickUpdate={onClickUpdate} />
+  );
+
+  const classes = getClasses(grainTableRow);
+
+  shallow(grainTableRow)
+    .find(TableRow)
+    .hasClass(classes.isEditing)
+    .should.be.false;
 });
 
 it('adds className is-editing to the table row when grain.isEditing', () => {
   grain.isEditing = true;
 
-  render()
+  const grainTableRow = (
+    <GrainTableRow
+      grain={grain}
+      grainId="0"
+      onClickDelete={onClickDelete}
+      onClickEdit={onClickEdit}
+      onClickUpdate={onClickUpdate} />
+  );
+
+  const classes = getClasses(grainTableRow);
+
+  shallow(grainTableRow)
     .find(TableRow)
     .hasClass(classes.isEditing)
     .should.be.true;
