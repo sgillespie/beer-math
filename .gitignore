@@ -14,3 +14,4 @@ build
 .env
 npm-debug.log
 npm_*.bat
+yarn-error.log
