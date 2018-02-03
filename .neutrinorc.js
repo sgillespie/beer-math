@@ -13,6 +13,7 @@ module.exports = {
               const: 3
             }
           }],
+          'import/prefer-default-export': 'off',
           // We're setting this off for now, until neutrino decides to
           // support overrides
           'no-unused-expressions': 'off',
