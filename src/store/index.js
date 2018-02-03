@@ -1,22 +1,17 @@
-import { createStore, compose } from 'redux';
+import { createStore } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension/logOnlyInProduction';
 
-import DevTools from '../containers/DevTools';
 import reducers from '../reducers';
 
-const enhancer = compose(
-  DevTools.instrument(),
-);
-
 export default function configureStore(initialState) {
-  const store = createStore(reducers, initialState, enhancer);
+  const store = createStore(reducers, initialState, composeWithDevTools());
 
   if (module.hot) {
     module.hot.accept('../reducers', () =>
-      /* eslint global-require: off */
+      // eslint-disable-next-line global-require
       store.replaceReducer(require('../reducers').default)
     );
   }
 
   return store;
 }
-

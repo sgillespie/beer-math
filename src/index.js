@@ -2,14 +2,12 @@ import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
 import { Provider } from 'react-redux';
 import { render } from 'react-dom';
 import React from 'react';
-import indigo from 'material-ui/colors/indigo';
-import teal from 'material-ui/colors/teal';
+import blue from 'material-ui/colors/blue';
+import deepOrange from 'material-ui/colors/deepOrange';
 
-import 'font-awesome/css/font-awesome.min.css';
 import 'typeface-roboto/index.css';
 
 import RecipeCalculator from './recipe-calculator/components/RecipeCalculator';
-import DevTools from './containers/DevTools';
 import store from './store';
 
 import './index.css';
@@ -44,17 +42,14 @@ const appStore = store({
 
 const theme = createMuiTheme({
   palette: {
-    primary: teal,
-    accent: indigo,
+    primary: deepOrange,
+    secondary: blue,
   },
 });
 
 render(
   <Provider store={appStore}>
     <MuiThemeProvider theme={theme}>
-      <div>
-        <DevTools />
-        <RecipeCalculator />
-      </div>
+      <RecipeCalculator />
     </MuiThemeProvider>
   </Provider>, document.getElementById('root'));
