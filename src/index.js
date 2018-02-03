@@ -5,9 +5,10 @@ import React from 'react';
 import indigo from 'material-ui/colors/indigo';
 import teal from 'material-ui/colors/teal';
 
+import 'font-awesome/css/font-awesome.min.css';
 import 'typeface-roboto/index.css';
 
-import App from './components/App';
+import RecipeCalculator from './recipe-calculator/components/RecipeCalculator';
 import DevTools from './containers/DevTools';
 import store from './store';
 
@@ -53,7 +54,7 @@ render(
     <MuiThemeProvider theme={theme}>
       <div>
         <DevTools />
-        <App />
+        <RecipeCalculator />
       </div>
     </MuiThemeProvider>
   </Provider>, document.getElementById('root'));
