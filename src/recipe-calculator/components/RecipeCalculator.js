@@ -9,8 +9,8 @@ import faBeer from '@fortawesome/fontawesome-free-solid/faBeer';
 import { object } from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 
-import GrainContainer from '../../containers/GrainContainer';
-import RecipeTargetsContainer from '../../containers/RecipeTargetsContainer';
+import GrainContainer from '../../recipe-grains/containers/GrainContainer';
+import RecipeTargetsContainer from '../../recipe-targets/containers/RecipeTargetsContainer';
 
 const styleSheet = theme => ({
   flex: {

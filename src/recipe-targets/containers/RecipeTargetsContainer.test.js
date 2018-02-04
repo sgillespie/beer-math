@@ -3,7 +3,7 @@ import chai from 'chai';
 import sinonChai from 'sinon-chai';
 
 import { mapDispatchToProps } from './RecipeTargetsContainer';
-import { updateGravity, updateVolume, updateEfficiency } from '../actions';
+import { updateGravity, updateVolume, updateEfficiency } from '../../actions';
 
 chai.use(sinonChai);
 const should = chai.should();

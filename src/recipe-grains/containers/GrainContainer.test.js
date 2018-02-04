@@ -3,7 +3,7 @@ import chai from 'chai';
 import sinonChai from 'sinon-chai';
 
 import { mapDispatchToProps, mapStateToProps } from './GrainContainer';
-import { addGrain, deleteGrain, editGrain, updateGrain } from '../actions';
+import { addGrain, deleteGrain, editGrain, updateGrain } from '../../actions';
 
 chai.use(sinonChai);
 const should = chai.should();

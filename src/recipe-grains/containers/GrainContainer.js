@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import GristCalculator from '../components/GristCalculator';
-import { addGrain, deleteGrain, editGrain, updateGrain } from '../actions';
+import { addGrain, deleteGrain, editGrain, updateGrain } from '../../actions';
 
 export function mapStateToProps(state) {
   return {

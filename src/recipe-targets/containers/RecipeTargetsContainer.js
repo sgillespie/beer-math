@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import RecipeTargets from '../components/RecipeTargets';
-import { updateGravity, updateVolume, updateEfficiency } from '../actions';
+import { updateGravity, updateVolume, updateEfficiency } from '../../actions';
 
 export function mapStateToProps(state) {
   return state.targets;
