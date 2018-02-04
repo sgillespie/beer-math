@@ -6,7 +6,7 @@ import chai from 'chai';
 import sinonChai from 'sinon-chai';
 
 import EditableGrainField from './EditableGrainField';
-import GrainTableRow, { styleSheet } from './GrainTableRow';
+import GrainTableRow from './GrainTableRow';
 import GrainActionsColumn from './GrainActionsColumn';
 
 chai.use(sinonChai);
