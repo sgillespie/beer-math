@@ -9,6 +9,7 @@
     "@neutrinojs/react": "8.1.1",
     "babel-core": "6.26.0",
     "chai": "4.1.2",
+    "chai-immutable": "1.6.0",
     "coveralls": "3.0.0",
     "enzyme": "3.3.0",
     "enzyme-adapter-react-15": "1.0.5",
@@ -47,6 +48,8 @@
     "redux": "3.7.2",
     "redux-actions": "2.2.1",
     "redux-devtools-extension": "2.13.2",
+    "redux-immutable": "4.0.0",
+    "reselect": "3.0.1",
     "typeface-roboto": "0.0.54",
     "updeep": "1.0.0"
   },
