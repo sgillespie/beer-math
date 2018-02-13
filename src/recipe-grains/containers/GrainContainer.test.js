@@ -1,6 +1,6 @@
-import { spy } from 'sinon';
 import chai from 'chai';
-import sinonChai from 'sinon-chai';
+import { fromJS } from 'immutable';
+import { spy } from 'sinon';
 
 import { mapDispatchToProps, mapStateToProps } from './GrainContainer';
 import {
@@ -10,67 +10,74 @@ import {
   updateGrain,
 } from '../../recipe-calculator/actions';
 
-chai.use(sinonChai);
 const should = chai.should();
 
-const state = {
-  grains: {
-    0: {
-      grainType: 'type-0',
-      maxPpg: '0',
-      proportion: '1',
+describe('GrainContainer', () => {
+  const state = fromJS({
+    global: {
+      grains: {
+        0: {
+          grainType: 'type-0',
+          maxPpg: '0',
+          proportion: '1',
+        },
+
+        1: {
+          grainType: 'type-1',
+          maxPpg: '2',
+          proportion: '3',
+        },
+      },
     },
+  });
 
-    1: {
-      grainType: 'type-1',
-      maxPpg: '2',
-      proportion: '3',
-    },
-  },
-};
+  describe('mapStateToProps', () => {
+    it('maps grains', () => {
+      mapStateToProps()(state).should.have.property(
+        'grains', state.getIn(['global', 'grains']));
+    });
+  });
 
-let dispatch;
-beforeEach(() => {
-  dispatch = spy();
-});
+  describe('mapDispatchToProps', () => {
+    let dispatch;
+    beforeEach(() => {
+      dispatch = spy();
+    });
 
-it('mapDispatchToProps should map onClickAdd', () => {
-  const props = mapDispatchToProps(dispatch);
+    it('maps onClickAdd', () => {
+      const props = mapDispatchToProps(dispatch);
 
-  should.exist(props.onClickAdd);
-  props.onClickAdd('0', '1', '2');
+      should.exist(props.onClickAdd);
+      props.onClickAdd('0', '1', '2');
 
-  dispatch.should.have.been.calledWith(addGrain('0', '1', '2'));
-});
+      dispatch.should.have.been.calledWith(addGrain('0', '1', '2'));
+    });
 
-it('mapDispatchToProps should map onClickDelete', () => {
-  const props = mapDispatchToProps(dispatch);
+    it('maps onClickDelete', () => {
+      const props = mapDispatchToProps(dispatch);
 
-  should.exist(props.onClickDelete);
-  props.onClickDelete('0');
+      should.exist(props.onClickDelete);
+      props.onClickDelete('0');
 
-  dispatch.should.have.been.calledWith(deleteGrain('0'));
-});
+      dispatch.should.have.been.calledWith(deleteGrain('0'));
+    });
 
-it('mapStateToProps maps grains', () => {
-  const props = mapStateToProps(state);
-  should.exist(props.grains);
-});
+    it('maps onClickEdit', () => {
+      const props = mapDispatchToProps(dispatch);
 
-it('mapDispatchToProps should map onClickEdit', () => {
-  const props = mapDispatchToProps(dispatch);
+      should.exist(props.onClickEdit);
+      props.onClickEdit('0');
 
-  should.exist(props.onClickEdit);
-  props.onClickEdit('0');
+      dispatch.should.have.been.calledWith(editGrain('0'));
+    });
 
-  dispatch.should.have.been.calledWith(editGrain('0'));
-});
+    it('maps onClickUpdate', () => {
+      const props = mapDispatchToProps(dispatch);
 
-it('mapDispatchToProps should map onClickUpdate', () => {
-  const props = mapDispatchToProps(dispatch);
+      should.exist(props.onClickUpdate);
+      props.onClickUpdate('0', '1', '2', '3');
 
-  should.exist(props.onClickUpdate);
-  props.onClickUpdate('0', '1', '2', '3');
-
-  dispatch.should.have.been.calledWith(updateGrain('0', '1', '2', '3'));
+      dispatch.should.have.been.calledWith(updateGrain('0', '1', '2', '3'));
+    });
+  });
 });

@@ -1,35 +1,33 @@
 import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 
 import GristCalculator from '../components/GristCalculator';
-import {
-  addGrain,
-  deleteGrain,
-  editGrain,
-  updateGrain,
-} from '../../recipe-calculator/actions';
+import toJs from '../../lib/components/to-js';
+import { mkGrainsSelector } from '../../recipe-calculator/selectors';
+import * as actions from '../../recipe-calculator/actions';
 
-export function mapStateToProps(state) {
-  return {
-    grains: state.grains,
-  };
+export function mapStateToProps() {
+  return createStructuredSelector({
+    grains: mkGrainsSelector(),
+  });
 }
 
 export function mapDispatchToProps(dispatch) {
   return {
     onClickAdd(grainType, maxPpg, proportion) {
-      dispatch(addGrain(grainType, maxPpg, proportion));
+      dispatch(actions.addGrain(grainType, maxPpg, proportion));
     },
 
     onClickDelete(key) {
-      dispatch(deleteGrain(key));
+      dispatch(actions.deleteGrain(key));
     },
 
     onClickEdit(key) {
-      dispatch(editGrain(key));
+      dispatch(actions.editGrain(key));
     },
 
     onClickUpdate(key, grainType, maxPpg, proportion) {
-      dispatch(updateGrain(key, grainType, maxPpg, proportion));
+      dispatch(actions.updateGrain(key, grainType, maxPpg, proportion));
     },
   };
 }
@@ -37,4 +35,4 @@ export function mapDispatchToProps(dispatch) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(GristCalculator);
+)(toJs(GristCalculator));

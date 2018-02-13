@@ -19,7 +19,7 @@ describe('recipe-calculator selectors', () => {
       },
     },
   });
-  
+
   describe('globalSelector', () => {
     it('selects global state', () => {
       selectors

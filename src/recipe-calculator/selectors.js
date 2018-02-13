@@ -6,10 +6,6 @@ export const targetsSelector = createSelector(
   globalSelector,
   state => state.get('targets'));
 
-export const grainsSelector = createSelector(
-  globalSelector,
-  state => state.get('grains'));
-
 export function mkGravitySelector() {
   return createSelector(
     targetsSelector,
