@@ -4,7 +4,7 @@ import * as actions from './actions';
 
 const should = chai.should();
 
-describe('reducer', () => {
+describe('recipe-calculator reducer', () => {
   it('defaults initialState', () => {
     reducer(undefined, {}).should.equal(initialState);
   });

@@ -2,206 +2,203 @@ import { TableRow } from 'material-ui/Table';
 import { createShallow, getClasses } from 'material-ui/test-utils';
 import { spy } from 'sinon';
 import React from 'react';
-import chai from 'chai';
-import sinonChai from 'sinon-chai';
 
 import EditableGrainField from './EditableGrainField';
 import GrainTableRow from './GrainTableRow';
 import GrainActionsColumn from './GrainActionsColumn';
 
-chai.use(sinonChai);
 const shallow = createShallow({ dive: true });
-const should = chai.should();
 
-let grain;
-let onClickDelete;
-let onClickEdit;
-let onClickUpdate;
+describe('GrainTableRow', () => {
+  let grain;
+  let onClickDelete;
+  let onClickEdit;
+  let onClickUpdate;
 
-function render() {
-  return shallow(
-    <GrainTableRow
-      grain={grain}
-      grainId="0"
-      onClickDelete={onClickDelete}
-      onClickEdit={onClickEdit}
-      onClickUpdate={onClickUpdate} />
-  );
-}
+  function render() {
+    return shallow(
+      <GrainTableRow
+        grain={grain}
+        grainId="0"
+        onClickDelete={onClickDelete}
+        onClickEdit={onClickEdit}
+        onClickUpdate={onClickUpdate} />
+    );
+  }
 
-beforeEach(() => {
-  grain = {
-    grainType: 'type',
-    maxPpg: '0',
-    proportion: '1',
-    weight: '2',
-  };
-  onClickDelete = spy();
-  onClickEdit = spy();
-  onClickUpdate = spy();
-});
+  beforeEach(() => {
+    grain = {
+      grainType: 'type',
+      maxPpg: '0',
+      proportion: '1',
+      weight: '2',
+    };
+    onClickDelete = spy();
+    onClickEdit = spy();
+    onClickUpdate = spy();
+  });
 
-it('renders', () => {
-  const grainTableRow = render();
+  it('renders', () => {
+    const grainTableRow = render();
 
-  should.exist(grainTableRow);
-  grainTableRow.should.have.lengthOf(1);
-});
+    grainTableRow.should.have.lengthOf(1);
+  });
 
-it('passes onClickDelete to Grain Actions Column', () => {
-  render()
-    .find(GrainActionsColumn)
-    .prop('onClickDelete')();
+  it('passes onClickDelete to Grain Actions Column', () => {
+    render()
+      .find(GrainActionsColumn)
+      .prop('onClickDelete')();
 
-  onClickDelete.should.have.been.calledWith();
-});
+    onClickDelete.should.have.been.calledWith();
+  });
 
-it('passes onClickEdit to Grain Actions Column', () => {
-  render()
-    .find(GrainActionsColumn)
-    .prop('onClickEdit')();
+  it('passes onClickEdit to Grain Actions Column', () => {
+    render()
+      .find(GrainActionsColumn)
+      .prop('onClickEdit')();
 
-  onClickEdit.should.have.been.calledWith('0');
-});
+    onClickEdit.should.have.been.calledWith('0');
+  });
 
-it('when onClickEdit is called the state is reset', () => {
-  const grainTableRow = render();
+  it('when onClickEdit is called the state is reset', () => {
+    const grainTableRow = render();
 
-  grainTableRow
-    .setState({
-      grainType: 'type2',
-      maxPpg: '3',
-      proportion: '4',
-    });
+    grainTableRow
+      .setState({
+        grainType: 'type2',
+        maxPpg: '3',
+        proportion: '4',
+      });
 
-  grainTableRow
-    .find(GrainActionsColumn)
-    .prop('onClickEdit')();
+    grainTableRow
+      .find(GrainActionsColumn)
+      .prop('onClickEdit')();
 
-  grainTableRow
-    .state().should.deep.equal({ grainType: 'type', maxPpg: '0', proportion: '1' });
-});
+    grainTableRow
+      .state().should.deep.equal({ grainType: 'type', maxPpg: '0', proportion: '1' });
+  });
 
-it('passes onClickUpdate to Grain Actions Column', () => {
-  render()
-    .find(GrainActionsColumn)
-    .prop('onClickUpdate')();
+  it('passes onClickUpdate to Grain Actions Column', () => {
+    render()
+      .find(GrainActionsColumn)
+      .prop('onClickUpdate')();
 
-  onClickUpdate.should.have.been.calledWith('0', 'type', '0', '1');
-});
+    onClickUpdate.should.have.been.calledWith('0', 'type', '0', '1');
+  });
 
-it('renders EditableGrainFields for each grain', () => {
-  render()
-    .find(EditableGrainField)
-    .should.have.length.above(0);
-});
+  it('renders EditableGrainFields for each grain', () => {
+    render()
+      .find(EditableGrainField)
+      .should.have.length.above(0);
+  });
 
-it('passes NOT grain.isEditing to EditableGrainField', () => {
-  render()
-    .find(EditableGrainField)
-    .forEach(field => (!!field.props().isEditing).should.not.be.ok);
-});
+  it('passes NOT grain.isEditing to EditableGrainField', () => {
+    render()
+      .find(EditableGrainField)
+      .forEach(field => (!!field.props().isEditing).should.not.be.ok);
+  });
 
-it('passes grain.isEditing to EditableGrainField', () => {
-  grain.isEditing = true;
+  it('passes grain.isEditing to EditableGrainField', () => {
+    grain.isEditing = true;
 
-  render()
-    .find(EditableGrainField)
-    .forEach(field => (!!field.props().isEditing).should.be.ok);
-});
+    render()
+      .find(EditableGrainField)
+      .forEach(field => (!!field.props().isEditing).should.be.ok);
+  });
 
-it('table row does not have className is-editing when NOT grain.isEditing', () => {
-  const grainTableRow = (
-    <GrainTableRow
-      grain={grain}
-      grainId="0"
-      onClickDelete={onClickDelete}
-      onClickEdit={onClickEdit}
-      onClickUpdate={onClickUpdate} />
-  );
+  it('table row does not have className is-editing when NOT grain.isEditing', () => {
+    const grainTableRow = (
+      <GrainTableRow
+        grain={grain}
+        grainId="0"
+        onClickDelete={onClickDelete}
+        onClickEdit={onClickEdit}
+        onClickUpdate={onClickUpdate} />
+    );
 
-  const classes = getClasses(grainTableRow);
+    const classes = getClasses(grainTableRow);
 
-  shallow(grainTableRow)
-    .find(TableRow)
-    .hasClass(classes.isEditing)
-    .should.be.false;
-});
+    shallow(grainTableRow)
+      .find(TableRow)
+      .hasClass(classes.isEditing)
+      .should.be.false;
+  });
 
-it('adds className is-editing to the table row when grain.isEditing', () => {
-  grain.isEditing = true;
+  it('adds className is-editing to the table row when grain.isEditing', () => {
+    grain.isEditing = true;
 
-  const grainTableRow = (
-    <GrainTableRow
-      grain={grain}
-      grainId="0"
-      onClickDelete={onClickDelete}
-      onClickEdit={onClickEdit}
-      onClickUpdate={onClickUpdate} />
-  );
+    const grainTableRow = (
+      <GrainTableRow
+        grain={grain}
+        grainId="0"
+        onClickDelete={onClickDelete}
+        onClickEdit={onClickEdit}
+        onClickUpdate={onClickUpdate} />
+    );
 
-  const classes = getClasses(grainTableRow);
+    const classes = getClasses(grainTableRow);
 
-  shallow(grainTableRow)
-    .find(TableRow)
-    .hasClass(classes.isEditing)
-    .should.be.true;
-});
+    shallow(grainTableRow)
+      .find(TableRow)
+      .hasClass(classes.isEditing)
+      .should.be.true;
+  });
 
-it('passes grain to Grain Actions Column', () => {
-  render()
-    .find(GrainActionsColumn)
-    .prop('grain')
-    .should.deep.equal(grain);
-});
+  it('passes grain to Grain Actions Column', () => {
+    render()
+      .find(GrainActionsColumn)
+      .prop('grain')
+      .should.deep.equal(grain);
+  });
 
-it('change to grain.grainType updates state', () => {
-  const event = {
-    target: {
-      value: 'butt juice grain',
-    },
-  };
+  it('change to grain.grainType updates state', () => {
+    const event = {
+      target: {
+        value: 'butt juice grain',
+      },
+    };
 
-  const grainTableRow = render();
+    const grainTableRow = render();
 
-  grainTableRow
-    .find('EditableGrainField[name="grainType"]')
-    .simulate('change', event);
+    grainTableRow
+      .find('EditableGrainField[name="grainType"]')
+      .simulate('change', event);
 
-  grainTableRow
-    .state('grainType').should.equal('butt juice grain');
-});
+    grainTableRow
+      .state('grainType').should.equal('butt juice grain');
+  });
 
-it('change to grain.maxPpg updates state', () => {
-  const event = {
-    target: {
-      value: 'butt juice PPG',
-    },
-  };
+  it('change to grain.maxPpg updates state', () => {
+    const event = {
+      target: {
+        value: 'butt juice PPG',
+      },
+    };
 
-  const grainTableRow = render();
+    const grainTableRow = render();
 
-  grainTableRow
-    .find('EditableGrainField[name="grainMaxPpg"]')
-    .simulate('change', event);
+    grainTableRow
+      .find('EditableGrainField[name="grainMaxPpg"]')
+      .simulate('change', event);
 
-  grainTableRow
-    .state('maxPpg').should.equal('butt juice PPG');
-});
+    grainTableRow
+      .state('maxPpg').should.equal('butt juice PPG');
+  });
 
-it('change to grain.proportion updates state', () => {
-  const event = {
-    target: {
-      value: 'butt juice Proportion',
-    },
-  };
+  it('change to grain.proportion updates state', () => {
+    const event = {
+      target: {
+        value: 'butt juice Proportion',
+      },
+    };
 
-  const grainTableRow = render();
+    const grainTableRow = render();
 
-  grainTableRow
-    .find('EditableGrainField[name="grainProportion"]')
-    .simulate('change', event);
+    grainTableRow
+      .find('EditableGrainField[name="grainProportion"]')
+      .simulate('change', event);
 
-  grainTableRow
-    .state('proportion').should.equal('butt juice Proportion');
+    grainTableRow
+      .state('proportion').should.equal('butt juice Proportion');
+  });
 });

@@ -2,112 +2,112 @@ import { createShallow } from 'material-ui/test-utils';
 import chai from 'chai';
 import React from 'react';
 import { spy } from 'sinon';
-import sinonChai from 'sinon-chai';
 
 import GrainTable from './GrainTable';
 import GrainTableRow from './GrainTableRow';
 
-chai.use(sinonChai);
 const shallow = createShallow({ dive: true });
 const should = chai.should();
 
-const grains = {
-  0: {
-    grainType: 'type',
-    maxPpg: '0',
-    proportion: '1',
-    weight: '2',
-  },
+describe('GrainTable', () => {
+  const grains = {
+    0: {
+      grainType: 'type',
+      maxPpg: '0',
+      proportion: '1',
+      weight: '2',
+    },
 
-  1: {
-    grainType: 'type2',
-    maxPpg: '3',
-    proportion: '4',
-    weight: '5',
-    isEditing: true,
-  },
-};
+    1: {
+      grainType: 'type2',
+      maxPpg: '3',
+      proportion: '4',
+      weight: '5',
+      isEditing: true,
+    },
+  };
 
-let grainTable;
-let onClickDelete;
-let onClickEdit;
-let onClickUpdate;
+  let grainTable;
+  let onClickDelete;
+  let onClickEdit;
+  let onClickUpdate;
 
-beforeEach(() => {
-  onClickDelete = spy();
-  onClickEdit = spy();
-  onClickUpdate = spy();
+  beforeEach(() => {
+    onClickDelete = spy();
+    onClickEdit = spy();
+    onClickUpdate = spy();
 
-  grainTable = shallow(
-    <GrainTable
-      grains={grains}
-      onClickDelete={onClickDelete}
-      onClickEdit={onClickEdit}
-      onClickUpdate={onClickUpdate} />
-  );
-});
+    grainTable = shallow(
+      <GrainTable
+        grains={grains}
+        onClickDelete={onClickDelete}
+        onClickEdit={onClickEdit}
+        onClickUpdate={onClickUpdate} />
+    );
+  });
 
-it('renders', () => {
-  should.exist(grainTable);
-  grainTable.should.have.lengthOf(1);
-});
+  it('renders', () => {
+    should.exist(grainTable);
+    grainTable.should.have.lengthOf(1);
+  });
 
-it('renders GrainTableRow for each grain', () => {
-  grainTable
-    .find(GrainTableRow)
-    .should.have.lengthOf(2);
-});
+  it('renders GrainTableRow for each grain', () => {
+    grainTable
+      .find(GrainTableRow)
+      .should.have.lengthOf(2);
+  });
 
-it('passes onClickDelete to GrainTableRow', () => {
-  grainTable
-    .find(GrainTableRow)
-    .forEach(col => col.prop('onClickDelete')());
+  it('passes onClickDelete to GrainTableRow', () => {
+    grainTable
+      .find(GrainTableRow)
+      .forEach(col => col.prop('onClickDelete')());
 
-  onClickDelete.should.have.been.calledTwice;
-});
+    onClickDelete.should.have.been.calledTwice;
+  });
 
-it('passes onClickEdit to GrainTableRow', () => {
-  grainTable
-    .find(GrainTableRow)
-    .forEach(col => col.prop('onClickEdit')());
+  it('passes onClickEdit to GrainTableRow', () => {
+    grainTable
+      .find(GrainTableRow)
+      .forEach(col => col.prop('onClickEdit')());
 
-  onClickEdit.should.have.been.calledTwice;
-});
+    onClickEdit.should.have.been.calledTwice;
+  });
 
-it('passes onClickUpdate to GrainTableRow', () => {
-  grainTable
-    .find(GrainTableRow)
-    .forEach(col => col.prop('onClickUpdate')());
+  it('passes onClickUpdate to GrainTableRow', () => {
+    grainTable
+      .find(GrainTableRow)
+      .forEach(col => col.prop('onClickUpdate')());
 
-  onClickUpdate.should.have.been.calledTwice;
-});
+    onClickUpdate.should.have.been.calledTwice;
+  });
 
-it('passes grain to GrainTableRow', () => {
-  const grainTableRow = grainTable
-    .find(GrainTableRow);
+  it('passes grain to GrainTableRow', () => {
+    const grainTableRow = grainTable
+      .find(GrainTableRow);
 
-  grainTableRow
-    .first()
-    .prop('grain')
-    .should.deep.equal(grains['0']);
+    grainTableRow
+      .first()
+      .prop('grain')
+      .should.deep.equal(grains['0']);
 
-  grainTableRow
-    .at(1)
-    .prop('grain')
-    .should.deep.equal(grains['1']);
-});
+    grainTableRow
+      .at(1)
+      .prop('grain')
+      .should.deep.equal(grains['1']);
+  });
 
-it('passes grainId to GrainTableRow', () => {
-  const grainTableRow = grainTable
-    .find(GrainTableRow);
+  it('passes grainId to GrainTableRow', () => {
+    const grainTableRow = grainTable
+      .find(GrainTableRow);
 
-  grainTableRow
-    .first()
-    .prop('grainId')
-    .should.equal('0');
+    grainTableRow
+      .first()
+      .prop('grainId')
+      .should.equal('0');
 
-  grainTableRow
-    .at(1)
-    .prop('grainId')
-    .should.equal('1');
+    grainTableRow
+      .at(1)
+      .prop('grainId')
+      .should.equal('1');
+  });
 });
