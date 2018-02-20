@@ -20,72 +20,52 @@ const styleSheet = theme => ({
   },
 });
 
-class RecipeTargets extends Component {
-  constructor(props) {
-    super(props);
+function RecipeTargets(props) {
+  const {
+    classes,
 
-    const { onChangeEfficiency, onChangeGravity, onChangeVolume } = this.props;
+    gravity,
+    volume,
+    efficiency,
 
-    this.onChangeGravity = onChange(onChangeGravity).bind(this);
-    this.onChangeVolume = onChange(onChangeVolume).bind(this);
-    this.onChangeEfficiency = onChange(onChangeEfficiency).bind(this);
-  }
+    onChangeEfficiency,
+    onChangeGravity,
+    onChangeVolume,
+  } = props;
 
-  onChangeGravity(event) {
-    const { onChangeGravity } = this.props;
+  return (
+    <div>
+      <Paper elevation={1} className={classes.root}>
+        <Typography type="headline">Recipe Targets</Typography>
 
-    onChangeGravity(event.target.value);
-  }
-
-  onChangeVolume(event) {
-    const { onChangeVolume } = this.props;
-
-    onChangeVolume(event.target.value);
-  }
-
-  onChangeEfficiency(event) {
-    const { onChangeEfficiency } = this.props;
-
-    onChangeEfficiency(event.target.value);
-  }
-
-  render() {
-    const { classes, gravity, volume, efficiency } = this.props;
-
-    return (
-      <div>
-        <Paper elevation={1} className={classes.root}>
-          <Typography type="headline">Recipe Targets</Typography>
-
-          <Grid className={classes.grid} justify="space-around" container>
-            <Grid item xs>
-              <TextField
-                defaultValue={gravity}
-                label="Preboil Gravity (SG)"
-                name="gravity"
-                onChange={this.onChangeGravity} />
-            </Grid>
-
-            <Grid item xs>
-              <TextField
-                defaultValue={volume}
-                label="Preboil Volume (Gallons)"
-                name="volume"
-                onChange={this.onChangeVolume} />
-            </Grid>
-
-            <Grid item xs>
-              <TextField
-                defaultValue={efficiency}
-                label="Extract Efficiency"
-                name="efficiency"
-                onChange={this.onChangeEfficiency} />
-            </Grid>
+        <Grid className={classes.grid} justify="space-around" container>
+          <Grid item xs>
+            <TextField
+              defaultValue={gravity}
+              label="Preboil Gravity (SG)"
+              name="gravity"
+              onChange={onChange(onChangeGravity)} />
           </Grid>
-        </Paper>
-      </div>
-    );
-  }
+
+          <Grid item xs>
+            <TextField
+              defaultValue={volume}
+              label="Preboil Volume (Gallons)"
+              name="volume"
+              onChange={onChange(onChangeVolume)} />
+          </Grid>
+
+          <Grid item xs>
+            <TextField
+              defaultValue={efficiency}
+              label="Extract Efficiency"
+              name="efficiency"
+              onChange={onChange(onChangeEfficiency)} />
+          </Grid>
+        </Grid>
+      </Paper>
+    </div>
+  );
 }
 
 RecipeTargets.propTypes = {
