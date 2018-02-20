@@ -59,6 +59,7 @@
     "deploy": "neutrino build && gh-pages -d build",
     "lint": "neutrino lint",
     "test": "neutrino test --watch",
+    "test:coverage": "neutrino test --coverage",
     "test:ci": "neutrino test --coverage && coveralls < coverage/lcov.info"
   }
 }
