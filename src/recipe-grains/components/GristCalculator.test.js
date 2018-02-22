@@ -2,7 +2,6 @@ import { createShallow } from 'material-ui/test-utils';
 import { spy } from 'sinon';
 import React from 'react';
 
-import AddGrainForm from './AddGrainForm';
 import GrainTable from './GrainTable';
 import GristCalculator from './GristCalculator';
 
@@ -19,13 +18,11 @@ describe('GristCalculator', () => {
   };
 
   let calculator;
-  let onClickAdd;
   let onClickDelete;
   let onClickEdit;
   let onClickUpdate;
 
   beforeEach(() => {
-    onClickAdd = spy();
     onClickDelete = spy();
     onClickEdit = spy();
     onClickUpdate = spy();
@@ -33,7 +30,6 @@ describe('GristCalculator', () => {
     calculator = shallow(
       <GristCalculator
         grains={grains}
-        onClickAdd={onClickAdd}
         onClickDelete={onClickDelete}
         onClickEdit={onClickEdit}
         onClickUpdate={onClickUpdate} />
@@ -42,14 +38,6 @@ describe('GristCalculator', () => {
 
   it('renders', () => {
     calculator.should.have.lengthOf(1);
-  });
-
-  it('passes onClickAdd to add grain form', () => {
-    calculator
-      .find(AddGrainForm)
-      .prop('onClickAdd')();
-
-    onClickAdd.should.have.been.calledWith();
   });
 
   it('passes grains to grain table', () => {

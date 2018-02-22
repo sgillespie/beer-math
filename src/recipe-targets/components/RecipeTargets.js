@@ -2,7 +2,7 @@ import { func, object, string } from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import Grid from 'material-ui/Grid';
 import TextField from 'material-ui/TextField';
-import React, { Component } from 'react';
+import React from 'react';
 import Paper from 'material-ui/Paper';
 import Typography from 'material-ui/Typography';
 

@@ -1,8 +1,8 @@
-import { func, object } from 'prop-types';
+import { func, object, string } from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import Button from 'material-ui/Button';
 import Grid from 'material-ui/Grid';
-import React, { Component } from 'react';
+import React from 'react';
 import TextField from 'material-ui/TextField';
 
 const styleSheet = theme => ({
@@ -11,96 +11,89 @@ const styleSheet = theme => ({
   },
 });
 
-class AddGrainForm extends Component {
-  constructor(props) {
-    super(props);
+function handleChange(f) {
+  return event => f(event.target.value);
+}
 
-    this.onChangeGrainType = this.onChangeGrainType.bind(this);
-    this.onChangeMaxPpg = this.onChangeMaxPpg.bind(this);
-    this.onChangeProportion = this.onChangeProportion.bind(this);
-    this.onClickAdd = this.onClickAdd.bind(this);
+function handleClick(f, ...args) {
+  return () => f(...args);
+}
 
-    this.state = {
-      grainType: '',
-      maxPpg: '',
-      proportion: '',
-    };
-  }
+function AddGrainForm(props) {
+  const {
+    classes,
 
-  onChangeGrainType(event) {
-    const grainType = event.target.value;
+    onChangeMaxPpg,
+    onChangeType,
+    onChangeProportion,
+    onClickAdd,
 
-    this.setState({
-      grainType,
-    });
-  }
+    grainType,
+    maxPpg,
+    proportion,
+  } = props;
 
-  onChangeMaxPpg(event) {
-    const maxPpg = event.target.value;
+  return (
+    <Grid
+      align="flex-end"
+      className={classes.root}
+      justify="space-around"
+      container>
 
-    this.setState({
-      maxPpg,
-    });
-  }
-
-  onChangeProportion(event) {
-    const proportion = event.target.value;
-
-    this.setState({
-      proportion,
-    });
-  }
-
-  onClickAdd() {
-    const { onClickAdd } = this.props;
-
-    const { grainType, maxPpg, proportion } = this.state;
-
-    onClickAdd(grainType, maxPpg, proportion);
-  }
-
-  render() {
-    const { classes } = this.props;
-
-    return (
-      <Grid
-        align="flex-end"
-        className={classes.root}
-        justify="space-around"
-        container>
-
-        <Grid item>
-          <TextField
-            label="Grain Type"
-            name="grainType"
-            onChange={this.onChangeGrainType} />
-        </Grid>
-
-        <Grid item>
-          <TextField
-            label="Max PPG (SG)"
-            name="maxPpg"
-            onChange={this.onChangeMaxPpg} />
-        </Grid>
-
-        <Grid item>
-          <TextField
-            label="Proportion (%)"
-            name="proportion"
-            onChange={this.onChangeProportion} />
-        </Grid>
-
-        <Grid item>
-          <Button color="accent" raised onClick={this.onClickAdd}>Add</Button>
-        </Grid>
+      <Grid item>
+        <TextField
+          label="Grain Type"
+          name="grainType"
+          value={grainType}
+          onChange={handleChange(onChangeType)} />
       </Grid>
-    );
-  }
+
+      <Grid item>
+        <TextField
+          label="Max PPG (SG)"
+          name="maxPpg"
+          value={maxPpg}
+          onChange={handleChange(onChangeMaxPpg)} />
+      </Grid>
+
+      <Grid item>
+        <TextField
+          label="Proportion (%)"
+          name="proportion"
+          value={proportion}
+          onChange={handleChange(onChangeProportion)} />
+      </Grid>
+
+      <Grid item>
+        <Button
+          color="accent"
+          raised
+          onClick={handleClick(onClickAdd, grainType, maxPpg, proportion)}>
+
+          Add
+        </Button>
+      </Grid>
+    </Grid>
+  );
 }
 
 AddGrainForm.propTypes = {
   classes: object.isRequired,
+
+  onChangeMaxPpg: func.isRequired,
+  onChangeProportion: func.isRequired,
+  onChangeType: func.isRequired,
   onClickAdd: func.isRequired,
+
+  grainType: string,
+  maxPpg: string,
+  proportion: string,
+};
+
+AddGrainForm.defaultProps = {
+  grainType: '',
+  maxPpg: '',
+  proportion: '',
 };
 
 export default withStyles(styleSheet)(AddGrainForm);
