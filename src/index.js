@@ -1,3 +1,4 @@
+import { AppContainer } from 'react-hot-loader';
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
 import { Provider } from 'react-redux';
 import { render } from 'react-dom';
@@ -21,9 +22,21 @@ const theme = createMuiTheme({
   },
 });
 
-render(
-  <Provider store={appStore}>
-    <MuiThemeProvider theme={theme}>
-      <RecipeCalculator />
-    </MuiThemeProvider>
-  </Provider>, document.getElementById('root'));
+function renderApp() {
+  return render(
+    <AppContainer>
+      <Provider store={appStore}>
+        <MuiThemeProvider theme={theme}>
+          <RecipeCalculator />
+        </MuiThemeProvider>
+      </Provider>
+    </AppContainer>, document.getElementById('root'));
+}
+
+if (module.hot) {
+  module.hot.accept(
+    './recipe-calculator/components/RecipeCalculator',
+    renderApp);
+}
+
+renderApp();
