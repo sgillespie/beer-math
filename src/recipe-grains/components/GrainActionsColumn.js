@@ -8,13 +8,18 @@ import Grid from 'material-ui/Grid';
 import IconButton from 'material-ui/IconButton';
 import React from 'react';
 
-export const styleSheet = {
+export const styleSheet = theme => ({
   button: {
     '&:hover': {
-      color: 'rgb(83,109,254)',
+      color: theme.palette.secondary.main,
     },
   },
-};
+
+  container: {
+    display: 'flex',
+    flexWrap: 'nowrap',
+  },
+});
 
 function GrainActionsColumn(props) {
   const {
@@ -31,9 +36,13 @@ function GrainActionsColumn(props) {
   }
 
   return (
-    <Grid justify="flex-end" container>
+    <Grid
+      justify="flex-end"
+      className={classes.root}
+      container>
+
       { !grain.isEditing &&
-        <Grid item>
+        <Grid className={classes.container} item>
           <IconButton
             aria-label="delete"
             className={classes.button}
@@ -55,7 +64,7 @@ function GrainActionsColumn(props) {
       }
 
       { grain.isEditing &&
-        <Grid item>
+        <Grid wrap="nowrap" item>
           <IconButton
             aria-label="cancel"
             className={classes.button}

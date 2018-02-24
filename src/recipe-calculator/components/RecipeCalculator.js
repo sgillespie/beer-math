@@ -1,6 +1,5 @@
 import React from 'react';
 import AppBar from 'material-ui/AppBar';
-import Button from 'material-ui/Button';
 import FontAwesome from '@fortawesome/react-fontawesome';
 import Icon from 'material-ui/Icon';
 import Toolbar from 'material-ui/Toolbar';
@@ -39,10 +38,6 @@ function RecipeCalculator({ classes }) {
 
             Beer Math
           </Typography>
-
-          <Button color="inherit">Home</Button>
-          <Button color="inherit">About</Button>
-          <Button color="inherit">Contact</Button>
         </Toolbar>
       </AppBar>
 

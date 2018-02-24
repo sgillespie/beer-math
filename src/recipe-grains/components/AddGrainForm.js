@@ -35,7 +35,7 @@ function AddGrainForm(props) {
 
   return (
     <Grid
-      align="flex-end"
+      alignItems="flex-end"
       className={classes.root}
       justify="space-around"
       container>
@@ -66,7 +66,7 @@ function AddGrainForm(props) {
 
       <Grid item>
         <Button
-          color="accent"
+          color="secondary"
           raised
           onClick={handleClick(onClickAdd, grainType, maxPpg, proportion)}>
 
