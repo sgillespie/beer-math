@@ -68,7 +68,6 @@ module.exports = {
       ],
       setupTestFrameworkScriptFile: '<rootDir>/src/setup.test.js',
       testPathIgnorePatterns: ['setup.test.js', '/node_modules/'],
-      testRegex: 'src/.*(_test|_spec|\\.test|\\.spec)\\.(js|jsx|vue|ts|tsx|mjs)$'
     }],
   ],
 
