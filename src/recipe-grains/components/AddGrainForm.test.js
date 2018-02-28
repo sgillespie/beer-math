@@ -10,15 +10,9 @@ const shallow = createShallow({ dive: true });
 
 describe('AddGrainForm', () => {
   let grainForm;
-  let onChangeType;
-  let onChangeMaxPpg;
-  let onChangeProportion;
   let onClickAdd;
 
   beforeEach(() => {
-    onChangeType = spy();
-    onChangeMaxPpg = spy();
-    onChangeProportion = spy();
     onClickAdd = spy();
 
     grainForm = shallow(
@@ -26,9 +20,6 @@ describe('AddGrainForm', () => {
         grainType="grainType"
         maxPpg="maxPpg"
         proportion="proportion"
-        onChangeType={onChangeType}
-        onChangeMaxPpg={onChangeMaxPpg}
-        onChangeProportion={onChangeProportion}
         onClickAdd={onClickAdd} />
     );
   });
@@ -56,49 +47,34 @@ describe('AddGrainForm', () => {
       .should.deep.equal('proportion');
   });
 
-  it('change grain type calls onChangeType', () => {
-    const event = {
-      target: {
-        value: '9',
-      },
-    };
+  it('change handlers update state', () => {
+    const fields = grainForm.find(TextField);
 
-    grainForm
-      .find(TextField)
+    fields
       .find('[name="grainType"]')
-      .simulate('change', event);
+      .simulate('change', {
+        target: { value: 'newGrainType' },
+      });
 
-    onChangeType.should.have.been.calledWith('9');
-  });
-
-  it('change max ppg calls onChangeMaxPpg', () => {
-    const event = {
-      target: {
-        value: '8',
-      },
-    };
-
-    grainForm
-      .find(TextField)
+    fields
       .find('[name="maxPpg"]')
-      .simulate('change', event);
+      .simulate('change', {
+        target: { value: 'newMaxPpg' },
+      });
 
-    onChangeMaxPpg.should.have.been.calledWith('8');
-  });
-
-  it('change proportion calls onChangeProportion', () => {
-    const event = {
-      target: {
-        value: '7',
-      },
-    };
+    fields
+      .find('[name="proportion"]')
+      .simulate('change', {
+        target: { value: 'newProportion' },
+      });
 
     grainForm
-      .find(TextField)
-      .find('[name="proportion"]')
-      .simulate('change', event);
-
-    onChangeProportion.should.have.been.calledWith('7');
+      .state()
+      .should.deep.equal({
+        grainType: 'newGrainType',
+        maxPpg: 'newMaxPpg',
+        proportion: 'newProportion',
+      });
   });
 
   it('click Add triggers onClickAdd', () => {

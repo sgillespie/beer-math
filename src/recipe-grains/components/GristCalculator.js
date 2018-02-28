@@ -4,7 +4,7 @@ import Paper from 'material-ui/Paper';
 import React from 'react';
 import Typography from 'material-ui/Typography';
 
-import AddGrainContainer from '../containers/AddGrainContainer';
+import AddGrainForm from '../components/AddGrainForm';
 import GrainTable from './GrainTable';
 
 const styleSheet = theme => ({
@@ -17,6 +17,7 @@ function GristCalculator(props) {
   const {
     classes,
     grains,
+    onClickAdd,
     onClickDelete,
     onClickEdit,
     onClickUpdate,
@@ -32,7 +33,7 @@ function GristCalculator(props) {
         onClickEdit={onClickEdit}
         onClickUpdate={onClickUpdate} />
 
-      <AddGrainContainer />
+      <AddGrainForm onClickAdd={onClickAdd} />
     </Paper>
   );
 }
@@ -40,6 +41,7 @@ function GristCalculator(props) {
 GristCalculator.propTypes = {
   classes: object.isRequired,
   grains: object.isRequired,
+  onClickAdd: func.isRequired,
   onClickDelete: func.isRequired,
   onClickEdit: func.isRequired,
   onClickUpdate: func.isRequired,
