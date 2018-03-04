@@ -1,4 +1,5 @@
 import { createShallow } from 'material-ui/test-utils';
+import { shallow as eshallow } from 'enzyme';
 import React from 'react';
 import Input from 'material-ui/Input';
 
@@ -37,10 +38,12 @@ describe('EditableGrainField', () => {
   });
 
   it('defaults isEditing to false', () => {
-    shallow(<EditableGrainField value="value" label="label" />)
-      .instance()
-      .props
-      .isEditing
-      .should.be.false;
+    const wrapper = shallow(
+      <EditableGrainField value="value" label="label" />
+    );
+
+    wrapper
+      .find('span')
+      .should.have.lengthOf(1);
   });
 });

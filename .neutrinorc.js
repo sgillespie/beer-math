@@ -67,6 +67,9 @@ module.exports = {
         '<rootDir>/src/index.js',
       ],
       setupTestFrameworkScriptFile: '<rootDir>/src/setup.test.js',
+      setupFiles: [
+        'raf/polyfill'
+      ],
       testPathIgnorePatterns: ['setup.test.js', '/node_modules/'],
     }],
   ],
