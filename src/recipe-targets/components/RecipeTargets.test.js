@@ -32,6 +32,23 @@ describe('RecipeTargets', () => {
     recipeTargets.should.have.lengthOf(1);
   });
 
+  it('passes props to text fields', () => {
+    recipeTargets
+      .find('[name="gravity"]')
+      .prop('value')
+      .should.equal('1.034');
+
+    recipeTargets
+      .find('[name="volume"]')
+      .prop('value')
+      .should.equal('6');
+
+    recipeTargets
+      .find('[name="efficiency"]')
+      .prop('value')
+      .should.equal('90');
+  });
+
   it('change gravity triggers onChangeGravity', () => {
     const event = {
       target: {
