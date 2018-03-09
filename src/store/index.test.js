@@ -10,10 +10,6 @@ describe('store', () => {
       global: {
         initialState: true,
       },
-
-      recipeGrains: {
-        initialState: true,
-      },
     };
 
     store(initialState)
