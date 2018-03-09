@@ -4,9 +4,9 @@ import * as constants from './constants';
 
 export const initialState = fromJS({
   targets: {
-    gravity: '1.045',
-    volume: '6',
-    efficiency: '70',
+    gravity: 1.045,
+    volume: 6,
+    efficiency: 0.7,
   },
 
   grains: {

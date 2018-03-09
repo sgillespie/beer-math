@@ -1,3 +1,5 @@
+import compose from 'ramda/src/compose';
+import multiply from 'ramda/src/multiply';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
@@ -23,17 +25,13 @@ export function mapStateToProps() {
 
 export function mapDispatchToProps(dispatch) {
   return {
-    onChangeGravity(gravity) {
-      dispatch(updateGravity(gravity));
-    },
-
-    onChangeVolume(volume) {
-      dispatch(updateVolume(volume));
-    },
-
-    onChangeEfficiency(efficiency) {
-      dispatch(updateEfficiency(efficiency));
-    },
+    onChangeGravity: compose(dispatch, updateGravity, Number),
+    onChangeVolume: compose(dispatch, updateVolume, Number),
+    onChangeEfficiency: compose(
+      dispatch,
+      updateEfficiency,
+      multiply(0.01),
+      Number),
   };
 }
 

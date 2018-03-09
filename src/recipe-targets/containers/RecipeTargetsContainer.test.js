@@ -17,17 +17,17 @@ describe('RecipeTargetsContainer', () => {
       targets: {
         gravity: 0,
         volume: 1,
-        efficiency: 2,
+        efficiency: 0.2,
       },
     },
   });
 
   describe('mapStateToProps', () => {
-    it('should map targets', () => {
+    it('maps targets', () => {
       mapStateToProps()(state).should.deep.equal({
         gravity: 0,
         volume: 1,
-        efficiency: 2,
+        efficiency: 20,
       });
     });
   });
@@ -38,31 +38,31 @@ describe('RecipeTargetsContainer', () => {
       dispatch = spy();
     });
 
-    it('mapDispatchToProps should map onChangeGravity', () => {
+    it('maps onChangeGravity', () => {
       const props = mapDispatchToProps(dispatch);
 
       should.exist(props.onChangeGravity);
       props.onChangeGravity('0');
 
-      dispatch.should.have.been.calledWith(updateGravity('0'));
+      dispatch.should.have.been.calledWith(updateGravity(0));
     });
 
-    it('mapDispatchToProps should map onChangeVolume', () => {
+    it('maps onChangeVolume', () => {
       const props = mapDispatchToProps(dispatch);
 
       should.exist(props.onChangeVolume);
       props.onChangeVolume('9');
 
-      dispatch.should.have.been.calledWith(updateVolume('9'));
+      dispatch.should.have.been.calledWith(updateVolume(9));
     });
 
-    it('mapDispatchToProps should map onChangeEfficiency', () => {
+    it('maps onChangeEfficiency', () => {
       const props = mapDispatchToProps(dispatch);
 
       should.exist(props.onChangeEfficiency);
-      props.onChangeEfficiency('9');
+      props.onChangeEfficiency('10');
 
-      dispatch.should.have.been.calledWith(updateEfficiency('9'));
+      dispatch.should.have.been.calledWith(updateEfficiency(0.1));
     });
   });
 });

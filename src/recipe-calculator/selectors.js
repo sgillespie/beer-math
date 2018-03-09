@@ -21,7 +21,7 @@ export function mkVolumeSelector() {
 export function mkEfficiencySelector() {
   return createSelector(
     targetsSelector,
-    state => state.get('efficiency'));
+    state => state.get('efficiency') * 100);
 }
 
 export function mkGrainsSelector() {
