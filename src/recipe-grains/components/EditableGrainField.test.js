@@ -1,5 +1,4 @@
 import { createShallow } from 'material-ui/test-utils';
-import { shallow as eshallow } from 'enzyme';
 import React from 'react';
 import Input from 'material-ui/Input';
 

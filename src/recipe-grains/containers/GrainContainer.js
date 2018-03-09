@@ -15,7 +15,11 @@ export function mapStateToProps() {
 export function mapDispatchToProps(dispatch) {
   return {
     onClickAdd(grainType, maxPpg, proportion) {
-      dispatch(actions.addGrain(grainType, maxPpg, proportion));
+      dispatch(actions.addGrain(
+
+        grainType,
+        Number(maxPpg),
+        Number(proportion) * 0.01));
     },
 
     onClickDelete(key) {
@@ -27,7 +31,11 @@ export function mapDispatchToProps(dispatch) {
     },
 
     onClickUpdate(key, grainType, maxPpg, proportion) {
-      dispatch(actions.updateGrain(key, grainType, maxPpg, proportion));
+      dispatch(actions.updateGrain(
+        key,
+        grainType,
+        Number(maxPpg),
+        Number(proportion) * 0.01));
     },
   };
 }

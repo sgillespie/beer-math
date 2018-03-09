@@ -1,4 +1,4 @@
-import { func, object, string } from 'prop-types';
+import { func, number, object } from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import Grid from 'material-ui/Grid';
 import TextField from 'material-ui/TextField';
@@ -97,15 +97,15 @@ RecipeTargets.propTypes = {
   onChangeVolume: func.isRequired,
   onChangeEfficiency: func.isRequired,
 
-  gravity: string,
-  volume: string,
-  efficiency: string,
+  gravity: number,
+  volume: number,
+  efficiency: number,
 };
 
 RecipeTargets.defaultProps = {
-  gravity: '',
-  volume: '',
-  efficiency: '',
+  gravity: 1.048,
+  volume: 5,
+  efficiency: 0.7,
 };
 
 export default withStyles(styleSheet)(RecipeTargets);

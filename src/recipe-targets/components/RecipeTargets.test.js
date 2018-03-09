@@ -22,9 +22,9 @@ describe('RecipeTargets', () => {
         onChangeGravity={onChangeGravity}
         onChangeVolume={onChangeVolume}
         onChangeEfficiency={onChangeEfficiency}
-        gravity="1.034"
-        volume="6"
-        efficiency="90" />
+        gravity={1.034}
+        volume={6}
+        efficiency={90} />
     );
   });
 
@@ -36,17 +36,17 @@ describe('RecipeTargets', () => {
     recipeTargets
       .find('[name="gravity"]')
       .prop('value')
-      .should.equal('1.034');
+      .should.equal(1.034);
 
     recipeTargets
       .find('[name="volume"]')
       .prop('value')
-      .should.equal('6');
+      .should.equal(6);
 
     recipeTargets
       .find('[name="efficiency"]')
       .prop('value')
-      .should.equal('90');
+      .should.equal(90);
   });
 
   it('change gravity triggers onChangeGravity', () => {

@@ -12,20 +12,20 @@ export const initialState = fromJS({
   grains: {
     0: {
       grainType: 'US Two Row',
-      maxPpg: '1.034',
-      proportion: '90%',
+      maxPpg: 1.034,
+      proportion: 0.9,
     },
 
     1: {
       grainType: 'Crystal 40L',
-      maxPpg: '1.036',
-      proportion: '5%',
+      maxPpg: 1.036,
+      proportion: 0.05,
     },
 
     2: {
       grainType: 'Crystal 80L',
-      maxPpg: '1.036',
-      proportion: '5%',
+      maxPpg: 1.036,
+      proportion: 0.05,
     },
   },
 });
@@ -55,7 +55,6 @@ export default handleActions({
   [constants.DELETE_GRAIN]: (state, action) =>
     state.deleteIn(['grains', action.payload]),
 
-  // TODO: move this one to recipe-grains
   [constants.EDIT_GRAIN]: (state, action) => {
     const isEditing = state.getIn(['grains', action.payload, 'isEditing']);
     return state.setIn(['grains', action.payload, 'isEditing'], !isEditing);

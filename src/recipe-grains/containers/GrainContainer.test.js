@@ -18,14 +18,14 @@ describe('GrainContainer', () => {
       grains: {
         0: {
           grainType: 'type-0',
-          maxPpg: '0',
-          proportion: '1',
+          maxPpg: 0,
+          proportion: 0.1,
         },
 
         1: {
           grainType: 'type-1',
-          maxPpg: '2',
-          proportion: '3',
+          maxPpg: 2,
+          proportion: 0.3,
         },
       },
     },
@@ -33,8 +33,22 @@ describe('GrainContainer', () => {
 
   describe('mapStateToProps', () => {
     it('maps grains', () => {
-      mapStateToProps()(state).should.have.property(
-        'grains', state.getIn(['global', 'grains']));
+      mapStateToProps()(state)
+        .grains
+        .toJS()
+        .should.deep.equal({
+          0: {
+            grainType: 'type-0',
+            maxPpg: 0,
+            proportion: 10,
+          },
+
+          1: {
+            grainType: 'type-1',
+            maxPpg: 2,
+            proportion: 30,
+          },
+        });
     });
   });
 
@@ -48,9 +62,9 @@ describe('GrainContainer', () => {
       const props = mapDispatchToProps(dispatch);
 
       should.exist(props.onClickAdd);
-      props.onClickAdd('0', '1', '2');
+      props.onClickAdd('type', '1', '2');
 
-      dispatch.should.have.been.calledWith(addGrain('0', '1', '2'));
+      dispatch.should.have.been.calledWith(addGrain('type', 1, 0.02));
     });
 
     it('maps onClickDelete', () => {
@@ -75,9 +89,9 @@ describe('GrainContainer', () => {
       const props = mapDispatchToProps(dispatch);
 
       should.exist(props.onClickUpdate);
-      props.onClickUpdate('0', '1', '2', '3');
+      props.onClickUpdate('type', '1', '2', '3');
 
-      dispatch.should.have.been.calledWith(updateGrain('0', '1', '2', '3'));
+      dispatch.should.have.been.calledWith(updateGrain('type', '1', 2, 0.03));
     });
   });
 });

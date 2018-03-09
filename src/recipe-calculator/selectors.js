@@ -1,3 +1,4 @@
+import multiply from 'ramda/src/multiply';
 import { createSelector } from 'reselect';
 
 export const globalSelector = state => state.get('global');
@@ -25,7 +26,12 @@ export function mkEfficiencySelector() {
 }
 
 export function mkGrainsSelector() {
+  const updateProportion = state =>
+    state
+      .get('grains')
+      .map(grain => grain.update('proportion', multiply(100)));
+
   return createSelector(
     globalSelector,
-    state => state.get('grains'));
+    updateProportion);
 }

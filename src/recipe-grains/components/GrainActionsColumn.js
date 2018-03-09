@@ -39,6 +39,7 @@ function GrainActionsColumn(props) {
     <Grid
       justify="flex-end"
       className={classes.root}
+      wrap="nowrap"
       container>
 
       { !grain.isEditing &&
@@ -64,7 +65,7 @@ function GrainActionsColumn(props) {
       }
 
       { grain.isEditing &&
-        <Grid wrap="nowrap" item>
+        <Grid item>
           <IconButton
             aria-label="cancel"
             className={classes.button}

@@ -14,7 +14,7 @@ describe('recipe-calculator selectors', () => {
         0: {
           grainType: 'grainType',
           maxPpg: 3,
-          proportin: 4,
+          proportion: 0.4,
         },
       },
     },
@@ -56,7 +56,14 @@ describe('recipe-calculator selectors', () => {
     it('selects grains', () => {
       selectors
         .mkGrainsSelector()(state)
-        .should.equal(state.getIn(['global', 'grains']));
+        .toJS()
+        .should.deep.equal({
+          0: {
+            grainType: 'grainType',
+            maxPpg: 3,
+            proportion: 40,
+          },
+        });
     });
   });
 });
