@@ -1,7 +1,8 @@
-import { func, object } from 'prop-types';
+import { func, number, object } from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import React from 'react';
 import Table, { TableBody, TableCell, TableHead, TableRow } from 'material-ui/Table';
+import Typography from 'material-ui/Typography';
 import map from 'lodash.map';
 
 import GrainTableRow from './GrainTableRow';
@@ -13,7 +14,14 @@ const styleSheet = {
 };
 
 function GrainTable(props) {
-  const { classes, grains, onClickDelete, onClickEdit, onClickUpdate } = props;
+  const {
+    classes,
+    grains,
+    totalGrainWeight,
+    onClickDelete,
+    onClickEdit,
+    onClickUpdate,
+  } = props;
 
   return (
     <Table>
@@ -45,7 +53,11 @@ function GrainTable(props) {
           <TableCell>Total Weight</TableCell>
           <TableCell />
           <TableCell>100 %</TableCell>
-          <TableCell />
+          <TableCell>
+            <Typography>
+              { totalGrainWeight }
+            </Typography>
+          </TableCell>
           <TableCell />
         </TableRow>
 
@@ -57,6 +69,7 @@ function GrainTable(props) {
 GrainTable.propTypes = {
   classes: object.isRequired,
   grains: object.isRequired,
+  totalGrainWeight: number.isRequired,
   onClickDelete: func.isRequired,
   onClickEdit: func.isRequired,
   onClickUpdate: func.isRequired,

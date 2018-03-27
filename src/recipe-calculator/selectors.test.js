@@ -66,4 +66,46 @@ describe('recipe-calculator selectors', () => {
         });
     });
   });
+
+  describe('mkTotalGrainWeightSelector', () => {
+    const grainState = fromJS({
+      global: {
+        targets: {
+          gravity: 1,
+          volume: 6,
+          efficiency: 1,
+        },
+      },
+    });
+
+    it('calculates from single grain', () => {
+      const _grainState = grainState.setIn(['global', 'grains'], fromJS({
+        0: {
+          maxPpg: 1,
+          proportion: 1,
+        },
+      }));
+
+      selectors
+        .mkTotalGrainWeightSelector()(_grainState)
+        .should.equal(6);
+    });
+
+    it('calculates from multiple grains', () => {
+      const _grainState = grainState.setIn(['global', 'grains'], fromJS({
+        0: {
+          maxPpg: 1,
+          proportion: 0.5,
+        },
+        1: {
+          maxPpg: 3,
+          proportion: 0.5,
+        },
+      }));
+
+      selectors
+        .mkTotalGrainWeightSelector()(_grainState)
+        .should.equal(3);
+    });
+  });
 });

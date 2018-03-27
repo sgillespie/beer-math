@@ -1,6 +1,8 @@
-import { createShallow } from 'material-ui/test-utils';
-import chai from 'chai';
 import React from 'react';
+import Typography from 'material-ui/Typography';
+import { TableCell, TableRow } from 'material-ui/Table';
+import chai from 'chai';
+import { createShallow } from 'material-ui/test-utils';
 import { spy } from 'sinon';
 
 import GrainTable from './GrainTable';
@@ -40,6 +42,7 @@ describe('GrainTable', () => {
     grainTable = shallow(
       <GrainTable
         grains={grains}
+        totalGrainWeight={10}
         onClickDelete={onClickDelete}
         onClickEdit={onClickEdit}
         onClickUpdate={onClickUpdate} />
@@ -109,5 +112,19 @@ describe('GrainTable', () => {
       .at(1)
       .prop('grainId')
       .should.equal('1');
+  });
+
+  it('passes totalGrainWeight to footer', () => {
+    const footerCells = grainTable
+      .find(TableRow)
+      .last()
+      .find(TableCell);
+
+    footerCells
+      .at(3)
+      .find(Typography)
+      .children()
+      .text()
+      .should.equal('10');
   });
 });

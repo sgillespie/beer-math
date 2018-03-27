@@ -35,3 +35,22 @@ export function mkGrainsSelector() {
     globalSelector,
     updateProportion);
 }
+
+export function mkTotalGrainWeightSelector() {
+  const averagePpgSelector = createSelector(
+    state => state.getIn(['global', 'grains']),
+    state => state.reduce((accum, grain) => {
+      const maxPpg = grain.get('maxPpg');
+      const proportion = grain.get('proportion');
+
+      return accum + (maxPpg * proportion);
+    }, 0));
+
+  return createSelector(
+    mkGravitySelector(),
+    mkVolumeSelector(),
+    state => state.getIn(['global', 'targets', 'efficiency']),
+    averagePpgSelector,
+    (gravity, volume, efficiency, averagePpg) =>
+      (gravity * volume) / (efficiency * averagePpg));
+}

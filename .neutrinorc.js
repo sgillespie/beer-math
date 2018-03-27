@@ -14,6 +14,7 @@ module.exports = {
             }
           }],
           'import/prefer-default-export': 'off',
+          'no-underscore-dangle': 'off',
           // We're setting this off for now, until neutrino decides to
           // support overrides
           'no-unused-expressions': 'off',
